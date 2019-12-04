@@ -13,19 +13,23 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
-      <spring.version>4.2.6.RELEASE</spring.version>
-      <!-- mybatis版本�?-->
-      <mybatis.version>3.4.0</mybatis.version>
-      <!-- log4j日志文件管理包版�?-->
-      <slf4j.version>1.7.7</slf4j.version>
-      <log4j.version>1.2.17</log4j.version>
-      <!--jackson版本�?-->
-      <jackson.version>2.7.1</jackson.version>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.spring.webmvc.version>5.1.7.RELEASE</project.build.spring.webmvc.version>
+        <project.build.spring.webmvc.file.version>1.4</project.build.spring.webmvc.file.version>
+        <project.build.spring.webmvc.json.version>2.9.10</project.build.spring.webmvc.json.version>
+        <project.build.spring.jdbc.version>5.1.7.RELEASE</project.build.spring.jdbc.version>
+        <project.build.mybaits.version>3.5.1</project.build.mybaits.version>
+        <project.build.myabtis.pagehelper.version>5.1.9</project.build.myabtis.pagehelper.version>
+        <project.build.mybatis.spring.version>2.0.1</project.build.mybatis.spring.version>
+        <project.build.servlet.version>4.0.1</project.build.servlet.version>
+        <project.build.jstl.version>1.2</project.build.jstl.version>
+        <project.build.mysql.jdbc.version>5.1.41</project.build.mysql.jdbc.version>
+        <project.build.mysql.c3p0.version>0.9.5.4</project.build.mysql.c3p0.version>
+        <project.build.logging.version>1.2</project.build.logging.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
   <dependencies>
     <dependency>
@@ -35,116 +39,77 @@
       <scope>test</scope>
     </dependency>
 
-      <!-- 添加jstl依赖 -->
-      <dependency>
-          <groupId>jstl</groupId>
-          <artifactId>jstl</artifactId>
-          <version>1.2</version>
-      </dependency>
-
-      <!--阿里json包-->
-      <dependency>
-          <groupId>com.alibaba</groupId>
-          <artifactId>fastjson</artifactId>
-          <version>1.2.7</version>
-      </dependency>
-
-      <!--jdbc连接池-->
-      <dependency>
-          <groupId>commons-dbcp</groupId>
-          <artifactId>commons-dbcp</artifactId>
-          <version>1.4</version>
-      </dependency>
-      <dependency>
-          <groupId>commons-pool</groupId>
-          <artifactId>commons-pool</artifactId>
-          <version>1.6</version>
-      </dependency>
-
-      <!-- spring核心�?-->
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-test</artifactId>
-          <version>${spring.version}</version>
-      </dependency>
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-webmvc</artifactId>
-          <version>${spring.version}</version>
+          <version>${project.build.spring.webmvc.version}</version>
       </dependency>
+      <!-- Spring mvc:JSON -->
       <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-core</artifactId>
-          <version>${spring.version}</version>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>${project.build.spring.webmvc.json.version}</version>
       </dependency>
+      <!-- Spring mvc:file -->
       <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-aop</artifactId>
-          <version>${spring.version}</version>
+          <groupId>commons-fileupload</groupId>
+          <artifactId>commons-fileupload</artifactId>
+          <version>${project.build.spring.webmvc.file.version}</version>
       </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-jms</artifactId>
-          <version>${spring.version}</version>
-      </dependency>
+      <!-- Spring JDBC -->
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-jdbc</artifactId>
-          <version>${spring.version}</version>
+          <version>${project.build.spring.jdbc.version}</version>
       </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-tx</artifactId>
-          <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context-support</artifactId>
-          <version>${spring.version}</version>
-          <type>jar</type>
-          <scope>compile</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.aspectj</groupId>
-          <artifactId>aspectjweaver</artifactId>
-          <version>1.7.4</version>
-      </dependency>
-      <dependency>
-          <groupId>aspectj</groupId>
-          <artifactId>aspectjrt</artifactId>
-          <version>1.5.4</version>
-      </dependency>
-      <dependency>
-          <groupId>org.codehaus.jackson</groupId>
-          <artifactId>jackson-mapper-asl</artifactId>
-          <version>1.9.11</version>
-      </dependency>
-      <!--mybatis核心�?-->
+      <!-- MyBatis -->
       <dependency>
           <groupId>org.mybatis</groupId>
           <artifactId>mybatis</artifactId>
-          <version>3.4.1</version>
+          <version>${project.build.mybaits.version}</version>
       </dependency>
+      <!-- MyBatis 分页插件 -->
+      <dependency>
+          <groupId>com.github.pagehelper</groupId>
+          <artifactId>pagehelper</artifactId>
+          <version>${project.build.myabtis.pagehelper.version}</version>
+      </dependency>
+      <!-- Mybatis与Spring的整合包 -->
       <dependency>
           <groupId>org.mybatis</groupId>
           <artifactId>mybatis-spring</artifactId>
-          <version>1.3.0</version>
+          <version>${project.build.mybatis.spring.version}</version>
       </dependency>
+      <!-- Servelt API -->
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+          <version>${project.build.servlet.version}</version>
+          <scope>provided</scope>
+      </dependency>
+      <!-- JSTL -->
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>jstl</artifactId>
+          <version>${project.build.jstl.version}</version>
+      </dependency>
+      <!-- 数据库驱动 -->
       <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
-          <version>5.1.21</version>
+          <version>${project.build.mysql.jdbc.version}</version>
       </dependency>
+      <!-- 数据库连接池 -->
       <dependency>
-          <groupId>com.oracle</groupId>
-          <artifactId>ojdbc14</artifactId>
-          <version>10.2.0.1.0</version>
-      </dependency>
-      <dependency>
-          <groupId>c3p0</groupId>
+          <groupId>com.mchange</groupId>
           <artifactId>c3p0</artifactId>
-          <version>0.9.1.2</version>
-          <type>jar</type>
+          <version>${project.build.mysql.c3p0.version}</version>
+      </dependency>
+      <!-- 日志组件 -->
+      <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <version>${project.build.logging.version}</version>
       </dependency>
 
       <dependency>
@@ -167,24 +132,17 @@
           <artifactId>jstl</artifactId>
           <version>1.2</version>
       </dependency>
-      <!--json所需要的依赖-->
       <dependency>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-core</artifactId>
-          <version>2.7.3</version>
+          <groupId>com.alibaba</groupId>
+          <artifactId>fastjson</artifactId>
+          <version>1.2.7</version>
       </dependency>
       <dependency>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-databind</artifactId>
-          <version>2.7.3</version>
+                  <groupId>org.projectlombok</groupId>
+                  <artifactId>lombok</artifactId>
+                  <version>1.16.18</version>
+                  <scope>provided</scope>
       </dependency>
-      <dependency>
-          <groupId>com.fasterxml.jackson.core</groupId>
-          <artifactId>jackson-annotations</artifactId>
-          <version>2.7.3</version>
-      </dependency>
-
-
   </dependencies>
 
   <build>

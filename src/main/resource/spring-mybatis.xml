@@ -8,21 +8,19 @@
                            http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- 连接池 -->
-    <bean id = "dataSource" class = "org.apache.commons.dbcp.BasicDataSource" destroy-method = "close">
-        <property name="driverClassName" value="${jdbc.driver}" />
-        <property name="url" value="${jdbc.url}" />
-        <property name="username" value="${jdbc.username}" />
+    <bean id = "dataSource" class = "com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method = "close">
+        <property name="driverClass" value="${jdbc.driverClass}" />
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}" />
+        <property name="user" value="${jdbc.user}" />
         <property name="password" value="${jdbc.password}" />
         <!-- 初始化连接大小 -->
-        <property name="initialSize" value="${jdbc.initialSize}" />
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}" />
         <!-- 连接池最大数量 -->
-        <property name="maxActive" value="${jdbc.maxActive}"/>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+        <!-- 最小连接数 -->
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"/>
         <!-- 连接池最大空闲 -->
-        <property name="maxIdle" value="${jdbc.maxIdle}" />
-        <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="${jdbc.minIdle}" />
-        <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="${jdbc.maxWait}" />
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}" />
     </bean>
 
     <!-- 结合Spring和Mybatis -->
@@ -30,6 +28,18 @@
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描mapping.xml文件 -->
         <property name = "mapperLocations" value="classpath:mapper/*.xml" />
+        <!-- 引入插件 -->
+        <property name="plugins">
+            <array>
+                <!-- 引入MyBaits分页插件 -->
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!-- 指定数据库类型 -->
+                        <value>helperDialct=mysql</value>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
