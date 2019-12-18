@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gkt
-  Date: 2019/12/3
-  Time: 15:04
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8"/>
+    <title>客户管理系统 | 登录页面 </title>
     <!-- 引入CSS -->
     <link href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css"/>
     <link href="${pageContext.request.contextPath}/static/h-ui/css/H-ui.login.css" rel="stylesheet" type="text/css"/>
@@ -25,60 +19,12 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/h-ui/js/H-ui.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/utils/md5.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/utils/StringUtils.js"></script>
-
     <!-- 页面事件 -->
     <script type="text/javascript">
-        $(function () {
-            //点击图片切换验证码
-            $("#vcodeImg").click(function () {
-                this.src = "getVerifiCodeImage?t=" + new Date().getTime();
-            });
-            //登录
-            $("#submitBtn").click(function () {
-                //检查登录信息
-                var userName = $('#username').val();
-                var password = $('#password').val();
-                var verifiCode = $('#verifiCode').val();
-                if (StringUtils.isEmpty(userName)) {
-                    $.messager.alert("提示", "请输入用户名 !", "warning");
-                } else if (StringUtils.isEmpty(password)) {
-                    $.messager.alert("提示", "请输入密码 !", "warning");
-                } else if (StringUtils.isEmpty(verifiCode)) {
-                    $.messager.alert("提示", "请输入验证码 !", "warning");
-                } else {
-                    //提交用户的登录表单信息
-                    var formData = {
-                        userName: userName,
-                        password: hex_md5(password), //MD5加密
-                        verifiCode: verifiCode
-                    };
-                    //向服务端发送请求
-                    $.ajax({
-                        type: "post",
-                        url: "login",
-                        data: formData,
-                        contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                        success: function (res) {
-                            console.log(JSON.stringify(res));
-                            if (res.success) {
-                                window.location.href = "goSystemMainView";//进入系统主页面
-                            } else {
-                                $.messager.alert("提示", data.message, "warning");
-                                $("#vcodeImg").click();//切换验证码
-                                $("input[name='vcode']").val("");//清空验证码输入框
-                            }
-                        }
-                    });
-                }
-            });
-
-        })
+        <%@ include file="/WEB-INF/view/common/login.js"%>
     </script>
 
-    <title>客户管理系统 | 登录页面 </title>
-    <meta name="keywords" content="客户管理系统">
 </head>
-
 <body style="font-weight: lighter; ">
 <div class="header" style="padding: 0;">
     <h3 style="font-weight: lighter; color: white; width: 550px; height: 60px; line-height: 60px; margin: 0 0 0 30px; padding: 0;">
@@ -113,21 +59,6 @@
                     <img title="点击图片切换验证码" id="vcodeImg" src="getVerifiCodeImage" alt="#">
                 </div>
             </div>
-            <!-- 用户类型 -->
-            <%--<div class="mt-20 skin-minimal" style="text-align: center;">--%>
-                <%--<div class="radio-box">--%>
-                    <%--<input type="radio" id="radio-1" name="userType" value="1"/>--%>
-                    <%--<label for="radio-3">管理员</label>--%>
-                <%--</div>--%>
-                <%--<div class="radio-box">--%>
-                    <%--<input type="radio" id="radio-3" name="userType" value="3"/>--%>
-                    <%--<label for="radio-2">老师</label>--%>
-                <%--</div>--%>
-                <%--<div class="radio-box">--%>
-                    <%--<input type="radio" id="radio-2" name="userType" checked value="2"/>--%>
-                    <%--<label for="radio-1">学生</label>--%>
-                <%--</div>--%>
-            <%--</div>--%>
             <!-- 登录按钮 -->
             <div class="row">
                 <div class="formControls col-8 col-offset-3">
@@ -143,5 +74,7 @@
 <div class="footer">
     Copyright @ 2019  All rights reserved
 </div>
+
+
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.cn.crm.bean;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,5 +26,31 @@ public class UserInfo {
         private Integer authParentId;
         private String authName;
         private String authUrl;
+
+
+        private List<Auth> auths;
+    }
+
+
+    public static void main(String[] args) {
+        UserInfo u = new UserInfo();
+        UserInfo.Auth a = new UserInfo.Auth();
+        a.setAuthId(1);
+        a.setAuthParentId(1);
+        a.setAuthName("1");
+        List<UserInfo.Auth> b = new ArrayList<UserInfo.Auth>();
+
+
+        List<UserInfo.Auth> bb = new ArrayList<UserInfo.Auth>();
+        UserInfo.Auth aa = new UserInfo.Auth();
+        aa.setAuthId(11);
+        aa.setAuthParentId(11);
+        aa.setAuthName("11");
+        bb.add(aa);
+        a.setAuths(bb);
+
+        b.add(a);
+        u.setAuths(b);
+        System.out.println("a");
     }
 }

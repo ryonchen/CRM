@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.crm.dao.SalChanceMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.crm.bean.SalChance" >
+    <id column="chc_id" property="chcId" jdbcType="INTEGER" />
+    <result column="chc_source" property="chcSource" jdbcType="VARCHAR" />
+    <result column="chc_cust_name" property="chcCustName" jdbcType="VARCHAR" />
+    <result column="chc_title" property="chcTitle" jdbcType="VARCHAR" />
+    <result column="chc_rate" property="chcRate" jdbcType="INTEGER" />
+    <result column="chc_linkman" property="chcLinkman" jdbcType="VARCHAR" />
+    <result column="chc_tel" property="chcTel" jdbcType="VARCHAR" />
+    <result column="chc_desc" property="chcDesc" jdbcType="VARCHAR" />
+    <result column="chc_create_user" property="chcCreateUser" jdbcType="INTEGER" />
+    <result column="chc_due_user" property="chcDueUser" jdbcType="INTEGER" />
+    <result column="chc_due_date" property="chcDueDate" jdbcType="TIMESTAMP" />
+    <result column="chc_status" property="chcStatus" jdbcType="TINYINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    chc_id, chc_source, chc_cust_name, chc_title, chc_rate, chc_linkman, chc_tel, chc_desc, 
+    chc_create_user, chc_due_user, chc_due_date, chc_status, is_deleted, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sal_chance
+    where chc_id = #{chcId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sal_chance
+    where chc_id = #{chcId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.crm.bean.SalChance" >
+    insert into sal_chance (chc_id, chc_source, chc_cust_name, 
+      chc_title, chc_rate, chc_linkman, 
+      chc_tel, chc_desc, chc_create_user, 
+      chc_due_user, chc_due_date, chc_status, 
+      is_deleted, create_time, update_time
+      )
+    values (#{chcId,jdbcType=INTEGER}, #{chcSource,jdbcType=VARCHAR}, #{chcCustName,jdbcType=VARCHAR}, 
+      #{chcTitle,jdbcType=VARCHAR}, #{chcRate,jdbcType=INTEGER}, #{chcLinkman,jdbcType=VARCHAR}, 
+      #{chcTel,jdbcType=VARCHAR}, #{chcDesc,jdbcType=VARCHAR}, #{chcCreateUser,jdbcType=INTEGER}, 
+      #{chcDueUser,jdbcType=INTEGER}, #{chcDueDate,jdbcType=TIMESTAMP}, #{chcStatus,jdbcType=TINYINT}, 
+      #{isDeleted,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.crm.bean.SalChance" >
+    insert into sal_chance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chcId != null" >
+        chc_id,
+      </if>
+      <if test="chcSource != null" >
+        chc_source,
+      </if>
+      <if test="chcCustName != null" >
+        chc_cust_name,
+      </if>
+      <if test="chcTitle != null" >
+        chc_title,
+      </if>
+      <if test="chcRate != null" >
+        chc_rate,
+      </if>
+      <if test="chcLinkman != null" >
+        chc_linkman,
+      </if>
+      <if test="chcTel != null" >
+        chc_tel,
+      </if>
+      <if test="chcDesc != null" >
+        chc_desc,
+      </if>
+      <if test="chcCreateUser != null" >
+        chc_create_user,
+      </if>
+      <if test="chcDueUser != null" >
+        chc_due_user,
+      </if>
+      <if test="chcDueDate != null" >
+        chc_due_date,
+      </if>
+      <if test="chcStatus != null" >
+        chc_status,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chcId != null" >
+        #{chcId,jdbcType=INTEGER},
+      </if>
+      <if test="chcSource != null" >
+        #{chcSource,jdbcType=VARCHAR},
+      </if>
+      <if test="chcCustName != null" >
+        #{chcCustName,jdbcType=VARCHAR},
+      </if>
+      <if test="chcTitle != null" >
+        #{chcTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="chcRate != null" >
+        #{chcRate,jdbcType=INTEGER},
+      </if>
+      <if test="chcLinkman != null" >
+        #{chcLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="chcTel != null" >
+        #{chcTel,jdbcType=VARCHAR},
+      </if>
+      <if test="chcDesc != null" >
+        #{chcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="chcCreateUser != null" >
+        #{chcCreateUser,jdbcType=INTEGER},
+      </if>
+      <if test="chcDueUser != null" >
+        #{chcDueUser,jdbcType=INTEGER},
+      </if>
+      <if test="chcDueDate != null" >
+        #{chcDueDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chcStatus != null" >
+        #{chcStatus,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.SalChance" >
+    update sal_chance
+    <set >
+      <if test="chcSource != null" >
+        chc_source = #{chcSource,jdbcType=VARCHAR},
+      </if>
+      <if test="chcCustName != null" >
+        chc_cust_name = #{chcCustName,jdbcType=VARCHAR},
+      </if>
+      <if test="chcTitle != null" >
+        chc_title = #{chcTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="chcRate != null" >
+        chc_rate = #{chcRate,jdbcType=INTEGER},
+      </if>
+      <if test="chcLinkman != null" >
+        chc_linkman = #{chcLinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="chcTel != null" >
+        chc_tel = #{chcTel,jdbcType=VARCHAR},
+      </if>
+      <if test="chcDesc != null" >
+        chc_desc = #{chcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="chcCreateUser != null" >
+        chc_create_user = #{chcCreateUser,jdbcType=INTEGER},
+      </if>
+      <if test="chcDueUser != null" >
+        chc_due_user = #{chcDueUser,jdbcType=INTEGER},
+      </if>
+      <if test="chcDueDate != null" >
+        chc_due_date = #{chcDueDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chcStatus != null" >
+        chc_status = #{chcStatus,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where chc_id = #{chcId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.SalChance" >
+    update sal_chance
+    set chc_source = #{chcSource,jdbcType=VARCHAR},
+      chc_cust_name = #{chcCustName,jdbcType=VARCHAR},
+      chc_title = #{chcTitle,jdbcType=VARCHAR},
+      chc_rate = #{chcRate,jdbcType=INTEGER},
+      chc_linkman = #{chcLinkman,jdbcType=VARCHAR},
+      chc_tel = #{chcTel,jdbcType=VARCHAR},
+      chc_desc = #{chcDesc,jdbcType=VARCHAR},
+      chc_create_user = #{chcCreateUser,jdbcType=INTEGER},
+      chc_due_user = #{chcDueUser,jdbcType=INTEGER},
+      chc_due_date = #{chcDueDate,jdbcType=TIMESTAMP},
+      chc_status = #{chcStatus,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where chc_id = #{chcId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByCreateTime" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from sal_chance
+    where 1=1
+    <if test="beginDate != null and beginDate != ''">
+      <![CDATA[ and create_time >= #{beginDate,jdbcType=TIMESTAMP} ]]>
+    </if>
+    <if test="endDate != null and endDate != ''">
+      <![CDATA[ and create_time <= #{endDate,jdbcType=TIMESTAMP} ]]>
+    </if>
+  </select>
+</mapper>

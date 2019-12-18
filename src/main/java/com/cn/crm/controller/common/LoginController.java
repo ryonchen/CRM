@@ -22,10 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @program: crm
@@ -115,12 +112,12 @@ public class LoginController {
 
 
             SysUser user = sysUserService.getUser(loginForm.getUserName());
-            if("1".equals(user.getIsLocked())){
+            if(user.getIsLocked() == 1){
                 resultMap.put("success", false);
                 resultMap.put("message", "用户已锁定，请联系管理员解锁");
                 return resultMap;
             }
-            if("0".equals(user.getIsDeleted()) && loginForm.getPassword().equalsIgnoreCase(user.getUserPassword())){
+            if(user.getIsDeleted() == 0 && loginForm.getPassword().equalsIgnoreCase(user.getUserPassword())){
                 HttpSession session = request.getSession();
                 UserInfo userInfo = genUserInfo(user);
                 session.setAttribute("userInfo", userInfo);
@@ -153,39 +150,47 @@ public class LoginController {
        * @return
        **/
     private UserInfo genUserInfo(SysUser user){
-        UserInfo userInfo = new UserInfo();
-        if("1".equals(user.getIsDeleted())){
+        if(user.getIsDeleted() == 1){
             return null;
         }
+        UserInfo userInfo = new UserInfo();
         userInfo.setUserId(user.getUserId());
         userInfo.setUserCode(user.getUserCode());
+        userInfo.setUserName(user.getUserName());
         userInfo.setRoleName(user.getUserName());
         SysRole role = sysRoleService.getRoleById(user.getUserRoleId());
-        Integer roleId = role == null || "1".equals(role.getIsDeleted())?0:role.getRoleId();
-        String roleName = role == null || "1".equals(role.getIsDeleted())?"":role.getRoleName();
+        Integer roleId = role == null || role.getIsDeleted() == 1 ? 0 : role.getRoleId();
+        String roleName = role == null || role.getIsDeleted() == 1 ? "" : role.getRoleName();
         userInfo.setRoleId(roleId);
         userInfo.setRoleName(roleName);
-        if(!"0".equals(roleId)){
-            List<SysRoleAuth> roleAuths = sysRoleAuthService.getAuthListByRoleId(roleId);
-            List<UserInfo.Auth> uiAuths = userInfo.getAuths();
-            for (SysRoleAuth roleAuth : roleAuths) {
-                Integer authId = roleAuth == null || "1".equals(roleAuth.getIsDeleted())?0:roleAuth.getAuthId();
-                if("0".equals(authId)){
-                    continue;
+        if(roleId != 0){
+            //取菜单父层级
+            List<SysAuth> parentAuths = sysAuthService.getParentAuthListByRoleId(roleId);
+            List<UserInfo.Auth> uiParentAuths = new ArrayList<>();
+            for (SysAuth parentAuth : parentAuths) {
+                Integer parentAuthId = parentAuth.getAuthId();
+                UserInfo.Auth uiParentAuth = new UserInfo.Auth();
+                uiParentAuth.setAuthId(parentAuthId);
+                uiParentAuth.setAuthName(parentAuth.getAuthName());
+                uiParentAuth.setAuthParentId(parentAuth.getAuthParentId());
+                uiParentAuth.setAuthUrl(parentAuth.getAuthUrl());
+                //取菜单子层级
+                List<SysAuth> childrenAuths =  sysAuthService.getAuthListByAuthParentId(parentAuthId);
+                List<UserInfo.Auth> uiChildrenAuths = new ArrayList<>();
+                for (SysAuth childrenAuth : childrenAuths) {
+                    UserInfo.Auth uiChildrenAuth = new UserInfo.Auth();
+                    uiChildrenAuth.setAuthId(childrenAuth.getAuthId());
+                    uiChildrenAuth.setAuthName(childrenAuth.getAuthName());
+                    uiChildrenAuth.setAuthParentId(childrenAuth.getAuthParentId());
+                    uiChildrenAuth.setAuthUrl(childrenAuth.getAuthUrl());
+                    uiChildrenAuths.add(uiChildrenAuth);
                 }
-                SysAuth auth = sysAuthService.getAuth(authId);
-                authId = auth == null || "1".equals(auth.getIsDeleted())?0:auth.getAuthId();
-                if("0".equals(authId)){
-                    continue;
-                }
-                UserInfo.Auth uiAuth = new UserInfo.Auth();
-                uiAuth.setAuthId(authId);
-                uiAuth.setAuthName(auth.getAuthName());
-                uiAuth.setAuthParentId(auth.getAuthParentId());
-                uiAuth.setAuthUrl(auth.getAuthUrl());
-                uiAuths.add(uiAuth);
+
+                uiParentAuth.setAuths(uiChildrenAuths);
+                uiParentAuths.add(uiParentAuth);
             }
-            userInfo.setAuths(uiAuths);
+            userInfo.setAuths(uiParentAuths);
+
         }
 
         return userInfo;

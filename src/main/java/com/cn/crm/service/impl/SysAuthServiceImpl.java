@@ -6,6 +6,8 @@ import com.cn.crm.service.SysAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 /**
  * @program: crm
@@ -21,5 +23,20 @@ public class SysAuthServiceImpl implements SysAuthService{
     @Override
     public SysAuth getAuth(Integer authId){
         return sysAuthMapper.selectByPrimaryKey(authId);
+    }
+
+    @Override
+    public List<SysAuth> getAuthList(List<Integer> authIds){
+        return sysAuthMapper.selectByPrimaryKeyList(authIds);
+    }
+
+    @Override
+    public List<SysAuth> getParentAuthListByRoleId(Integer roleId){
+        return sysAuthMapper.selectParentByRoleId(roleId);
+    }
+
+    @Override
+    public List<SysAuth> getAuthListByAuthParentId(Integer authId){
+        return sysAuthMapper.selectByAuthParentId(authId);
     }
 }

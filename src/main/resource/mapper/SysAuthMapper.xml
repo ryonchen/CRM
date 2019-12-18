@@ -126,4 +126,31 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where auth_id = #{authId,jdbcType=INTEGER}
   </update>
+  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_auth
+    where auth_id in
+    <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </select>
+  <select id="selectParentByRoleId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  select
+  <include refid="Base_Column_List" />
+  from (
+  select b.*
+  from sys_role_auth a
+  inner join sys_auth b on a.auth_id = b.auth_id and b.is_deleted = 0 and b.auth_parent_id = 0
+  where a.role_id = #{roldId,jdbcType=INTEGER}
+  and a.is_deleted = 0
+  ) t
+  </select>
+  <select id="selectByAuthParentId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_auth
+    where auth_parent_id = #{authId,jdbcType=INTEGER}
+    and is_deleted = 0
+  </select>
 </mapper>

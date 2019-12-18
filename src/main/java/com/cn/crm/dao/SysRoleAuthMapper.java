@@ -7,6 +7,8 @@ import java.util.List;
 public interface SysRoleAuthMapper {
     int deleteByPrimaryKey(Integer raId);
 
+
+
     int insert(SysRoleAuth record);
 
     int insertSelective(SysRoleAuth record);

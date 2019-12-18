@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>学生管理系统 | 系统主页面</title>
+    <title>CRM客户关系管理系统 | 系统主页面</title>
     <!-- 引入CSS -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/easyui/css/default.css"/>
     <link rel="stylesheet" type="text/css"
@@ -36,78 +36,22 @@
         //设置系统功能菜单栏
         var _menus = {
             "menus": [
+                <c:forEach items="${userInfo.auths}" var="pitem">
                 {
-                    "menuid": "1", "icon": "", "menuname": "学生信息管理",
+                    "menuid": "${pitem.authId}", "icon": "", "menuname": "${pitem.authName}",
                     "menus": [
+                        <c:forEach items="${pitem.auths}" var="citem">
                         {
-                            "menuid": "21",
-                            "menuname": "学生列表",
+                            "menuid": "${citem.authId}",
+                            "menuname": "${citem.authName}",
                             "icon": "icon-student",
-                            "url": "../student/goStudentListView"
-                        }
+                            "url": "${citem.authUrl}"
+                        },
+                        </c:forEach>
                     ]
                 },
-                <%-- 通过JSTL设置用户查看权限: 仅管理员和教师可以查看教师列表信息 --%>
-                <c:if test="${userType == 1 || userType == 3}">
-                {
-                    "menuid": "2", "icon": "", "menuname": "教师信息管理",
-                    "menus": [
-                        {
-                            "menuid": "22",
-                            "menuname": "教师列表",
-                            "icon": "icon-teacher",
-                            "url": "../teacher/goTeacherListView"
-                        }
-                    ]
-                },
-                </c:if>
-                <%-- 通过JSTL设置用户查看权限:  仅管理员可以查看年级,班级,管理员列表信息 --%>
-                <c:if test="${userType == 1}">
-                {
-                    "menuid": "3", "icon": "", "menuname": "班级信息管理",
-                    "menus": [
-                        {
-                            "menuid": "23",
-                            "menuname": "班级列表",
-                            "icon": "icon-class",
-                            "url": "../clazz/goClazzListView"
-                        }
-                    ]
-                },
-                {
-                    "menuid": "4", "icon": "", "menuname": "年级信息管理",
-                    "menus": [
-                        {
-                            "menuid": "24",
-                            "menuname": "年级列表",
-                            "icon": "icon-grade",
-                            "url": "../grade/goGradeListView"
-                        }
-                    ]
-                },
-                {
-                    "menuid": "5", "icon": "", "menuname": "系统用户管理",
-                    "menus": [
-                        {
-                            "menuid": "25",
-                            "menuname": "管理员列表",
-                            "icon": "icon-admin",
-                            "url": "../admin/goAdminListView"
-                        }
-                    ]
-                },
-                </c:if>
-                {
-                    "menuid": "6", "icon": "", "menuname": "个人信息管理",
-                    "menus": [
-                        {
-                            "menuid": "26",
-                            "menuname": "修改密码",
-                            "icon": "icon-settings",
-                            "url": "../common/goSettingView"
-                        }
-                    ]
-                }
+                </c:forEach>
+
             ]
         };
 
@@ -129,7 +73,7 @@
                 </c:choose>
         	</span>
             <%-- 从Session中获取登录用户的用户名	--%>
-        	<span style="color:red; font-weight:bold;">${userInfo.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        	<span style="color:red; font-weight:bold;">${userInfo.userName}</span>&nbsp;&nbsp;&nbsp;&nbsp;
         	<a href="loginOut" id="loginOut" style="color: darkgrey;" class="easyui-linkbutton"
                data-options="iconCls:'icon-exit',plain:true">
                 [安全退出]
@@ -141,7 +85,7 @@
 <!-- 页面底部-->
 <div region="south" split="true" style="height: 30px;">
     <div class="footer">
-        Copyright @ 2019 黄宇辉. All rights reserved | 本人博客网站 : https://yubuntu0109.github.io
+        Copyright @ 2019  All rights reserved
     </div>
 </div>
 
@@ -155,7 +99,7 @@
 <!-- 引入欢迎页面资源 -->
 <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
     <div id="tabs" class="easyui-tabs" fit="true">
-        <jsp:include page="/WEB-INF/view/system/intro.jsp"/>
+        <jsp:include page="/WEB-INF/view/common/intro.jsp"/>
     </div>
 </div>
 
