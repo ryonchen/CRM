@@ -5,6 +5,9 @@
     <id column="ra_id" property="raId" jdbcType="INTEGER" />
     <result column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="auth_id" property="authId" jdbcType="INTEGER" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     ra_id, role_id, auth_id, is_deleted, create_time, update_time

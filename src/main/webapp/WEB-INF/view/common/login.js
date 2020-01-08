@@ -33,7 +33,7 @@ $(function () {
                     if (res.success) {
                         window.location.href = "/crm/index";//进入系统主页面
                     } else {
-                        $.messager.alert("提示", data.message, "warning");
+                        $.messager.alert("提示", res.message, "warning");
                         $("#vcodeImg").click();//切换验证码
                         $("input[name='vcode']").val("");//清空验证码输入框
                     }
