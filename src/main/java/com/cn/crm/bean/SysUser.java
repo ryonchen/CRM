@@ -110,6 +110,6 @@ public class SysUser {
     }
 
     public void setFailLoginTimes(Integer failLoginTimes) {
-        this.failLoginTimes = userRoleId;
+        this.failLoginTimes = failLoginTimes;
     }
 }

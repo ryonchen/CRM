@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.crm.dao.cstLstTMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.crm.bean.cstLstT" >
+    <id column="lst_id" property="lst_id" jdbcType="INTEGER" />
+    <result column="lst_cst_id" property="lst_cst_id" jdbcType="VARCHAR" />
+    <result column="lst_cst_manager_id" property="lst_cst_manager_id" jdbcType="VARCHAR" />
+    <result column="lst_cst_manager_name" property="lst_cst_manager_name" jdbcType="VARCHAR" />
+    <result column="lst_cst_name" property="lst_cst_name" jdbcType="VARCHAR" />
+    <result column="lst_delay" property="lst_delay" jdbcType="VARCHAR" />
+    <result column="lst_last_order_date" property="lst_last_order_date" jdbcType="VARCHAR" />
+    <result column="lst_reason" property="lst_reason" jdbcType="VARCHAR" />
+    <result column="lst_status" property="lst_status" jdbcType="VARCHAR" />
+    <result column="sureLstDate" property="sureLstDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lst_id, lst_cst_id, lst_cst_manager_id, lst_cst_manager_name, lst_cst_name, lst_delay, 
+    lst_last_order_date, lst_reason, lst_status, sureLstDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cst_lst_t
+    where lst_id = #{lst_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cst_lst_t
+    where lst_id = #{lst_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.crm.bean.cstLstT" >
+    insert into cst_lst_t (lst_id, lst_cst_id, lst_cst_manager_id, 
+      lst_cst_manager_name, lst_cst_name, lst_delay, 
+      lst_last_order_date, lst_reason, lst_status, 
+      sureLstDate)
+    values (#{lst_id,jdbcType=INTEGER}, #{lst_cst_id,jdbcType=VARCHAR}, #{lst_cst_manager_id,jdbcType=VARCHAR}, 
+      #{lst_cst_manager_name,jdbcType=VARCHAR}, #{lst_cst_name,jdbcType=VARCHAR}, #{lst_delay,jdbcType=VARCHAR}, 
+      #{lst_last_order_date,jdbcType=VARCHAR}, #{lst_reason,jdbcType=VARCHAR}, #{lst_status,jdbcType=VARCHAR}, 
+      #{sureLstDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.crm.bean.cstLstT" >
+    insert into cst_lst_t
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lst_id != null" >
+        lst_id,
+      </if>
+      <if test="lst_cst_id != null" >
+        lst_cst_id,
+      </if>
+      <if test="lst_cst_manager_id != null" >
+        lst_cst_manager_id,
+      </if>
+      <if test="lst_cst_manager_name != null" >
+        lst_cst_manager_name,
+      </if>
+      <if test="lst_cst_name != null" >
+        lst_cst_name,
+      </if>
+      <if test="lst_delay != null" >
+        lst_delay,
+      </if>
+      <if test="lst_last_order_date != null" >
+        lst_last_order_date,
+      </if>
+      <if test="lst_reason != null" >
+        lst_reason,
+      </if>
+      <if test="lst_status != null" >
+        lst_status,
+      </if>
+      <if test="sureLstDate != null" >
+        sureLstDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lst_id != null" >
+        #{lst_id,jdbcType=INTEGER},
+      </if>
+      <if test="lst_cst_id != null" >
+        #{lst_cst_id,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_cst_manager_id != null" >
+        #{lst_cst_manager_id,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_cst_manager_name != null" >
+        #{lst_cst_manager_name,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_cst_name != null" >
+        #{lst_cst_name,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_delay != null" >
+        #{lst_delay,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_last_order_date != null" >
+        #{lst_last_order_date,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_reason != null" >
+        #{lst_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_status != null" >
+        #{lst_status,jdbcType=VARCHAR},
+      </if>
+      <if test="sureLstDate != null" >
+        #{sureLstDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.cstLstT" >
+    update cst_lst_t
+    <set >
+      <if test="lst_cst_id != null" >
+        lst_cst_id = #{lst_cst_id,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_cst_manager_id != null" >
+        lst_cst_manager_id = #{lst_cst_manager_id,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_cst_manager_name != null" >
+        lst_cst_manager_name = #{lst_cst_manager_name,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_cst_name != null" >
+        lst_cst_name = #{lst_cst_name,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_delay != null" >
+        lst_delay = #{lst_delay,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_last_order_date != null" >
+        lst_last_order_date = #{lst_last_order_date,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_reason != null" >
+        lst_reason = #{lst_reason,jdbcType=VARCHAR},
+      </if>
+      <if test="lst_status != null" >
+        lst_status = #{lst_status,jdbcType=VARCHAR},
+      </if>
+      <if test="sureLstDate != null" >
+        sureLstDate = #{sureLstDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where lst_id = #{lst_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.cstLstT" >
+    update cst_lst_t
+    set lst_cst_id = #{lst_cst_id,jdbcType=VARCHAR},
+      lst_cst_manager_id = #{lst_cst_manager_id,jdbcType=VARCHAR},
+      lst_cst_manager_name = #{lst_cst_manager_name,jdbcType=VARCHAR},
+      lst_cst_name = #{lst_cst_name,jdbcType=VARCHAR},
+      lst_delay = #{lst_delay,jdbcType=VARCHAR},
+      lst_last_order_date = #{lst_last_order_date,jdbcType=VARCHAR},
+      lst_reason = #{lst_reason,jdbcType=VARCHAR},
+      lst_status = #{lst_status,jdbcType=VARCHAR},
+      sureLstDate = #{sureLstDate,jdbcType=TIMESTAMP}
+    where lst_id = #{lst_id,jdbcType=INTEGER}
+  </update>
+</mapper>
