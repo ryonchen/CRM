@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.crm.dao.SysRightTMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.crm.bean.SysRightT" >
+    <id column="right_id" property="right_id" jdbcType="INTEGER" />
+    <result column="right_text" property="right_text" jdbcType="VARCHAR" />
+    <result column="right_tip" property="right_tip" jdbcType="VARCHAR" />
+    <result column="right_type" property="right_type" jdbcType="VARCHAR" />
+    <result column="rigth_url" property="rigth_url" jdbcType="VARCHAR" />
+    <result column="sys_right_t_right_id" property="sys_right_t_right_id" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    right_id, right_text, right_tip, right_type, rigth_url, sys_right_t_right_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_right_t
+    where right_id = #{right_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_right_t
+    where right_id = #{right_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.crm.bean.SysRightT" >
+    insert into sys_right_t (right_id, right_text, right_tip, 
+      right_type, rigth_url, sys_right_t_right_id
+      )
+    values (#{right_id,jdbcType=INTEGER}, #{right_text,jdbcType=VARCHAR}, #{right_tip,jdbcType=VARCHAR}, 
+      #{right_type,jdbcType=VARCHAR}, #{rigth_url,jdbcType=VARCHAR}, #{sys_right_t_right_id,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.crm.bean.SysRightT" >
+    insert into sys_right_t
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="right_id != null" >
+        right_id,
+      </if>
+      <if test="right_text != null" >
+        right_text,
+      </if>
+      <if test="right_tip != null" >
+        right_tip,
+      </if>
+      <if test="right_type != null" >
+        right_type,
+      </if>
+      <if test="rigth_url != null" >
+        rigth_url,
+      </if>
+      <if test="sys_right_t_right_id != null" >
+        sys_right_t_right_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="right_id != null" >
+        #{right_id,jdbcType=INTEGER},
+      </if>
+      <if test="right_text != null" >
+        #{right_text,jdbcType=VARCHAR},
+      </if>
+      <if test="right_tip != null" >
+        #{right_tip,jdbcType=VARCHAR},
+      </if>
+      <if test="right_type != null" >
+        #{right_type,jdbcType=VARCHAR},
+      </if>
+      <if test="rigth_url != null" >
+        #{rigth_url,jdbcType=VARCHAR},
+      </if>
+      <if test="sys_right_t_right_id != null" >
+        #{sys_right_t_right_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.SysRightT" >
+    update sys_right_t
+    <set >
+      <if test="right_text != null" >
+        right_text = #{right_text,jdbcType=VARCHAR},
+      </if>
+      <if test="right_tip != null" >
+        right_tip = #{right_tip,jdbcType=VARCHAR},
+      </if>
+      <if test="right_type != null" >
+        right_type = #{right_type,jdbcType=VARCHAR},
+      </if>
+      <if test="rigth_url != null" >
+        rigth_url = #{rigth_url,jdbcType=VARCHAR},
+      </if>
+      <if test="sys_right_t_right_id != null" >
+        sys_right_t_right_id = #{sys_right_t_right_id,jdbcType=INTEGER},
+      </if>
+    </set>
+    where right_id = #{right_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.SysRightT" >
+    update sys_right_t
+    set right_text = #{right_text,jdbcType=VARCHAR},
+      right_tip = #{right_tip,jdbcType=VARCHAR},
+      right_type = #{right_type,jdbcType=VARCHAR},
+      rigth_url = #{rigth_url,jdbcType=VARCHAR},
+      sys_right_t_right_id = #{sys_right_t_right_id,jdbcType=INTEGER}
+    where right_id = #{right_id,jdbcType=INTEGER}
+  </update>
+</mapper>

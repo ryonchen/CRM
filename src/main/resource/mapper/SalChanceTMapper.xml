@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.crm.dao.SalChanceTMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.crm.bean.SalChanceT" >
+    <id column="chc_id" property="chc_id" jdbcType="INTEGER" />
+    <result column="chc_create_by" property="chc_create_by" jdbcType="VARCHAR" />
+    <result column="chc_create_date" property="chc_create_date" jdbcType="TIMESTAMP" />
+    <result column="chc_create_id" property="chc_create_id" jdbcType="INTEGER" />
+    <result column="chc_cust_name" property="chc_cust_name" jdbcType="VARCHAR" />
+    <result column="chc_desc" property="chc_desc" jdbcType="VARCHAR" />
+    <result column="chc_due_date" property="chc_due_date" jdbcType="TIMESTAMP" />
+    <result column="chc_due_id" property="chc_due_id" jdbcType="INTEGER" />
+    <result column="chc_due_to" property="chc_due_to" jdbcType="INTEGER" />
+    <result column="chc_linkman" property="chc_linkman" jdbcType="VARCHAR" />
+    <result column="chc_rate" property="chc_rate" jdbcType="INTEGER" />
+    <result column="chc_source" property="chc_source" jdbcType="VARCHAR" />
+    <result column="chc_status" property="chc_status" jdbcType="VARCHAR" />
+    <result column="chc_tel" property="chc_tel" jdbcType="VARCHAR" />
+    <result column="chc_title" property="chc_title" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    chc_id, chc_create_by, chc_create_date, chc_create_id, chc_cust_name, chc_desc, chc_due_date, 
+    chc_due_id, chc_due_to, chc_linkman, chc_rate, chc_source, chc_status, chc_tel, chc_title
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sal_chance_t
+    where chc_id = #{chc_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sal_chance_t
+    where chc_id = #{chc_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.crm.bean.SalChanceT" >
+    insert into sal_chance_t (chc_id, chc_create_by, chc_create_date, 
+      chc_create_id, chc_cust_name, chc_desc, 
+      chc_due_date, chc_due_id, chc_due_to, 
+      chc_linkman, chc_rate, chc_source, 
+      chc_status, chc_tel, chc_title
+      )
+    values (#{chc_id,jdbcType=INTEGER}, #{chc_create_by,jdbcType=VARCHAR}, #{chc_create_date,jdbcType=TIMESTAMP}, 
+      #{chc_create_id,jdbcType=INTEGER}, #{chc_cust_name,jdbcType=VARCHAR}, #{chc_desc,jdbcType=VARCHAR}, 
+      #{chc_due_date,jdbcType=TIMESTAMP}, #{chc_due_id,jdbcType=INTEGER}, #{chc_due_to,jdbcType=INTEGER}, 
+      #{chc_linkman,jdbcType=VARCHAR}, #{chc_rate,jdbcType=INTEGER}, #{chc_source,jdbcType=VARCHAR}, 
+      #{chc_status,jdbcType=VARCHAR}, #{chc_tel,jdbcType=VARCHAR}, #{chc_title,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.crm.bean.SalChanceT" >
+    insert into sal_chance_t
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chc_id != null" >
+        chc_id,
+      </if>
+      <if test="chc_create_by != null" >
+        chc_create_by,
+      </if>
+      <if test="chc_create_date != null" >
+        chc_create_date,
+      </if>
+      <if test="chc_create_id != null" >
+        chc_create_id,
+      </if>
+      <if test="chc_cust_name != null" >
+        chc_cust_name,
+      </if>
+      <if test="chc_desc != null" >
+        chc_desc,
+      </if>
+      <if test="chc_due_date != null" >
+        chc_due_date,
+      </if>
+      <if test="chc_due_id != null" >
+        chc_due_id,
+      </if>
+      <if test="chc_due_to != null" >
+        chc_due_to,
+      </if>
+      <if test="chc_linkman != null" >
+        chc_linkman,
+      </if>
+      <if test="chc_rate != null" >
+        chc_rate,
+      </if>
+      <if test="chc_source != null" >
+        chc_source,
+      </if>
+      <if test="chc_status != null" >
+        chc_status,
+      </if>
+      <if test="chc_tel != null" >
+        chc_tel,
+      </if>
+      <if test="chc_title != null" >
+        chc_title,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chc_id != null" >
+        #{chc_id,jdbcType=INTEGER},
+      </if>
+      <if test="chc_create_by != null" >
+        #{chc_create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_create_date != null" >
+        #{chc_create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chc_create_id != null" >
+        #{chc_create_id,jdbcType=INTEGER},
+      </if>
+      <if test="chc_cust_name != null" >
+        #{chc_cust_name,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_desc != null" >
+        #{chc_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_due_date != null" >
+        #{chc_due_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chc_due_id != null" >
+        #{chc_due_id,jdbcType=INTEGER},
+      </if>
+      <if test="chc_due_to != null" >
+        #{chc_due_to,jdbcType=INTEGER},
+      </if>
+      <if test="chc_linkman != null" >
+        #{chc_linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_rate != null" >
+        #{chc_rate,jdbcType=INTEGER},
+      </if>
+      <if test="chc_source != null" >
+        #{chc_source,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_status != null" >
+        #{chc_status,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_tel != null" >
+        #{chc_tel,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_title != null" >
+        #{chc_title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.SalChanceT" >
+    update sal_chance_t
+    <set >
+      <if test="chc_create_by != null" >
+        chc_create_by = #{chc_create_by,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_create_date != null" >
+        chc_create_date = #{chc_create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chc_create_id != null" >
+        chc_create_id = #{chc_create_id,jdbcType=INTEGER},
+      </if>
+      <if test="chc_cust_name != null" >
+        chc_cust_name = #{chc_cust_name,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_desc != null" >
+        chc_desc = #{chc_desc,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_due_date != null" >
+        chc_due_date = #{chc_due_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chc_due_id != null" >
+        chc_due_id = #{chc_due_id,jdbcType=INTEGER},
+      </if>
+      <if test="chc_due_to != null" >
+        chc_due_to = #{chc_due_to,jdbcType=INTEGER},
+      </if>
+      <if test="chc_linkman != null" >
+        chc_linkman = #{chc_linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_rate != null" >
+        chc_rate = #{chc_rate,jdbcType=INTEGER},
+      </if>
+      <if test="chc_source != null" >
+        chc_source = #{chc_source,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_status != null" >
+        chc_status = #{chc_status,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_tel != null" >
+        chc_tel = #{chc_tel,jdbcType=VARCHAR},
+      </if>
+      <if test="chc_title != null" >
+        chc_title = #{chc_title,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where chc_id = #{chc_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.SalChanceT" >
+    update sal_chance_t
+    set chc_create_by = #{chc_create_by,jdbcType=VARCHAR},
+      chc_create_date = #{chc_create_date,jdbcType=TIMESTAMP},
+      chc_create_id = #{chc_create_id,jdbcType=INTEGER},
+      chc_cust_name = #{chc_cust_name,jdbcType=VARCHAR},
+      chc_desc = #{chc_desc,jdbcType=VARCHAR},
+      chc_due_date = #{chc_due_date,jdbcType=TIMESTAMP},
+      chc_due_id = #{chc_due_id,jdbcType=INTEGER},
+      chc_due_to = #{chc_due_to,jdbcType=INTEGER},
+      chc_linkman = #{chc_linkman,jdbcType=VARCHAR},
+      chc_rate = #{chc_rate,jdbcType=INTEGER},
+      chc_source = #{chc_source,jdbcType=VARCHAR},
+      chc_status = #{chc_status,jdbcType=VARCHAR},
+      chc_tel = #{chc_tel,jdbcType=VARCHAR},
+      chc_title = #{chc_title,jdbcType=VARCHAR}
+    where chc_id = #{chc_id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -112,6 +112,12 @@ public class LoginController {
 
 
             SysUser user = sysUserService.getUser(loginForm.getUserName());
+            if(user == null){
+                //登录失败
+                resultMap.put("success", false);
+                resultMap.put("message", "用户不存在!");
+                return resultMap;
+            }
             if(user.getIsLocked() == 1){
                 resultMap.put("success", false);
                 resultMap.put("message", "用户已锁定，请联系管理员解锁");
@@ -123,7 +129,6 @@ public class LoginController {
                 session.setAttribute("userInfo", userInfo);
                 resultMap.put("success", true);
                 afterLogin(user,true);
-                return resultMap;
             }else{
                 //登录失败
                 resultMap.put("success", false);

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @create: 2019-12-07 23:44
  */
 @Controller
-@RequestMapping("/chance")
+@RequestMapping("/crm/chance")
 public class ChanceController {
 
     //销售机会管理
