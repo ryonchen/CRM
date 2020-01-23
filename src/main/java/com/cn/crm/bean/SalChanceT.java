@@ -1,155 +1,160 @@
 package com.cn.crm.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class SalChanceT {
-    private Integer chc_id;
+    private Integer chcId;
 
-    private String chc_create_by;
+    private String chcCreateBy;
 
-    private Date chc_create_date;
+    private Date chcCreateDate;
 
-    private Integer chc_create_id;
+    private Integer chcCreateId;
 
-    private String chc_cust_name;
+    private String chcCustName;
 
-    private String chc_desc;
+    private String chcDesc;
 
-    private Date chc_due_date;
+    private Date chcDueDate;
 
-    private Integer chc_due_id;
+    private Integer chcDueId;
 
-    private Integer chc_due_to;
+    private Integer chcDueTo;
 
-    private String chc_linkman;
+    private String chcLinkman;
 
-    private Integer chc_rate;
+    private Integer chcRate;
 
-    private String chc_source;
+    private String chcSource;
 
-    private String chc_status;
+    private String chcStatus;
 
-    private String chc_tel;
+    private String chcTel;
 
-    private String chc_title;
+    private String chcTitle;
 
-    public Integer getChc_id() {
-        return chc_id;
+    public Integer getChcId() {
+        return chcId;
     }
 
-    public void setChc_id(Integer chc_id) {
-        this.chc_id = chc_id;
+    public void setChcId(Integer chcId) {
+        this.chcId = chcId;
     }
 
-    public String getChc_create_by() {
-        return chc_create_by;
+    public String getChcCreateBy() {
+        return chcCreateBy;
     }
 
-    public void setChc_create_by(String chc_create_by) {
-        this.chc_create_by = chc_create_by == null ? null : chc_create_by.trim();
+    public void setChcCreateBy(String chcCreateBy) {
+        this.chcCreateBy = chcCreateBy == null ? null : chcCreateBy.trim();
     }
 
-    public Date getChc_create_date() {
-        return chc_create_date;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    public Date getChcCreateDate() {
+        return chcCreateDate;
     }
 
-    public void setChc_create_date(Date chc_create_date) {
-        this.chc_create_date = chc_create_date;
+    public void setChcCreateDate(Date chcCreateDate) {
+        this.chcCreateDate = chcCreateDate;
     }
 
-    public Integer getChc_create_id() {
-        return chc_create_id;
+    public Integer getChcCreateId() {
+        return chcCreateId;
     }
 
-    public void setChc_create_id(Integer chc_create_id) {
-        this.chc_create_id = chc_create_id;
+    public void setChcCreateId(Integer chcCreateId) {
+        this.chcCreateId = chcCreateId;
     }
 
-    public String getChc_cust_name() {
-        return chc_cust_name;
+    public String getChcCustName() {
+        return chcCustName;
     }
 
-    public void setChc_cust_name(String chc_cust_name) {
-        this.chc_cust_name = chc_cust_name == null ? null : chc_cust_name.trim();
+    public void setChcCustName(String chcCustName) {
+        this.chcCustName = chcCustName == null ? null : chcCustName.trim();
     }
 
-    public String getChc_desc() {
-        return chc_desc;
+    public String getChcDesc() {
+        return chcDesc;
     }
 
-    public void setChc_desc(String chc_desc) {
-        this.chc_desc = chc_desc == null ? null : chc_desc.trim();
+    public void setChcDesc(String chcDesc) {
+        this.chcDesc = chcDesc == null ? null : chcDesc.trim();
     }
 
-    public Date getChc_due_date() {
-        return chc_due_date;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    public Date getChcDueDate() {
+        return chcDueDate;
     }
 
-    public void setChc_due_date(Date chc_due_date) {
-        this.chc_due_date = chc_due_date;
+    public void setChcDueDate(Date chcDueDate) {
+        this.chcDueDate = chcDueDate;
     }
 
-    public Integer getChc_due_id() {
-        return chc_due_id;
+    public Integer getChcDueId() {
+        return chcDueId;
     }
 
-    public void setChc_due_id(Integer chc_due_id) {
-        this.chc_due_id = chc_due_id;
+    public void setChcDueId(Integer chcDueId) {
+        this.chcDueId = chcDueId;
     }
 
-    public Integer getChc_due_to() {
-        return chc_due_to;
+    public Integer getChcDueTo() {
+        return chcDueTo;
     }
 
-    public void setChc_due_to(Integer chc_due_to) {
-        this.chc_due_to = chc_due_to;
+    public void setChcDueTo(Integer chcDueTo) {
+        this.chcDueTo = chcDueTo;
     }
 
-    public String getChc_linkman() {
-        return chc_linkman;
+    public String getChcLinkman() {
+        return chcLinkman;
     }
 
-    public void setChc_linkman(String chc_linkman) {
-        this.chc_linkman = chc_linkman == null ? null : chc_linkman.trim();
+    public void setChcLinkman(String chcLinkman) {
+        this.chcLinkman = chcLinkman == null ? null : chcLinkman.trim();
     }
 
-    public Integer getChc_rate() {
-        return chc_rate;
+    public Integer getChcRate() {
+        return chcRate;
     }
 
-    public void setChc_rate(Integer chc_rate) {
-        this.chc_rate = chc_rate;
+    public void setChcRate(Integer chcRate) {
+        this.chcRate = chcRate;
     }
 
-    public String getChc_source() {
-        return chc_source;
+    public String getChcSource() {
+        return chcSource;
     }
 
-    public void setChc_source(String chc_source) {
-        this.chc_source = chc_source == null ? null : chc_source.trim();
+    public void setChcSource(String chcSource) {
+        this.chcSource = chcSource == null ? null : chcSource.trim();
     }
 
-    public String getChc_status() {
-        return chc_status;
+    public String getChcStatus() {
+        return chcStatus;
     }
 
-    public void setChc_status(String chc_status) {
-        this.chc_status = chc_status == null ? null : chc_status.trim();
+    public void setChcStatus(String chcStatus) {
+        this.chcStatus = chcStatus == null ? null : chcStatus.trim();
     }
 
-    public String getChc_tel() {
-        return chc_tel;
+    public String getChcTel() {
+        return chcTel;
     }
 
-    public void setChc_tel(String chc_tel) {
-        this.chc_tel = chc_tel == null ? null : chc_tel.trim();
+    public void setChcTel(String chcTel) {
+        this.chcTel = chcTel == null ? null : chcTel.trim();
     }
 
-    public String getChc_title() {
-        return chc_title;
+    public String getChcTitle() {
+        return chcTitle;
     }
 
-    public void setChc_title(String chc_title) {
-        this.chc_title = chc_title == null ? null : chc_title.trim();
+    public void setChcTitle(String chcTitle) {
+        this.chcTitle = chcTitle == null ? null : chcTitle.trim();
     }
 }

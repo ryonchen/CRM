@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50728
 File Encoding         : 65001
 
-Date: 2020-01-20 22:39:30
+Date: 2020-01-23 11:58:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -344,20 +344,20 @@ CREATE TABLE `sal_chance_t` (
   `chc_id` int(11) NOT NULL AUTO_INCREMENT,
   `chc_create_by` varchar(255) DEFAULT NULL,
   `chc_create_date` datetime DEFAULT NULL,
-  `chc_create_id` int(11) NOT NULL,
+  `chc_create_id` int(11) DEFAULT NULL,
   `chc_cust_name` varchar(255) DEFAULT NULL,
   `chc_desc` varchar(255) DEFAULT NULL,
   `chc_due_date` datetime DEFAULT NULL,
-  `chc_due_id` int(11) NOT NULL,
-  `chc_due_to` int(11) NOT NULL,
+  `chc_due_id` int(11) DEFAULT NULL,
+  `chc_due_to` int(11) DEFAULT NULL,
   `chc_linkman` varchar(255) DEFAULT NULL,
-  `chc_rate` int(11) NOT NULL,
+  `chc_rate` int(11) DEFAULT NULL,
   `chc_source` varchar(255) DEFAULT NULL,
   `chc_status` varchar(255) DEFAULT NULL,
   `chc_tel` varchar(255) DEFAULT NULL,
   `chc_title` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`chc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sal_chance_t
@@ -371,13 +371,14 @@ INSERT INTO `sal_chance_t` VALUES ('6', '', '2014-09-11 21:31:03', '0', '广铁�
 INSERT INTO `sal_chance_t` VALUES ('7', '', '2014-09-12 09:21:15', '0', '深圳宝安国际机场', '', null, '0', '0', '黄先生', '0', '', null, '13745869663', '航空信息APP开发');
 INSERT INTO `sal_chance_t` VALUES ('8', '', '2014-09-12 09:18:01', '0', '京港澳高速广深段（大观-皇岗）管理公司', '', null, '0', '0', '郑先生', '0', '', null, '13905548696', '项目规划');
 INSERT INTO `sal_chance_t` VALUES ('9', '', '2014-09-12 08:58:42', '0', '深圳海关皇岗口岸福田保税区', '', null, '0', '0', '洪关长', '0', '', null, '15966984587', '来往深港走私');
-INSERT INTO `sal_chance_t` VALUES ('10', '', '2014-09-12 08:58:52', '0', '深圳市国家税务局', '', null, '0', '0', '洪局长', '0', '', null, '15966348965', '开具假发票、骗税漏税');
-INSERT INTO `sal_chance_t` VALUES ('11', '', '2014-09-12 09:23:40', '0', '深圳市工商行政管理局', '', null, '0', '0', '吴菊长', '0', '', null, '13456915896', '为注册空壳公司、审批验资提供便利、快速发营业执照');
-INSERT INTO `sal_chance_t` VALUES ('12', '', '2014-09-12 09:28:07', '0', '深圳市公安局宝安分局西乡交警大队', '', null, '0', '0', '吴大队长', '0', '', null, '13612345889', '驾驶证代扣分');
-INSERT INTO `sal_chance_t` VALUES ('13', '', '2014-09-12 13:54:56', '0', '睿智技术有限公司', '有比较大的几率', '2014-09-12 13:54:17', '0', '0', '朱小姐', '70', '报纸', null, '13533639475', '采买电脑');
-INSERT INTO `sal_chance_t` VALUES ('14', '', '2014-09-12 14:59:32', '0', '中国移动', '', null, '0', '0', '方寻', '60', '客户介绍', null, '13413115046', '购买无线路由');
-INSERT INTO `sal_chance_t` VALUES ('15', '', '2014-09-12 14:00:20', '0', '星湖国际公司', '有较小机会', '2014-09-12 14:03:42', '0', '1', '张梅', '30', '网上', '开发成功', '12566945684', '购买电脑桌');
-INSERT INTO `sal_chance_t` VALUES ('16', '', '2014-09-12 14:59:13', '0', '中国移动', '', null, '0', '0', '方寻', '60', '客户介绍', null, '13413115046', '购买无线路由');
+INSERT INTO `sal_chance_t` VALUES ('10', '', '2020-01-21 08:58:52', '0', '深圳市国家税务局', '', null, '0', '0', '洪局长', '0', '', null, '15966348965', '开具假发票、骗税漏税');
+INSERT INTO `sal_chance_t` VALUES ('11', '', '2020-01-20 09:23:40', '0', '深圳市工商行政管理局', '', null, '0', '0', '吴菊长', '0', '', null, '13456915896', '为注册空壳公司、审批验资提供便利、快速发营业执照');
+INSERT INTO `sal_chance_t` VALUES ('12', '', '2020-01-21 09:28:07', '0', '深圳市公安局宝安分局西乡交警大队', '', null, '0', '0', '吴大队长', '0', '', null, '13612345889', '驾驶证代扣分');
+INSERT INTO `sal_chance_t` VALUES ('13', '', '2020-01-22 13:54:56', '0', '睿智技术有限公司', '有比较大的几率', '2014-09-12 13:54:17', '0', '0', '朱小姐', '70', '报纸', null, '13533639475', '采买电脑');
+INSERT INTO `sal_chance_t` VALUES ('14', '', '2020-01-22 14:59:32', '0', '中国移动', '', null, '0', '0', '方寻', '60', '客户介绍', null, '13413115046', '购买无线路由');
+INSERT INTO `sal_chance_t` VALUES ('15', '', '2020-01-22 14:00:20', '0', '星湖国际公司', '有较小机会', '2014-09-12 14:03:42', '0', '1', '张梅', '30', '网上', '开发成功', '12566945684', '购买电脑桌');
+INSERT INTO `sal_chance_t` VALUES ('16', '', '2020-01-22 14:59:13', '0', '中国移动', '', null, '0', '0', '方寻', '60', '客户介绍', null, '13413115046', '购买无线路由');
+INSERT INTO `sal_chance_t` VALUES ('17', null, null, null, 'a', null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for sal_plan
@@ -443,33 +444,33 @@ CREATE TABLE `sys_auth` (
 -- ----------------------------
 -- Records of sys_auth
 -- ----------------------------
-INSERT INTO `sys_auth` VALUES ('1', null, '营销管理', '', '', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('3', '1', '销售机会管理', '', 'chance/list_Chance', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('4', null, '客户管理', '', '', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('12', null, '服务管理', '', '', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('13', null, '统计报表', '', '', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('14', null, '基础数据', '', '', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('15', '4', '客户信息管理', '', 'client/list_Chance', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('27', '4', '客户流失', '', 'client/list_Lst', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('29', '1', '客户开发计划', '', 'chance/list_Plan', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('30', '12', '服务创建', '', 'service/open_CreateService', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('31', '12', '服务分配', '', 'service/open_AssignService', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('32', '12', '服务处理', '', 'service/open_ResolveService', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('33', '12', '服务反馈', '', 'service/open_BackeService', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('34', '12', '服务归档', '', 'service/open_StoreService', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('35', '13', '客户贡献分析', '', 'stat/offer_AnalysisList', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('36', '13', '客户构成分析', '', 'stat/form_AnalysisList', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('38', '13', '客户服务分析', '', 'stat/service_AnalysisList', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('39', '13', '客户流失分析', '', 'stat/lst_AnalysisList', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('40', '14', '客户流失分析', '', 'dict/open_CreateDict', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('41', '14', '查询产品信息', '', 'dict/open_Product', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('42', '14', '查询库存', '', 'dict/open_Stock', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('45', null, '订单管理', '', null, '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('46', '45', '订单信息管理', '', 'indent/open_CreateIndent', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('47', null, '权限管理', '', null, '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('48', '47', '系统权限', '', 'right/open_Right', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('49', '47', '角色管理', '', 'right/open_Role', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
-INSERT INTO `sys_auth` VALUES ('50', '47', '用户角色', '', 'right/open_User', '0', '2020-01-18 23:32:11', '2020-01-18 23:32:11');
+INSERT INTO `sys_auth` VALUES ('1', '0', '营销管理', '', '', '0', '2020-01-18 23:32:11', '2020-01-21 18:27:47');
+INSERT INTO `sys_auth` VALUES ('3', '1', '销售机会管理', '', 'chance/list_chance', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('4', '0', '客户管理', '', '', '0', '2020-01-18 23:32:11', '2020-01-21 18:27:48');
+INSERT INTO `sys_auth` VALUES ('12', '0', '服务管理', '', '', '0', '2020-01-18 23:32:11', '2020-01-21 18:27:49');
+INSERT INTO `sys_auth` VALUES ('13', '0', '统计报表', '', '', '0', '2020-01-18 23:32:11', '2020-01-21 18:27:49');
+INSERT INTO `sys_auth` VALUES ('14', '0', '基础数据', '', '', '0', '2020-01-18 23:32:11', '2020-01-21 18:27:50');
+INSERT INTO `sys_auth` VALUES ('15', '4', '客户信息管理', '', 'client/list_chance', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('27', '4', '客户流失', '', 'client/list_lst', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('29', '1', '客户开发计划', '', 'chance/list_plan', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('30', '12', '服务创建', '', 'service/open_createservice', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('31', '12', '服务分配', '', 'service/open_assignservice', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('32', '12', '服务处理', '', 'service/open_resolveservice', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('33', '12', '服务反馈', '', 'service/open_backeservice', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('34', '12', '服务归档', '', 'service/open_storeservice', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('35', '13', '客户贡献分析', '', 'stat/offer_analysislist', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('36', '13', '客户构成分析', '', 'stat/form_analysislist', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('38', '13', '客户服务分析', '', 'stat/service_analysislist', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('39', '13', '客户流失分析', '', 'stat/lst_analysislist', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('40', '14', '客户流失分析', '', 'dict/open_createdict', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('41', '14', '查询产品信息', '', 'dict/open_product', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('42', '14', '查询库存', '', 'dict/open_stock', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('45', '0', '订单管理', '', null, '0', '2020-01-18 23:32:11', '2020-01-21 18:27:53');
+INSERT INTO `sys_auth` VALUES ('46', '45', '订单信息管理', '', 'indent/open_createindent', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('47', '0', '权限管理', '', null, '0', '2020-01-18 23:32:11', '2020-01-21 18:27:53');
+INSERT INTO `sys_auth` VALUES ('48', '47', '系统权限', '', 'right/open_right', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('49', '47', '角色管理', '', 'right/open_role', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
+INSERT INTO `sys_auth` VALUES ('50', '47', '用户角色', '', 'right/open_user', '0', '2020-01-18 23:32:11', '2020-01-21 18:35:53');
 
 -- ----------------------------
 -- Table structure for sys_auth_tmp
@@ -575,7 +576,7 @@ CREATE TABLE `sys_role_auth` (
   `create_time` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ra_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_role_auth
@@ -702,7 +703,7 @@ CREATE TABLE `sys_user` (
   `is_deleted` tinyint(4) DEFAULT '0',
   `create_time` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `last_login_time` timestamp NULL DEFAULT '0000-00-00 00:00:00',
+  `last_login_time` timestamp NULL DEFAULT NULL,
   `is_locked` tinyint(4) DEFAULT '0',
   `fail_login_times` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`user_id`)
@@ -711,10 +712,10 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', '杰雄', '杰雄', '202cb962ac59075b964b07152d234b70', '5', '0', '2020-01-18 23:37:44', '2020-01-18 23:37:44', '0000-00-00 00:00:00', '0', '0');
-INSERT INTO `sys_user` VALUES ('3', 'hongxuechao', 'hongxuechao', '202cb962ac59075b964b07152d234b70', '4', '0', '2020-01-18 23:37:44', '2020-01-18 23:37:44', '0000-00-00 00:00:00', '0', '0');
-INSERT INTO `sys_user` VALUES ('4', 'xiaoshou', 'xiaoshou', '202cb962ac59075b964b07152d234b70', '1', '0', '2020-01-18 23:37:44', '2020-01-18 23:37:44', '0000-00-00 00:00:00', '0', '0');
-INSERT INTO `sys_user` VALUES ('5', 'root', 'root', '202cb962ac59075b964b07152d234b70', '6', '0', '2020-01-18 23:37:44', '2020-01-18 23:37:44', '0000-00-00 00:00:00', '0', '0');
+INSERT INTO `sys_user` VALUES ('1', '杰雄', '杰雄', '202cb962ac59075b964b07152d234b70', '5', '0', '2020-01-18 23:37:44', '2020-01-21 18:15:10', '2020-01-21 18:15:08', '0', '0');
+INSERT INTO `sys_user` VALUES ('3', 'hongxuechao', 'hongxuechao', '202cb962ac59075b964b07152d234b70', '4', '0', '2020-01-18 23:37:44', '2020-01-21 18:15:13', '2020-01-21 18:15:12', '0', '0');
+INSERT INTO `sys_user` VALUES ('4', 'xiaoshou', 'xiaoshou', '202cb962ac59075b964b07152d234b70', '1', '0', '2020-01-18 23:37:44', '2020-01-21 18:15:15', '2020-01-21 18:15:13', '0', '0');
+INSERT INTO `sys_user` VALUES ('5', 'root', 'root', '202cb962ac59075b964b07152d234b70', '6', '0', '2020-01-18 23:37:44', '2020-01-23 10:53:24', '2020-01-23 10:53:25', '0', '0');
 
 -- ----------------------------
 -- Table structure for sys_user_t

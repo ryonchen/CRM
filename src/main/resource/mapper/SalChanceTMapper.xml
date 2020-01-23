@@ -2,21 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.crm.dao.SalChanceTMapper" >
   <resultMap id="BaseResultMap" type="com.cn.crm.bean.SalChanceT" >
-    <id column="chc_id" property="chc_id" jdbcType="INTEGER" />
-    <result column="chc_create_by" property="chc_create_by" jdbcType="VARCHAR" />
-    <result column="chc_create_date" property="chc_create_date" jdbcType="TIMESTAMP" />
-    <result column="chc_create_id" property="chc_create_id" jdbcType="INTEGER" />
-    <result column="chc_cust_name" property="chc_cust_name" jdbcType="VARCHAR" />
-    <result column="chc_desc" property="chc_desc" jdbcType="VARCHAR" />
-    <result column="chc_due_date" property="chc_due_date" jdbcType="TIMESTAMP" />
-    <result column="chc_due_id" property="chc_due_id" jdbcType="INTEGER" />
-    <result column="chc_due_to" property="chc_due_to" jdbcType="INTEGER" />
-    <result column="chc_linkman" property="chc_linkman" jdbcType="VARCHAR" />
-    <result column="chc_rate" property="chc_rate" jdbcType="INTEGER" />
-    <result column="chc_source" property="chc_source" jdbcType="VARCHAR" />
-    <result column="chc_status" property="chc_status" jdbcType="VARCHAR" />
-    <result column="chc_tel" property="chc_tel" jdbcType="VARCHAR" />
-    <result column="chc_title" property="chc_title" jdbcType="VARCHAR" />
+    <id column="chc_id" property="chcId" jdbcType="INTEGER" />
+    <result column="chc_create_by" property="chcCreateBy" jdbcType="VARCHAR" />
+    <result column="chc_create_date" property="chcCreateDate" jdbcType="TIMESTAMP" />
+    <result column="chc_create_id" property="chcCreateId" jdbcType="INTEGER" />
+    <result column="chc_cust_name" property="chcCustName" jdbcType="VARCHAR" />
+    <result column="chc_desc" property="chcDesc" jdbcType="VARCHAR" />
+    <result column="chc_due_date" property="chcDueDate" jdbcType="TIMESTAMP" />
+    <result column="chc_due_id" property="chcDueId" jdbcType="INTEGER" />
+    <result column="chc_due_to" property="chcDueTo" jdbcType="INTEGER" />
+    <result column="chc_linkman" property="chcLinkman" jdbcType="VARCHAR" />
+    <result column="chc_rate" property="chcRate" jdbcType="INTEGER" />
+    <result column="chc_source" property="chcSource" jdbcType="VARCHAR" />
+    <result column="chc_status" property="chcStatus" jdbcType="VARCHAR" />
+    <result column="chc_tel" property="chcTel" jdbcType="VARCHAR" />
+    <result column="chc_title" property="chcTitle" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     chc_id, chc_create_by, chc_create_date, chc_create_id, chc_cust_name, chc_desc, chc_due_date, 
@@ -49,96 +49,96 @@
   <insert id="insertSelective" parameterType="com.cn.crm.bean.SalChanceT" >
     insert into sal_chance_t
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="chc_id != null" >
+      <if test="chcId != null" >
         chc_id,
       </if>
-      <if test="chc_create_by != null" >
+      <if test="chcCreateBy != null" >
         chc_create_by,
       </if>
-      <if test="chc_create_date != null" >
+      <if test="chcCreateDate != null" >
         chc_create_date,
       </if>
-      <if test="chc_create_id != null" >
+      <if test="chcCreateId != null" >
         chc_create_id,
       </if>
-      <if test="chc_cust_name != null" >
+      <if test="chcCustName != null" >
         chc_cust_name,
       </if>
-      <if test="chc_desc != null" >
+      <if test="chcDesc != null" >
         chc_desc,
       </if>
-      <if test="chc_due_date != null" >
+      <if test="chcDueDate != null" >
         chc_due_date,
       </if>
-      <if test="chc_due_id != null" >
+      <if test="chcDueId != null" >
         chc_due_id,
       </if>
-      <if test="chc_due_to != null" >
+      <if test="chcDueTo != null" >
         chc_due_to,
       </if>
-      <if test="chc_linkman != null" >
+      <if test="chcLinkman != null" >
         chc_linkman,
       </if>
-      <if test="chc_rate != null" >
+      <if test="chcRate != null" >
         chc_rate,
       </if>
-      <if test="chc_source != null" >
+      <if test="chcSource != null" >
         chc_source,
       </if>
-      <if test="chc_status != null" >
+      <if test="chcStatus != null" >
         chc_status,
       </if>
-      <if test="chc_tel != null" >
+      <if test="chcTel != null" >
         chc_tel,
       </if>
-      <if test="chc_title != null" >
+      <if test="chcTitle != null" >
         chc_title,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="chc_id != null" >
+      <if test="chcId != null" >
         #{chc_id,jdbcType=INTEGER},
       </if>
-      <if test="chc_create_by != null" >
+      <if test="chcCreateBy != null" >
         #{chc_create_by,jdbcType=VARCHAR},
       </if>
-      <if test="chc_create_date != null" >
+      <if test="chcCreateDate != null" >
         #{chc_create_date,jdbcType=TIMESTAMP},
       </if>
-      <if test="chc_create_id != null" >
+      <if test="chcCreateId != null" >
         #{chc_create_id,jdbcType=INTEGER},
       </if>
-      <if test="chc_cust_name != null" >
+      <if test="chcCustName != null" >
         #{chc_cust_name,jdbcType=VARCHAR},
       </if>
-      <if test="chc_desc != null" >
+      <if test="chcDesc != null" >
         #{chc_desc,jdbcType=VARCHAR},
       </if>
-      <if test="chc_due_date != null" >
+      <if test="chcDueDate != null" >
         #{chc_due_date,jdbcType=TIMESTAMP},
       </if>
-      <if test="chc_due_id != null" >
+      <if test="chcDueId != null" >
         #{chc_due_id,jdbcType=INTEGER},
       </if>
-      <if test="chc_due_to != null" >
+      <if test="chcDueTo != null" >
         #{chc_due_to,jdbcType=INTEGER},
       </if>
-      <if test="chc_linkman != null" >
+      <if test="chcLinkman != null" >
         #{chc_linkman,jdbcType=VARCHAR},
       </if>
-      <if test="chc_rate != null" >
+      <if test="chcRate != null" >
         #{chc_rate,jdbcType=INTEGER},
       </if>
-      <if test="chc_source != null" >
+      <if test="chcSource != null" >
         #{chc_source,jdbcType=VARCHAR},
       </if>
-      <if test="chc_status != null" >
+      <if test="chcStatus != null" >
         #{chc_status,jdbcType=VARCHAR},
       </if>
-      <if test="chc_tel != null" >
+      <if test="chcTel != null" >
         #{chc_tel,jdbcType=VARCHAR},
       </if>
-      <if test="chc_title != null" >
+      <if test="chcTitle != null" >
         #{chc_title,jdbcType=VARCHAR},
       </if>
     </trim>
@@ -209,4 +209,16 @@
       chc_title = #{chc_title,jdbcType=VARCHAR}
     where chc_id = #{chc_id,jdbcType=INTEGER}
   </update>
+  <select id="selectByCreateTime" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from sal_chance_t
+    where 1=1
+    <if test="beginDate != null and beginDate != ''">
+      <![CDATA[ and chc_create_date >= FROM_UNIXTIME(#{beginDate,jdbcType=TIMESTAMP},'%Y-%m-%d %H:%i:%s') ]]>
+    </if>
+    <if test="endDate != null and endDate != ''">
+      <![CDATA[ and chc_create_date <= FROM_UNIXTIME(#{endDate,jdbcType=TIMESTAMP},'%Y-%m-%d %H:%i:%s') ]]>
+    </if>
+  </select>
 </mapper>
