@@ -21,5 +21,15 @@ public interface SalChanceTMapper {
 
     int updateByPrimaryKey(SalChanceT record);
 
-    List<SalChanceT> selectByCreateTime(@Param("beginDate") Long beginDate, @Param("endDate")Long endDate);
+    List<SalChanceT> selectByCreateTime(@Param("beginDate") Long beginDate, @Param("endDate")Long endDate,
+                                        @Param("custName")String custName, @Param("title")String title,
+                                        @Param("linkman")String linkman, @Param("page")Integer page,
+                                        @Param("rows")Integer rows, @Param("sort")String sort, @Param("order")String order);
+
+    int deleteByPrimaryKeys(Integer[] chcIds);
+
+    long countByCreateTime(@Param("beginDate") Long beginDate, @Param("endDate")Long endDate,
+                           @Param("custName")String custName, @Param("title")String title,
+                           @Param("linkman")String linkman, @Param("page")Integer page,
+                           @Param("rows")Integer rows, @Param("sort")String sort, @Param("order")String order) ;
 }

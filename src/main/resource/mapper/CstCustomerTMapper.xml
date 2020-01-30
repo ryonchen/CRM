@@ -2,29 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.crm.dao.CstCustomerTMapper" >
   <resultMap id="BaseResultMap" type="com.cn.crm.bean.CstCustomerT" >
-    <id column="cst_id" property="cst_id" jdbcType="INTEGER" />
-    <result column="cst_addr" property="cst_addr" jdbcType="VARCHAR" />
-    <result column="cst_bank" property="cst_bank" jdbcType="VARCHAR" />
-    <result column="cst_bank_account" property="cst_bank_account" jdbcType="VARCHAR" />
-    <result column="cst_bankroll" property="cst_bankroll" jdbcType="INTEGER" />
-    <result column="cst_chieftain" property="cst_chieftain" jdbcType="VARCHAR" />
-    <result column="cst_credit" property="cst_credit" jdbcType="INTEGER" />
-    <result column="cst_fax" property="cst_fax" jdbcType="VARCHAR" />
-    <result column="cst_level" property="cst_level" jdbcType="INTEGER" />
-    <result column="cst_level_label" property="cst_level_label" jdbcType="VARCHAR" />
-    <result column="cst_licence_no" property="cst_licence_no" jdbcType="VARCHAR" />
-    <result column="cst_local_tax_no" property="cst_local_tax_no" jdbcType="VARCHAR" />
-    <result column="cst_manager_id" property="cst_manager_id" jdbcType="INTEGER" />
-    <result column="cst_name" property="cst_name" jdbcType="VARCHAR" />
-    <result column="cst_national_tax_no" property="cst_national_tax_no" jdbcType="VARCHAR" />
-    <result column="cst_region" property="cst_region" jdbcType="VARCHAR" />
-    <result column="cst_satisfy" property="cst_satisfy" jdbcType="INTEGER" />
-    <result column="cst_tel" property="cst_tel" jdbcType="VARCHAR" />
-    <result column="cst_turnover" property="cst_turnover" jdbcType="INTEGER" />
-    <result column="cst_website" property="cst_website" jdbcType="VARCHAR" />
-    <result column="cst_zip" property="cst_zip" jdbcType="VARCHAR" />
-    <result column="cust_manager_name" property="cust_manager_name" jdbcType="VARCHAR" />
-    <result column="cst_status" property="cst_status" jdbcType="INTEGER" />
+    <id column="cst_id" property="cstId" jdbcType="INTEGER" />
+    <result column="cst_addr" property="cstAddr" jdbcType="VARCHAR" />
+    <result column="cst_bank" property="cstBank" jdbcType="VARCHAR" />
+    <result column="cst_bank_account" property="cstBankAccount" jdbcType="VARCHAR" />
+    <result column="cst_bankroll" property="cstBankroll" jdbcType="INTEGER" />
+    <result column="cst_chieftain" property="cstChieftain" jdbcType="VARCHAR" />
+    <result column="cst_credit" property="cstCredit" jdbcType="INTEGER" />
+    <result column="cst_fax" property="cstFax" jdbcType="VARCHAR" />
+    <result column="cst_level" property="cstLevel" jdbcType="INTEGER" />
+    <result column="cst_level_label" property="cstLevelLabel" jdbcType="VARCHAR" />
+    <result column="cst_licence_no" property="cstLicenceNo" jdbcType="VARCHAR" />
+    <result column="cst_local_tax_no" property="cstLocalTaxNo" jdbcType="VARCHAR" />
+    <result column="cst_manager_id" property="cstManagerId" jdbcType="INTEGER" />
+    <result column="cst_name" property="cstName" jdbcType="VARCHAR" />
+    <result column="cst_national_tax_no" property="cstNationalTaxNo" jdbcType="VARCHAR" />
+    <result column="cst_region" property="cstRegion" jdbcType="VARCHAR" />
+    <result column="cst_satisfy" property="cstSatisfy" jdbcType="INTEGER" />
+    <result column="cst_tel" property="cstTel" jdbcType="VARCHAR" />
+    <result column="cst_turnover" property="cstTurnover" jdbcType="INTEGER" />
+    <result column="cst_website" property="cstWebsite" jdbcType="VARCHAR" />
+    <result column="cst_zip" property="cstZip" jdbcType="VARCHAR" />
+    <result column="cust_manager_name" property="custManagerName" jdbcType="VARCHAR" />
+    <result column="cst_status" property="cstStatus" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     cst_id, cst_addr, cst_bank, cst_bank_account, cst_bankroll, cst_chieftain, cst_credit, 
@@ -36,11 +36,11 @@
     select 
     <include refid="Base_Column_List" />
     from cst_customer_t
-    where cst_id = #{cst_id,jdbcType=INTEGER}
+    where cst_id = #{cstId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from cst_customer_t
-    where cst_id = #{cst_id,jdbcType=INTEGER}
+    where cst_id = #{cstId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cn.crm.bean.CstCustomerT" >
     insert into cst_customer_t (cst_id, cst_addr, cst_bank, 
@@ -51,256 +51,256 @@
       cst_region, cst_satisfy, cst_tel, 
       cst_turnover, cst_website, cst_zip, 
       cust_manager_name, cst_status)
-    values (#{cst_id,jdbcType=INTEGER}, #{cst_addr,jdbcType=VARCHAR}, #{cst_bank,jdbcType=VARCHAR}, 
-      #{cst_bank_account,jdbcType=VARCHAR}, #{cst_bankroll,jdbcType=INTEGER}, #{cst_chieftain,jdbcType=VARCHAR}, 
-      #{cst_credit,jdbcType=INTEGER}, #{cst_fax,jdbcType=VARCHAR}, #{cst_level,jdbcType=INTEGER}, 
-      #{cst_level_label,jdbcType=VARCHAR}, #{cst_licence_no,jdbcType=VARCHAR}, #{cst_local_tax_no,jdbcType=VARCHAR}, 
-      #{cst_manager_id,jdbcType=INTEGER}, #{cst_name,jdbcType=VARCHAR}, #{cst_national_tax_no,jdbcType=VARCHAR}, 
-      #{cst_region,jdbcType=VARCHAR}, #{cst_satisfy,jdbcType=INTEGER}, #{cst_tel,jdbcType=VARCHAR}, 
-      #{cst_turnover,jdbcType=INTEGER}, #{cst_website,jdbcType=VARCHAR}, #{cst_zip,jdbcType=VARCHAR}, 
-      #{cust_manager_name,jdbcType=VARCHAR}, #{cst_status,jdbcType=INTEGER})
+    values (#{cstId,jdbcType=INTEGER}, #{cstAddr,jdbcType=VARCHAR}, #{cstBank,jdbcType=VARCHAR},
+      #{cstBankAccount,jdbcType=VARCHAR}, #{cstBankroll,jdbcType=INTEGER}, #{cstChieftain,jdbcType=VARCHAR},
+      #{cstCredit,jdbcType=INTEGER}, #{cstFax,jdbcType=VARCHAR}, #{cstLevel,jdbcType=INTEGER},
+      #{cstLevelLabel,jdbcType=VARCHAR}, #{cstLicenceNo,jdbcType=VARCHAR}, #{cstLocalTaxNo,jdbcType=VARCHAR},
+      #{cstManagerId,jdbcType=INTEGER}, #{cstName,jdbcType=VARCHAR}, #{cstNationalTaxNo,jdbcType=VARCHAR},
+      #{cstRegion,jdbcType=VARCHAR}, #{cstSatisfy,jdbcType=INTEGER}, #{cstTel,jdbcType=VARCHAR},
+      #{cstTurnover,jdbcType=INTEGER}, #{cstWebsite,jdbcType=VARCHAR}, #{cstZip,jdbcType=VARCHAR},
+      #{custManagerName,jdbcType=VARCHAR}, #{cstStatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.cn.crm.bean.CstCustomerT" >
     insert into cst_customer_t
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="cst_id != null" >
+      <if test="cstId != null" >
         cst_id,
       </if>
-      <if test="cst_addr != null" >
+      <if test="cstAddr != null" >
         cst_addr,
       </if>
-      <if test="cst_bank != null" >
+      <if test="cstBank != null" >
         cst_bank,
       </if>
-      <if test="cst_bank_account != null" >
+      <if test="cstBankAccount != null" >
         cst_bank_account,
       </if>
-      <if test="cst_bankroll != null" >
+      <if test="cstBankroll != null" >
         cst_bankroll,
       </if>
-      <if test="cst_chieftain != null" >
+      <if test="cstChieftain != null" >
         cst_chieftain,
       </if>
-      <if test="cst_credit != null" >
+      <if test="cstCredit != null" >
         cst_credit,
       </if>
-      <if test="cst_fax != null" >
+      <if test="cstFax != null" >
         cst_fax,
       </if>
-      <if test="cst_level != null" >
+      <if test="cstLevel != null" >
         cst_level,
       </if>
-      <if test="cst_level_label != null" >
+      <if test="cstLevelLabel != null" >
         cst_level_label,
       </if>
-      <if test="cst_licence_no != null" >
+      <if test="cstLicenceNo != null" >
         cst_licence_no,
       </if>
-      <if test="cst_local_tax_no != null" >
+      <if test="cstLocalTaxNo != null" >
         cst_local_tax_no,
       </if>
-      <if test="cst_manager_id != null" >
+      <if test="cstManagerId != null" >
         cst_manager_id,
       </if>
-      <if test="cst_name != null" >
+      <if test="cstName != null" >
         cst_name,
       </if>
-      <if test="cst_national_tax_no != null" >
+      <if test="cstNationalTaxNo != null" >
         cst_national_tax_no,
       </if>
-      <if test="cst_region != null" >
+      <if test="cstRegion != null" >
         cst_region,
       </if>
-      <if test="cst_satisfy != null" >
+      <if test="cstSatisfy != null" >
         cst_satisfy,
       </if>
-      <if test="cst_tel != null" >
+      <if test="cstTel != null" >
         cst_tel,
       </if>
-      <if test="cst_turnover != null" >
+      <if test="cstTurnover != null" >
         cst_turnover,
       </if>
-      <if test="cst_website != null" >
+      <if test="cstWebsite != null" >
         cst_website,
       </if>
-      <if test="cst_zip != null" >
+      <if test="cstZip != null" >
         cst_zip,
       </if>
-      <if test="cust_manager_name != null" >
+      <if test="custManagerName != null" >
         cust_manager_name,
       </if>
-      <if test="cst_status != null" >
+      <if test="cstStatus != null" >
         cst_status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="cst_id != null" >
-        #{cst_id,jdbcType=INTEGER},
+      <if test="cstId != null" >
+        #{cstId,jdbcType=INTEGER},
       </if>
-      <if test="cst_addr != null" >
-        #{cst_addr,jdbcType=VARCHAR},
+      <if test="cstAddr != null" >
+        #{cstAddr,jdbcType=VARCHAR},
       </if>
-      <if test="cst_bank != null" >
-        #{cst_bank,jdbcType=VARCHAR},
+      <if test="cstBank != null" >
+        #{cstBank,jdbcType=VARCHAR},
       </if>
-      <if test="cst_bank_account != null" >
-        #{cst_bank_account,jdbcType=VARCHAR},
+      <if test="cstBankAccount != null" >
+        #{cstBankAccount,jdbcType=VARCHAR},
       </if>
-      <if test="cst_bankroll != null" >
-        #{cst_bankroll,jdbcType=INTEGER},
+      <if test="cstBankroll != null" >
+        #{cstBankroll,jdbcType=INTEGER},
       </if>
-      <if test="cst_chieftain != null" >
-        #{cst_chieftain,jdbcType=VARCHAR},
+      <if test="cstChieftain != null" >
+        #{cstChieftain,jdbcType=VARCHAR},
       </if>
-      <if test="cst_credit != null" >
-        #{cst_credit,jdbcType=INTEGER},
+      <if test="cstCredit != null" >
+        #{cstCredit,jdbcType=INTEGER},
       </if>
-      <if test="cst_fax != null" >
-        #{cst_fax,jdbcType=VARCHAR},
+      <if test="cstFax != null" >
+        #{cstFax,jdbcType=VARCHAR},
       </if>
-      <if test="cst_level != null" >
-        #{cst_level,jdbcType=INTEGER},
+      <if test="cstLevel != null" >
+        #{cstLevel,jdbcType=INTEGER},
       </if>
-      <if test="cst_level_label != null" >
-        #{cst_level_label,jdbcType=VARCHAR},
+      <if test="cstLevelLabel != null" >
+        #{cstLevelLabel,jdbcType=VARCHAR},
       </if>
-      <if test="cst_licence_no != null" >
-        #{cst_licence_no,jdbcType=VARCHAR},
+      <if test="cstLicenceNo != null" >
+        #{cstLicenceNo,jdbcType=VARCHAR},
       </if>
-      <if test="cst_local_tax_no != null" >
-        #{cst_local_tax_no,jdbcType=VARCHAR},
+      <if test="cstLocalTaxNo != null" >
+        #{cstLocalTaxNo,jdbcType=VARCHAR},
       </if>
-      <if test="cst_manager_id != null" >
-        #{cst_manager_id,jdbcType=INTEGER},
+      <if test="cstManagerId != null" >
+        #{cstManagerId,jdbcType=INTEGER},
       </if>
-      <if test="cst_name != null" >
-        #{cst_name,jdbcType=VARCHAR},
+      <if test="cstName != null" >
+        #{cstName,jdbcType=VARCHAR},
       </if>
-      <if test="cst_national_tax_no != null" >
-        #{cst_national_tax_no,jdbcType=VARCHAR},
+      <if test="cstNationalTaxNo != null" >
+        #{cstNationalTaxNo,jdbcType=VARCHAR},
       </if>
-      <if test="cst_region != null" >
-        #{cst_region,jdbcType=VARCHAR},
+      <if test="cstRegion != null" >
+        #{cstRegion,jdbcType=VARCHAR},
       </if>
-      <if test="cst_satisfy != null" >
-        #{cst_satisfy,jdbcType=INTEGER},
+      <if test="cstSatisfy != null" >
+        #{cstSatisfy,jdbcType=INTEGER},
       </if>
-      <if test="cst_tel != null" >
-        #{cst_tel,jdbcType=VARCHAR},
+      <if test="cstTel != null" >
+        #{cstTel,jdbcType=VARCHAR},
       </if>
-      <if test="cst_turnover != null" >
-        #{cst_turnover,jdbcType=INTEGER},
+      <if test="cstTurnover != null" >
+        #{cstTurnover,jdbcType=INTEGER},
       </if>
-      <if test="cst_website != null" >
-        #{cst_website,jdbcType=VARCHAR},
+      <if test="cstWebsite != null" >
+        #{cstWebsite,jdbcType=VARCHAR},
       </if>
-      <if test="cst_zip != null" >
-        #{cst_zip,jdbcType=VARCHAR},
+      <if test="cstZip != null" >
+        #{cstZip,jdbcType=VARCHAR},
       </if>
-      <if test="cust_manager_name != null" >
-        #{cust_manager_name,jdbcType=VARCHAR},
+      <if test="custManagerName != null" >
+        #{custManagerName,jdbcType=VARCHAR},
       </if>
-      <if test="cst_status != null" >
-        #{cst_status,jdbcType=INTEGER},
+      <if test="cstStatus != null" >
+        #{cstStatus,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.CstCustomerT" >
     update cst_customer_t
     <set >
-      <if test="cst_addr != null" >
-        cst_addr = #{cst_addr,jdbcType=VARCHAR},
+      <if test="cstAddr != null" >
+        cst_addr = #{cstAddr,jdbcType=VARCHAR},
       </if>
-      <if test="cst_bank != null" >
-        cst_bank = #{cst_bank,jdbcType=VARCHAR},
+      <if test="cstBank != null" >
+        cst_bank = #{cstBank,jdbcType=VARCHAR},
       </if>
-      <if test="cst_bank_account != null" >
-        cst_bank_account = #{cst_bank_account,jdbcType=VARCHAR},
+      <if test="cstBankAccount != null" >
+        cst_bank_account = #{cstBankAccount,jdbcType=VARCHAR},
       </if>
-      <if test="cst_bankroll != null" >
-        cst_bankroll = #{cst_bankroll,jdbcType=INTEGER},
+      <if test="cstBankroll != null" >
+        cst_bankroll = #{cstBankroll,jdbcType=INTEGER},
       </if>
-      <if test="cst_chieftain != null" >
-        cst_chieftain = #{cst_chieftain,jdbcType=VARCHAR},
+      <if test="cstChieftain != null" >
+        cst_chieftain = #{cstChieftain,jdbcType=VARCHAR},
       </if>
-      <if test="cst_credit != null" >
-        cst_credit = #{cst_credit,jdbcType=INTEGER},
+      <if test="cstCredit != null" >
+        cst_credit = #{cstCredit,jdbcType=INTEGER},
       </if>
-      <if test="cst_fax != null" >
-        cst_fax = #{cst_fax,jdbcType=VARCHAR},
+      <if test="cstFax != null" >
+        cst_fax = #{cstFax,jdbcType=VARCHAR},
       </if>
-      <if test="cst_level != null" >
-        cst_level = #{cst_level,jdbcType=INTEGER},
+      <if test="cstLevel != null" >
+        cst_level = #{cstLevel,jdbcType=INTEGER},
       </if>
-      <if test="cst_level_label != null" >
-        cst_level_label = #{cst_level_label,jdbcType=VARCHAR},
+      <if test="cstLevelLabel != null" >
+        cst_level_label = #{cstLevelLabel,jdbcType=VARCHAR},
       </if>
-      <if test="cst_licence_no != null" >
-        cst_licence_no = #{cst_licence_no,jdbcType=VARCHAR},
+      <if test="cstLicenceNo != null" >
+        cst_licence_no = #{cstLicenceNo,jdbcType=VARCHAR},
       </if>
-      <if test="cst_local_tax_no != null" >
-        cst_local_tax_no = #{cst_local_tax_no,jdbcType=VARCHAR},
+      <if test="cstLocalTaxNo != null" >
+        cst_local_tax_no = #{cstLocalTaxNo,jdbcType=VARCHAR},
       </if>
-      <if test="cst_manager_id != null" >
-        cst_manager_id = #{cst_manager_id,jdbcType=INTEGER},
+      <if test="cstManagerId != null" >
+        cst_manager_id = #{cstManagerId,jdbcType=INTEGER},
       </if>
-      <if test="cst_name != null" >
-        cst_name = #{cst_name,jdbcType=VARCHAR},
+      <if test="cstName != null" >
+        cst_name = #{cstName,jdbcType=VARCHAR},
       </if>
-      <if test="cst_national_tax_no != null" >
-        cst_national_tax_no = #{cst_national_tax_no,jdbcType=VARCHAR},
+      <if test="cstNationalTaxNo != null" >
+        cst_national_tax_no = #{cstNationalTaxNo,jdbcType=VARCHAR},
       </if>
-      <if test="cst_region != null" >
-        cst_region = #{cst_region,jdbcType=VARCHAR},
+      <if test="cstRegion != null" >
+        cst_region = #{cstRegion,jdbcType=VARCHAR},
       </if>
-      <if test="cst_satisfy != null" >
-        cst_satisfy = #{cst_satisfy,jdbcType=INTEGER},
+      <if test="cstSatisfy != null" >
+        cst_satisfy = #{cstSatisfy,jdbcType=INTEGER},
       </if>
-      <if test="cst_tel != null" >
-        cst_tel = #{cst_tel,jdbcType=VARCHAR},
+      <if test="cstTel != null" >
+        cst_tel = #{cstTel,jdbcType=VARCHAR},
       </if>
-      <if test="cst_turnover != null" >
-        cst_turnover = #{cst_turnover,jdbcType=INTEGER},
+      <if test="cstTurnover != null" >
+        cst_turnover = #{cstTurnover,jdbcType=INTEGER},
       </if>
-      <if test="cst_website != null" >
-        cst_website = #{cst_website,jdbcType=VARCHAR},
+      <if test="cstWebsite != null" >
+        cst_website = #{cstWebsite,jdbcType=VARCHAR},
       </if>
-      <if test="cst_zip != null" >
-        cst_zip = #{cst_zip,jdbcType=VARCHAR},
+      <if test="cstZip != null" >
+        cst_zip = #{cstZip,jdbcType=VARCHAR},
       </if>
-      <if test="cust_manager_name != null" >
-        cust_manager_name = #{cust_manager_name,jdbcType=VARCHAR},
+      <if test="custManagerName != null" >
+        cust_manager_name = #{custManagerName,jdbcType=VARCHAR},
       </if>
-      <if test="cst_status != null" >
-        cst_status = #{cst_status,jdbcType=INTEGER},
+      <if test="cstStatus != null" >
+        cst_status = #{cstStatus,jdbcType=INTEGER},
       </if>
     </set>
-    where cst_id = #{cst_id,jdbcType=INTEGER}
+    where cst_id = #{cstId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.CstCustomerT" >
     update cst_customer_t
-    set cst_addr = #{cst_addr,jdbcType=VARCHAR},
-      cst_bank = #{cst_bank,jdbcType=VARCHAR},
-      cst_bank_account = #{cst_bank_account,jdbcType=VARCHAR},
-      cst_bankroll = #{cst_bankroll,jdbcType=INTEGER},
-      cst_chieftain = #{cst_chieftain,jdbcType=VARCHAR},
-      cst_credit = #{cst_credit,jdbcType=INTEGER},
-      cst_fax = #{cst_fax,jdbcType=VARCHAR},
-      cst_level = #{cst_level,jdbcType=INTEGER},
-      cst_level_label = #{cst_level_label,jdbcType=VARCHAR},
-      cst_licence_no = #{cst_licence_no,jdbcType=VARCHAR},
-      cst_local_tax_no = #{cst_local_tax_no,jdbcType=VARCHAR},
-      cst_manager_id = #{cst_manager_id,jdbcType=INTEGER},
-      cst_name = #{cst_name,jdbcType=VARCHAR},
-      cst_national_tax_no = #{cst_national_tax_no,jdbcType=VARCHAR},
-      cst_region = #{cst_region,jdbcType=VARCHAR},
-      cst_satisfy = #{cst_satisfy,jdbcType=INTEGER},
-      cst_tel = #{cst_tel,jdbcType=VARCHAR},
-      cst_turnover = #{cst_turnover,jdbcType=INTEGER},
-      cst_website = #{cst_website,jdbcType=VARCHAR},
-      cst_zip = #{cst_zip,jdbcType=VARCHAR},
-      cust_manager_name = #{cust_manager_name,jdbcType=VARCHAR},
-      cst_status = #{cst_status,jdbcType=INTEGER}
-    where cst_id = #{cst_id,jdbcType=INTEGER}
+    set cst_addr = #{cstAddr,jdbcType=VARCHAR},
+      cst_bank = #{cstBank,jdbcType=VARCHAR},
+      cst_bank_account = #{cstBankAccount,jdbcType=VARCHAR},
+      cst_bankroll = #{cstBankroll,jdbcType=INTEGER},
+      cst_chieftain = #{cstChieftain,jdbcType=VARCHAR},
+      cst_credit = #{cstCredit,jdbcType=INTEGER},
+      cst_fax = #{cstFax,jdbcType=VARCHAR},
+      cst_level = #{cstLevel,jdbcType=INTEGER},
+      cst_level_label = #{cstLevelLabel,jdbcType=VARCHAR},
+      cst_licence_no = #{cstLicenceNo,jdbcType=VARCHAR},
+      cst_local_tax_no = #{cstLocalTaxNo,jdbcType=VARCHAR},
+      cst_manager_id = #{cstManagerId,jdbcType=INTEGER},
+      cst_name = #{cstName,jdbcType=VARCHAR},
+      cst_national_tax_no = #{cstNationalTaxNo,jdbcType=VARCHAR},
+      cst_region = #{cstRegion,jdbcType=VARCHAR},
+      cst_satisfy = #{cstSatisfy,jdbcType=INTEGER},
+      cst_tel = #{cstTel,jdbcType=VARCHAR},
+      cst_turnover = #{cstTurnover,jdbcType=INTEGER},
+      cst_website = #{cstWebsite,jdbcType=VARCHAR},
+      cst_zip = #{cstZip,jdbcType=VARCHAR},
+      cust_manager_name = #{custManagerName,jdbcType=VARCHAR},
+      cst_status = #{cstStatus,jdbcType=INTEGER}
+    where cst_id = #{cstId,jdbcType=INTEGER}
   </update>
 </mapper>

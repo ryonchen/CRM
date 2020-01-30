@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.crm.dao.CstIndentTMapper" >
   <resultMap id="BaseResultMap" type="com.cn.crm.bean.CstIndentT" >
-    <id column="indent_id" property="indent_id" jdbcType="INTEGER" />
-    <result column="indent_date" property="indent_date" jdbcType="TIMESTAMP" />
-    <result column="indent_destination" property="indent_destination" jdbcType="VARCHAR" />
-    <result column="indent_state" property="indent_state" jdbcType="VARCHAR" />
-    <result column="indent_sum" property="indent_sum" jdbcType="DOUBLE" />
-    <result column="cst_customer_t_cst_id" property="cst_customer_t_cst_id" jdbcType="INTEGER" />
-    <result column="indent_name" property="indent_name" jdbcType="VARCHAR" />
-    <result column="indent_create_by" property="indent_create_by" jdbcType="VARCHAR" />
+    <id column="indent_id" property="indentId" jdbcType="INTEGER" />
+    <result column="indent_date" property="indentDate" jdbcType="TIMESTAMP" />
+    <result column="indent_destination" property="indentDestination" jdbcType="VARCHAR" />
+    <result column="indent_state" property="indentState" jdbcType="VARCHAR" />
+    <result column="indent_sum" property="indentSum" jdbcType="DOUBLE" />
+    <result column="cst_customer_t_cst_id" property="cstCustomerTCstId" jdbcType="INTEGER" />
+    <result column="indent_name" property="indentName" jdbcType="VARCHAR" />
+    <result column="indent_create_by" property="indentCreateBy" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     indent_id, indent_date, indent_destination, indent_state, indent_sum, cst_customer_t_cst_id, 
@@ -19,111 +19,111 @@
     select 
     <include refid="Base_Column_List" />
     from cst_indent_t
-    where indent_id = #{indent_id,jdbcType=INTEGER}
+    where indent_id = #{indentId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from cst_indent_t
-    where indent_id = #{indent_id,jdbcType=INTEGER}
+    where indent_id = #{indentId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cn.crm.bean.CstIndentT" >
     insert into cst_indent_t (indent_id, indent_date, indent_destination, 
       indent_state, indent_sum, cst_customer_t_cst_id, 
       indent_name, indent_create_by)
-    values (#{indent_id,jdbcType=INTEGER}, #{indent_date,jdbcType=TIMESTAMP}, #{indent_destination,jdbcType=VARCHAR}, 
-      #{indent_state,jdbcType=VARCHAR}, #{indent_sum,jdbcType=DOUBLE}, #{cst_customer_t_cst_id,jdbcType=INTEGER}, 
-      #{indent_name,jdbcType=VARCHAR}, #{indent_create_by,jdbcType=VARCHAR})
+    values (#{indentId,jdbcType=INTEGER}, #{indentDate,jdbcType=TIMESTAMP}, #{indentDestination,jdbcType=VARCHAR},
+      #{indentState,jdbcType=VARCHAR}, #{indentSum,jdbcType=DOUBLE}, #{cstCustomerTCstId,jdbcType=INTEGER},
+      #{indentName,jdbcType=VARCHAR}, #{indentCreateBy,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cn.crm.bean.CstIndentT" >
     insert into cst_indent_t
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="indent_id != null" >
+      <if test="indentId != null" >
         indent_id,
       </if>
-      <if test="indent_date != null" >
+      <if test="indentDate != null" >
         indent_date,
       </if>
-      <if test="indent_destination != null" >
+      <if test="indentDestination != null" >
         indent_destination,
       </if>
-      <if test="indent_state != null" >
+      <if test="indentState != null" >
         indent_state,
       </if>
-      <if test="indent_sum != null" >
+      <if test="indentSum != null" >
         indent_sum,
       </if>
-      <if test="cst_customer_t_cst_id != null" >
+      <if test="cstCustomerTCstId != null" >
         cst_customer_t_cst_id,
       </if>
-      <if test="indent_name != null" >
+      <if test="indentName != null" >
         indent_name,
       </if>
-      <if test="indent_create_by != null" >
+      <if test="indentCreateBy != null" >
         indent_create_by,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="indent_id != null" >
-        #{indent_id,jdbcType=INTEGER},
+      <if test="indentId != null" >
+        #{indentId,jdbcType=INTEGER},
       </if>
-      <if test="indent_date != null" >
-        #{indent_date,jdbcType=TIMESTAMP},
+      <if test="indentDate != null" >
+        #{indentDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="indent_destination != null" >
-        #{indent_destination,jdbcType=VARCHAR},
+      <if test="indentDestination != null" >
+        #{indentDestination,jdbcType=VARCHAR},
       </if>
-      <if test="indent_state != null" >
-        #{indent_state,jdbcType=VARCHAR},
+      <if test="indentState != null" >
+        #{indentState,jdbcType=VARCHAR},
       </if>
-      <if test="indent_sum != null" >
-        #{indent_sum,jdbcType=DOUBLE},
+      <if test="indentSum != null" >
+        #{indentSum,jdbcType=DOUBLE},
       </if>
-      <if test="cst_customer_t_cst_id != null" >
-        #{cst_customer_t_cst_id,jdbcType=INTEGER},
+      <if test="cstCustomerTCstId != null" >
+        #{cstCustomerTCstId,jdbcType=INTEGER},
       </if>
-      <if test="indent_name != null" >
-        #{indent_name,jdbcType=VARCHAR},
+      <if test="indentName != null" >
+        #{indentName,jdbcType=VARCHAR},
       </if>
-      <if test="indent_create_by != null" >
-        #{indent_create_by,jdbcType=VARCHAR},
+      <if test="indentCreateBy != null" >
+        #{indentCreateBy,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.CstIndentT" >
     update cst_indent_t
     <set >
-      <if test="indent_date != null" >
-        indent_date = #{indent_date,jdbcType=TIMESTAMP},
+      <if test="indentDate != null" >
+        indent_date = #{indentDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="indent_destination != null" >
-        indent_destination = #{indent_destination,jdbcType=VARCHAR},
+      <if test="indentDestination != null" >
+        indent_destination = #{indentDestination,jdbcType=VARCHAR},
       </if>
-      <if test="indent_state != null" >
-        indent_state = #{indent_state,jdbcType=VARCHAR},
+      <if test="indentState != null" >
+        indent_state = #{indentState,jdbcType=VARCHAR},
       </if>
-      <if test="indent_sum != null" >
-        indent_sum = #{indent_sum,jdbcType=DOUBLE},
+      <if test="indentSum != null" >
+        indent_sum = #{indentSum,jdbcType=DOUBLE},
       </if>
-      <if test="cst_customer_t_cst_id != null" >
-        cst_customer_t_cst_id = #{cst_customer_t_cst_id,jdbcType=INTEGER},
+      <if test="cstCustomerTCstId != null" >
+        cst_customer_t_cst_id = #{cstCustomerTCstId,jdbcType=INTEGER},
       </if>
-      <if test="indent_name != null" >
-        indent_name = #{indent_name,jdbcType=VARCHAR},
+      <if test="indentName != null" >
+        indent_name = #{indentName,jdbcType=VARCHAR},
       </if>
-      <if test="indent_create_by != null" >
-        indent_create_by = #{indent_create_by,jdbcType=VARCHAR},
+      <if test="indentCreateBy != null" >
+        indent_create_by = #{indentCreateBy,jdbcType=VARCHAR},
       </if>
     </set>
-    where indent_id = #{indent_id,jdbcType=INTEGER}
+    where indent_id = #{indentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.CstIndentT" >
     update cst_indent_t
-    set indent_date = #{indent_date,jdbcType=TIMESTAMP},
-      indent_destination = #{indent_destination,jdbcType=VARCHAR},
-      indent_state = #{indent_state,jdbcType=VARCHAR},
-      indent_sum = #{indent_sum,jdbcType=DOUBLE},
-      cst_customer_t_cst_id = #{cst_customer_t_cst_id,jdbcType=INTEGER},
-      indent_name = #{indent_name,jdbcType=VARCHAR},
-      indent_create_by = #{indent_create_by,jdbcType=VARCHAR}
-    where indent_id = #{indent_id,jdbcType=INTEGER}
+    set indent_date = #{indentDate,jdbcType=TIMESTAMP},
+      indent_destination = #{indentDestination,jdbcType=VARCHAR},
+      indent_state = #{indentState,jdbcType=VARCHAR},
+      indent_sum = #{indentSum,jdbcType=DOUBLE},
+      cst_customer_t_cst_id = #{cstCustomerTCstId,jdbcType=INTEGER},
+      indent_name = #{indentName,jdbcType=VARCHAR},
+      indent_create_by = #{indentCreateBy,jdbcType=VARCHAR}
+    where indent_id = #{indentId,jdbcType=INTEGER}
   </update>
 </mapper>

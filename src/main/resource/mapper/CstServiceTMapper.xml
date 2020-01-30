@@ -2,24 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.crm.dao.CstServiceTMapper" >
   <resultMap id="BaseResultMap" type="com.cn.crm.bean.CstServiceT" >
-    <id column="svc_id" property="svc_id" jdbcType="INTEGER" />
-    <result column="svc_create_by" property="svc_create_by" jdbcType="VARCHAR" />
-    <result column="svc_create_id" property="svc_create_id" jdbcType="INTEGER" />
-    <result column="svc_cst_name" property="svc_cst_name" jdbcType="VARCHAR" />
-    <result column="svc_deal" property="svc_deal" jdbcType="VARCHAR" />
-    <result column="svc_deal_by" property="svc_deal_by" jdbcType="VARCHAR" />
-    <result column="svc_deal_date" property="svc_deal_date" jdbcType="VARCHAR" />
-    <result column="svc_deal_id" property="svc_deal_id" jdbcType="INTEGER" />
-    <result column="svc_due_date" property="svc_due_date" jdbcType="TIMESTAMP" />
-    <result column="svc_due_id" property="svc_due_id" jdbcType="INTEGER" />
-    <result column="svc_due_to" property="svc_due_to" jdbcType="VARCHAR" />
-    <result column="svc_request" property="svc_request" jdbcType="VARCHAR" />
-    <result column="svc_result" property="svc_result" jdbcType="VARCHAR" />
-    <result column="svc_satisfy" property="svc_satisfy" jdbcType="VARCHAR" />
-    <result column="svc_status" property="svc_status" jdbcType="VARCHAR" />
-    <result column="svc_type" property="svc_type" jdbcType="VARCHAR" />
-    <result column="svc_create_date" property="svc_create_date" jdbcType="TIMESTAMP" />
-    <result column="svc_title" property="svc_title" jdbcType="VARCHAR" />
+    <id column="svc_id" property="svcId" jdbcType="INTEGER" />
+    <result column="svc_create_by" property="svcCreateBy" jdbcType="VARCHAR" />
+    <result column="svc_create_id" property="svcCreateId" jdbcType="INTEGER" />
+    <result column="svc_cst_name" property="svcCstName" jdbcType="VARCHAR" />
+    <result column="svc_deal" property="svcDeal" jdbcType="VARCHAR" />
+    <result column="svc_deal_by" property="svcDealBy" jdbcType="VARCHAR" />
+    <result column="svc_deal_date" property="svcDealDate" jdbcType="VARCHAR" />
+    <result column="svc_deal_id" property="svcDealId" jdbcType="INTEGER" />
+    <result column="svc_due_date" property="svcDueDate" jdbcType="TIMESTAMP" />
+    <result column="svc_due_id" property="svcDueId" jdbcType="INTEGER" />
+    <result column="svc_due_to" property="svcDueTo" jdbcType="VARCHAR" />
+    <result column="svc_request" property="svcRequest" jdbcType="VARCHAR" />
+    <result column="svc_result" property="svcResult" jdbcType="VARCHAR" />
+    <result column="svc_satisfy" property="svcSatisfy" jdbcType="VARCHAR" />
+    <result column="svc_status" property="svcStatus" jdbcType="VARCHAR" />
+    <result column="svc_type" property="svcType" jdbcType="VARCHAR" />
+    <result column="svc_create_date" property="svcCreateDate" jdbcType="TIMESTAMP" />
+    <result column="svc_title" property="svcTitle" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     svc_id, svc_create_by, svc_create_id, svc_cst_name, svc_deal, svc_deal_by, svc_deal_date, 
@@ -30,11 +30,11 @@
     select 
     <include refid="Base_Column_List" />
     from cst_service_t
-    where svc_id = #{svc_id,jdbcType=INTEGER}
+    where svc_id = #{svcId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from cst_service_t
-    where svc_id = #{svc_id,jdbcType=INTEGER}
+    where svc_id = #{svcId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cn.crm.bean.CstServiceT" >
     insert into cst_service_t (svc_id, svc_create_by, svc_create_id, 
@@ -44,205 +44,205 @@
       svc_result, svc_satisfy, svc_status, 
       svc_type, svc_create_date, svc_title
       )
-    values (#{svc_id,jdbcType=INTEGER}, #{svc_create_by,jdbcType=VARCHAR}, #{svc_create_id,jdbcType=INTEGER}, 
-      #{svc_cst_name,jdbcType=VARCHAR}, #{svc_deal,jdbcType=VARCHAR}, #{svc_deal_by,jdbcType=VARCHAR}, 
-      #{svc_deal_date,jdbcType=VARCHAR}, #{svc_deal_id,jdbcType=INTEGER}, #{svc_due_date,jdbcType=TIMESTAMP}, 
-      #{svc_due_id,jdbcType=INTEGER}, #{svc_due_to,jdbcType=VARCHAR}, #{svc_request,jdbcType=VARCHAR}, 
-      #{svc_result,jdbcType=VARCHAR}, #{svc_satisfy,jdbcType=VARCHAR}, #{svc_status,jdbcType=VARCHAR}, 
-      #{svc_type,jdbcType=VARCHAR}, #{svc_create_date,jdbcType=TIMESTAMP}, #{svc_title,jdbcType=VARCHAR}
+    values (#{svcId,jdbcType=INTEGER}, #{svcCreateBy,jdbcType=VARCHAR}, #{svcCreateId,jdbcType=INTEGER},
+      #{svcCstName,jdbcType=VARCHAR}, #{svcDeal,jdbcType=VARCHAR}, #{svcDealBy,jdbcType=VARCHAR},
+      #{svcDealDate,jdbcType=VARCHAR}, #{svcDealId,jdbcType=INTEGER}, #{svcDueDate,jdbcType=TIMESTAMP},
+      #{svcDueId,jdbcType=INTEGER}, #{svcDueTo,jdbcType=VARCHAR}, #{svcRequest,jdbcType=VARCHAR},
+      #{svcResult,jdbcType=VARCHAR}, #{svcSatisfy,jdbcType=VARCHAR}, #{svcStatus,jdbcType=VARCHAR},
+      #{svcType,jdbcType=VARCHAR}, #{svcCreateDate,jdbcType=TIMESTAMP}, #{svcTitle,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.cn.crm.bean.CstServiceT" >
     insert into cst_service_t
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="svc_id != null" >
+      <if test="svcId != null" >
         svc_id,
       </if>
-      <if test="svc_create_by != null" >
+      <if test="svcCreateBy != null" >
         svc_create_by,
       </if>
-      <if test="svc_create_id != null" >
+      <if test="svcCreateId != null" >
         svc_create_id,
       </if>
-      <if test="svc_cst_name != null" >
+      <if test="svcCstName != null" >
         svc_cst_name,
       </if>
-      <if test="svc_deal != null" >
+      <if test="svcDeal != null" >
         svc_deal,
       </if>
-      <if test="svc_deal_by != null" >
+      <if test="svcDealBy != null" >
         svc_deal_by,
       </if>
-      <if test="svc_deal_date != null" >
+      <if test="svcDealDate != null" >
         svc_deal_date,
       </if>
-      <if test="svc_deal_id != null" >
+      <if test="svcDealId != null" >
         svc_deal_id,
       </if>
-      <if test="svc_due_date != null" >
+      <if test="svcDueDate != null" >
         svc_due_date,
       </if>
-      <if test="svc_due_id != null" >
+      <if test="svcDueId != null" >
         svc_due_id,
       </if>
-      <if test="svc_due_to != null" >
+      <if test="svcDueTo != null" >
         svc_due_to,
       </if>
-      <if test="svc_request != null" >
+      <if test="svcRequest != null" >
         svc_request,
       </if>
-      <if test="svc_result != null" >
+      <if test="svcResult != null" >
         svc_result,
       </if>
-      <if test="svc_satisfy != null" >
+      <if test="svcSatisfy != null" >
         svc_satisfy,
       </if>
-      <if test="svc_status != null" >
+      <if test="svcStatus != null" >
         svc_status,
       </if>
-      <if test="svc_type != null" >
+      <if test="svcType != null" >
         svc_type,
       </if>
-      <if test="svc_create_date != null" >
+      <if test="svcCreateDate != null" >
         svc_create_date,
       </if>
-      <if test="svc_title != null" >
+      <if test="svcTitle != null" >
         svc_title,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="svc_id != null" >
-        #{svc_id,jdbcType=INTEGER},
+      <if test="svcId != null" >
+        #{svcId,jdbcType=INTEGER},
       </if>
-      <if test="svc_create_by != null" >
-        #{svc_create_by,jdbcType=VARCHAR},
+      <if test="svcCreateBy != null" >
+        #{svcCreateBy,jdbcType=VARCHAR},
       </if>
-      <if test="svc_create_id != null" >
-        #{svc_create_id,jdbcType=INTEGER},
+      <if test="svcCreateId != null" >
+        #{svcCreateId,jdbcType=INTEGER},
       </if>
-      <if test="svc_cst_name != null" >
-        #{svc_cst_name,jdbcType=VARCHAR},
+      <if test="svcCstName != null" >
+        #{svcCstName,jdbcType=VARCHAR},
       </if>
-      <if test="svc_deal != null" >
-        #{svc_deal,jdbcType=VARCHAR},
+      <if test="svcDeal != null" >
+        #{svcDeal,jdbcType=VARCHAR},
       </if>
-      <if test="svc_deal_by != null" >
-        #{svc_deal_by,jdbcType=VARCHAR},
+      <if test="svcDealBy != null" >
+        #{svcDealBy,jdbcType=VARCHAR},
       </if>
-      <if test="svc_deal_date != null" >
-        #{svc_deal_date,jdbcType=VARCHAR},
+      <if test="svcDealDate != null" >
+        #{svcDealDate,jdbcType=VARCHAR},
       </if>
-      <if test="svc_deal_id != null" >
-        #{svc_deal_id,jdbcType=INTEGER},
+      <if test="svcDealId != null" >
+        #{svcDealId,jdbcType=INTEGER},
       </if>
-      <if test="svc_due_date != null" >
-        #{svc_due_date,jdbcType=TIMESTAMP},
+      <if test="svcDueDate != null" >
+        #{svcDueDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="svc_due_id != null" >
-        #{svc_due_id,jdbcType=INTEGER},
+      <if test="svcDueId != null" >
+        #{svcDueId,jdbcType=INTEGER},
       </if>
-      <if test="svc_due_to != null" >
-        #{svc_due_to,jdbcType=VARCHAR},
+      <if test="svcDueTo != null" >
+        #{svcDueTo,jdbcType=VARCHAR},
       </if>
-      <if test="svc_request != null" >
-        #{svc_request,jdbcType=VARCHAR},
+      <if test="svcRequest != null" >
+        #{svcRequest,jdbcType=VARCHAR},
       </if>
-      <if test="svc_result != null" >
-        #{svc_result,jdbcType=VARCHAR},
+      <if test="svcResult != null" >
+        #{svcResult,jdbcType=VARCHAR},
       </if>
-      <if test="svc_satisfy != null" >
-        #{svc_satisfy,jdbcType=VARCHAR},
+      <if test="svcSatisfy != null" >
+        #{svcSatisfy,jdbcType=VARCHAR},
       </if>
-      <if test="svc_status != null" >
-        #{svc_status,jdbcType=VARCHAR},
+      <if test="svcStatus != null" >
+        #{svcStatus,jdbcType=VARCHAR},
       </if>
-      <if test="svc_type != null" >
-        #{svc_type,jdbcType=VARCHAR},
+      <if test="svcType != null" >
+        #{svcType,jdbcType=VARCHAR},
       </if>
-      <if test="svc_create_date != null" >
-        #{svc_create_date,jdbcType=TIMESTAMP},
+      <if test="svcCreateDate != null" >
+        #{svcCreateDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="svc_title != null" >
-        #{svc_title,jdbcType=VARCHAR},
+      <if test="svcTitle != null" >
+        #{svcTitle,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.CstServiceT" >
     update cst_service_t
     <set >
-      <if test="svc_create_by != null" >
-        svc_create_by = #{svc_create_by,jdbcType=VARCHAR},
+      <if test="svcCreateBy != null" >
+        svc_create_by = #{svcCreateBy,jdbcType=VARCHAR},
       </if>
-      <if test="svc_create_id != null" >
-        svc_create_id = #{svc_create_id,jdbcType=INTEGER},
+      <if test="svcCreateId != null" >
+        svc_create_id = #{svcCreateId,jdbcType=INTEGER},
       </if>
-      <if test="svc_cst_name != null" >
-        svc_cst_name = #{svc_cst_name,jdbcType=VARCHAR},
+      <if test="svcCstName != null" >
+        svc_cst_name = #{svcCstName,jdbcType=VARCHAR},
       </if>
-      <if test="svc_deal != null" >
-        svc_deal = #{svc_deal,jdbcType=VARCHAR},
+      <if test="svcDeal != null" >
+        svc_deal = #{svcDeal,jdbcType=VARCHAR},
       </if>
-      <if test="svc_deal_by != null" >
-        svc_deal_by = #{svc_deal_by,jdbcType=VARCHAR},
+      <if test="svcDealBy != null" >
+        svc_deal_by = #{svcDealBy,jdbcType=VARCHAR},
       </if>
-      <if test="svc_deal_date != null" >
-        svc_deal_date = #{svc_deal_date,jdbcType=VARCHAR},
+      <if test="svcDealDate != null" >
+        svc_deal_date = #{svcDealDate,jdbcType=VARCHAR},
       </if>
-      <if test="svc_deal_id != null" >
-        svc_deal_id = #{svc_deal_id,jdbcType=INTEGER},
+      <if test="svcDealId != null" >
+        svc_deal_id = #{svcDealId,jdbcType=INTEGER},
       </if>
-      <if test="svc_due_date != null" >
-        svc_due_date = #{svc_due_date,jdbcType=TIMESTAMP},
+      <if test="svcDueDate != null" >
+        svc_due_date = #{svcDueDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="svc_due_id != null" >
-        svc_due_id = #{svc_due_id,jdbcType=INTEGER},
+      <if test="svcDueId != null" >
+        svc_due_id = #{svcDueId,jdbcType=INTEGER},
       </if>
-      <if test="svc_due_to != null" >
-        svc_due_to = #{svc_due_to,jdbcType=VARCHAR},
+      <if test="svcDueTo != null" >
+        svc_due_to = #{svcDueTo,jdbcType=VARCHAR},
       </if>
-      <if test="svc_request != null" >
-        svc_request = #{svc_request,jdbcType=VARCHAR},
+      <if test="svcRequest != null" >
+        svc_request = #{svcRequest,jdbcType=VARCHAR},
       </if>
-      <if test="svc_result != null" >
-        svc_result = #{svc_result,jdbcType=VARCHAR},
+      <if test="svcResult != null" >
+        svc_result = #{svcResult,jdbcType=VARCHAR},
       </if>
-      <if test="svc_satisfy != null" >
-        svc_satisfy = #{svc_satisfy,jdbcType=VARCHAR},
+      <if test="svcSatisfy != null" >
+        svc_satisfy = #{svcSatisfy,jdbcType=VARCHAR},
       </if>
-      <if test="svc_status != null" >
-        svc_status = #{svc_status,jdbcType=VARCHAR},
+      <if test="svcStatus != null" >
+        svc_status = #{svcStatus,jdbcType=VARCHAR},
       </if>
-      <if test="svc_type != null" >
-        svc_type = #{svc_type,jdbcType=VARCHAR},
+      <if test="svcType != null" >
+        svc_type = #{svcType,jdbcType=VARCHAR},
       </if>
-      <if test="svc_create_date != null" >
-        svc_create_date = #{svc_create_date,jdbcType=TIMESTAMP},
+      <if test="svcCreateDate != null" >
+        svc_create_date = #{svcCreateDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="svc_title != null" >
-        svc_title = #{svc_title,jdbcType=VARCHAR},
+      <if test="svcTitle != null" >
+        svc_title = #{svcTitle,jdbcType=VARCHAR},
       </if>
     </set>
-    where svc_id = #{svc_id,jdbcType=INTEGER}
+    where svc_id = #{svcId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.CstServiceT" >
     update cst_service_t
-    set svc_create_by = #{svc_create_by,jdbcType=VARCHAR},
-      svc_create_id = #{svc_create_id,jdbcType=INTEGER},
-      svc_cst_name = #{svc_cst_name,jdbcType=VARCHAR},
-      svc_deal = #{svc_deal,jdbcType=VARCHAR},
-      svc_deal_by = #{svc_deal_by,jdbcType=VARCHAR},
-      svc_deal_date = #{svc_deal_date,jdbcType=VARCHAR},
-      svc_deal_id = #{svc_deal_id,jdbcType=INTEGER},
-      svc_due_date = #{svc_due_date,jdbcType=TIMESTAMP},
-      svc_due_id = #{svc_due_id,jdbcType=INTEGER},
-      svc_due_to = #{svc_due_to,jdbcType=VARCHAR},
-      svc_request = #{svc_request,jdbcType=VARCHAR},
-      svc_result = #{svc_result,jdbcType=VARCHAR},
-      svc_satisfy = #{svc_satisfy,jdbcType=VARCHAR},
-      svc_status = #{svc_status,jdbcType=VARCHAR},
-      svc_type = #{svc_type,jdbcType=VARCHAR},
-      svc_create_date = #{svc_create_date,jdbcType=TIMESTAMP},
-      svc_title = #{svc_title,jdbcType=VARCHAR}
-    where svc_id = #{svc_id,jdbcType=INTEGER}
+    set svc_create_by = #{svcCreateBy,jdbcType=VARCHAR},
+      svc_create_id = #{svcCreateId,jdbcType=INTEGER},
+      svc_cst_name = #{svcCstName,jdbcType=VARCHAR},
+      svc_deal = #{svcDeal,jdbcType=VARCHAR},
+      svc_deal_by = #{svcDealBy,jdbcType=VARCHAR},
+      svc_deal_date = #{svcDealDate,jdbcType=VARCHAR},
+      svc_deal_id = #{svcDealId,jdbcType=INTEGER},
+      svc_due_date = #{svcDueDate,jdbcType=TIMESTAMP},
+      svc_due_id = #{svcDueId,jdbcType=INTEGER},
+      svc_due_to = #{svcDueTo,jdbcType=VARCHAR},
+      svc_request = #{svcRequest,jdbcType=VARCHAR},
+      svc_result = #{svcResult,jdbcType=VARCHAR},
+      svc_satisfy = #{svcSatisfy,jdbcType=VARCHAR},
+      svc_status = #{svcStatus,jdbcType=VARCHAR},
+      svc_type = #{svcType,jdbcType=VARCHAR},
+      svc_create_date = #{svcCreateDate,jdbcType=TIMESTAMP},
+      svc_title = #{svcTitle,jdbcType=VARCHAR}
+    where svc_id = #{svcId,jdbcType=INTEGER}
   </update>
 </mapper>

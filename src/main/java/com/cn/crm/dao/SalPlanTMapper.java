@@ -1,6 +1,9 @@
 package com.cn.crm.dao;
 
 import com.cn.crm.bean.SalPlanT;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SalPlanTMapper {
     int deleteByPrimaryKey(Integer plan_id);
@@ -14,4 +17,7 @@ public interface SalPlanTMapper {
     int updateByPrimaryKeySelective(SalPlanT record);
 
     int updateByPrimaryKey(SalPlanT record);
+
+    List<SalPlanT> selectByChcId(@Param("chcId") Integer chcId, @Param("page")Integer page,
+                                        @Param("rows")Integer rows, @Param("sort")String sort, @Param("order")String order);
 }

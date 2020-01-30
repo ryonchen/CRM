@@ -3,73 +3,73 @@ package com.cn.crm.bean;
 import java.util.Date;
 
 public class CstActivityT {
-    private Integer atv_id;
+    private Integer atvId;
 
-    private Date atv_date;
+    private Date atvDate;
 
-    private String atv_desc;
+    private String atvDesc;
 
-    private String atv_place;
+    private String atvPlace;
 
-    private String atv_title;
+    private String atvTitle;
 
-    private Integer cst_customer_t_cst_id;
+    private Integer cstCustomerTCstId;
 
-    private String atv_detail;
+    private String atvDetail;
 
-    public Integer getAtv_id() {
-        return atv_id;
+    public Integer getAtvId() {
+        return atvId;
     }
 
-    public void setAtv_id(Integer atv_id) {
-        this.atv_id = atv_id;
+    public void setAtvId(Integer atvId) {
+        this.atvId = atvId;
     }
 
-    public Date getAtv_date() {
-        return atv_date;
+    public Date getAtvDate() {
+        return atvDate;
     }
 
-    public void setAtv_date(Date atv_date) {
-        this.atv_date = atv_date;
+    public void setAtvDate(Date atvDate) {
+        this.atvDate = atvDate;
     }
 
-    public String getAtv_desc() {
-        return atv_desc;
+    public String getAtvDesc() {
+        return atvDesc;
     }
 
-    public void setAtv_desc(String atv_desc) {
-        this.atv_desc = atv_desc == null ? null : atv_desc.trim();
+    public void setAtvDesc(String atvDesc) {
+        this.atvDesc = atvDesc == null ? null : atvDesc.trim();
     }
 
-    public String getAtv_place() {
-        return atv_place;
+    public String getAtvPlace() {
+        return atvPlace;
     }
 
-    public void setAtv_place(String atv_place) {
-        this.atv_place = atv_place == null ? null : atv_place.trim();
+    public void setAtvPlace(String atvPlace) {
+        this.atvPlace = atvPlace == null ? null : atvPlace.trim();
     }
 
-    public String getAtv_title() {
-        return atv_title;
+    public String getAtvTitle() {
+        return atvTitle;
     }
 
-    public void setAtv_title(String atv_title) {
-        this.atv_title = atv_title == null ? null : atv_title.trim();
+    public void setAtvTitle(String atvTitle) {
+        this.atvTitle = atvTitle == null ? null : atvTitle.trim();
     }
 
-    public Integer getCst_customer_t_cst_id() {
-        return cst_customer_t_cst_id;
+    public Integer getCstCustomerTCstId() {
+        return cstCustomerTCstId;
     }
 
-    public void setCst_customer_t_cst_id(Integer cst_customer_t_cst_id) {
-        this.cst_customer_t_cst_id = cst_customer_t_cst_id;
+    public void setCstCustomerTCstId(Integer cstCustomerTCstId) {
+        this.cstCustomerTCstId = cstCustomerTCstId;
     }
 
-    public String getAtv_detail() {
-        return atv_detail;
+    public String getAtvDetail() {
+        return atvDetail;
     }
 
-    public void setAtv_detail(String atv_detail) {
-        this.atv_detail = atv_detail == null ? null : atv_detail.trim();
+    public void setAtvDetail(String atvDetail) {
+        this.atvDetail = atvDetail == null ? null : atvDetail.trim();
     }
 }

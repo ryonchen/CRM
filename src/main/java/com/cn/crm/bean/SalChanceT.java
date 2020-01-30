@@ -1,7 +1,7 @@
 package com.cn.crm.bean;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import java.util.Date;
 
@@ -10,6 +10,7 @@ public class SalChanceT {
 
     private String chcCreateBy;
 
+
     private Date chcCreateDate;
 
     private Integer chcCreateId;
@@ -17,6 +18,7 @@ public class SalChanceT {
     private String chcCustName;
 
     private String chcDesc;
+
 
     private Date chcDueDate;
 
@@ -52,7 +54,8 @@ public class SalChanceT {
         this.chcCreateBy = chcCreateBy == null ? null : chcCreateBy.trim();
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+@JSONField(format="yyyy-MM-dd HH:mm:ss",serialzeFeatures= SerializerFeature.WriteMapNullValue)
     public Date getChcCreateDate() {
         return chcCreateDate;
     }
@@ -85,7 +88,7 @@ public class SalChanceT {
         this.chcDesc = chcDesc == null ? null : chcDesc.trim();
     }
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss",serialzeFeatures=SerializerFeature.WriteMapNullValue)
     public Date getChcDueDate() {
         return chcDueDate;
     }

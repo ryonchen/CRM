@@ -13,12 +13,16 @@ import java.util.Map;
  * @create: 2019-12-08 00:33
  */
 public interface SalChanceTService {
-    List<SalChanceT> selectByCreateTime(Long beginDate, Long endDate);
+    List<SalChanceT> selectByCreateTime(Long beginDate, Long endDate, String custName, String title, String linkman, Integer page, Integer rows, String sort, String order);
 
     int insertSelective(SalChanceT salChanceT);
 
     int updateByPrimaryKeySelective(SalChanceT salChanceT);
 
     int deleteByPrimaryKey(Integer chcId);
+
+    int deleteByPrimaryKeys(Integer[] chcId);
+
+    long countByCreateTime(Long beginDate, Long endDate, String custName, String title, String linkman, Integer page, Integer rows, String sort, String order);
 
 }

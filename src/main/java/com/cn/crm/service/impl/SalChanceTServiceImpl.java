@@ -22,8 +22,8 @@ public class SalChanceTServiceImpl implements SalChanceTService{
     private SalChanceTMapper salChanceTMapper;
 
     @Override
-    public List<SalChanceT> selectByCreateTime(Long beginDate, Long endDate){
-        return salChanceTMapper.selectByCreateTime(beginDate, endDate);
+    public List<SalChanceT> selectByCreateTime(Long beginDate, Long endDate, String custName, String title, String linkman,Integer page, Integer rows, String sort, String order){
+        return salChanceTMapper.selectByCreateTime(beginDate, endDate, custName, title, linkman, page, rows, sort, order);
     }
 
     @Override
@@ -40,6 +40,17 @@ public class SalChanceTServiceImpl implements SalChanceTService{
     public int deleteByPrimaryKey(Integer chcId){
         return salChanceTMapper.deleteByPrimaryKey(chcId);
     }
+
+    @Override
+    public  int deleteByPrimaryKeys(Integer[] chcIds){
+        return salChanceTMapper.deleteByPrimaryKeys(chcIds);
+    }
+
+    @Override
+    public long countByCreateTime(Long beginDate, Long endDate, String custName, String title, String linkman,Integer page, Integer rows, String sort, String order){
+        return salChanceTMapper.countByCreateTime(beginDate, endDate, custName, title, linkman, page, rows, sort, order);
+    }
+
 
 
 }

@@ -3,96 +3,96 @@ package com.cn.crm.bean;
 import java.util.Date;
 
 public class CstLstT {
-    private Integer lst_id;
+    private Integer lstId;
 
-    private String lst_cst_id;
+    private String lstCstId;
 
-    private String lst_cst_manager_id;
+    private String lstCstManagerId;
 
-    private String lst_cst_manager_name;
+    private String lstCstManagerName;
 
-    private String lst_cst_name;
+    private String lstCstName;
 
-    private String lst_delay;
+    private String lstDelay;
 
-    private String lst_last_order_date;
+    private String lstLastOrderDate;
 
-    private String lst_reason;
+    private String lstReason;
 
-    private String lst_status;
+    private String lstStatus;
 
     private Date sureLstDate;
 
-    public Integer getLst_id() {
-        return lst_id;
+    public Integer getLstId() {
+        return lstId;
     }
 
-    public void setLst_id(Integer lst_id) {
-        this.lst_id = lst_id;
+    public void setLstId(Integer lstId) {
+        this.lstId = lstId;
     }
 
-    public String getLst_cst_id() {
-        return lst_cst_id;
+    public String getLstCstId() {
+        return lstCstId;
     }
 
-    public void setLst_cst_id(String lst_cst_id) {
-        this.lst_cst_id = lst_cst_id == null ? null : lst_cst_id.trim();
+    public void setLstCstId(String lstCstId) {
+        this.lstCstId = lstCstId == null ? null : lstCstId.trim();
     }
 
-    public String getLst_cst_manager_id() {
-        return lst_cst_manager_id;
+    public String getLstCstManagerId() {
+        return lstCstManagerId;
     }
 
-    public void setLst_cst_manager_id(String lst_cst_manager_id) {
-        this.lst_cst_manager_id = lst_cst_manager_id == null ? null : lst_cst_manager_id.trim();
+    public void setLstCstManagerId(String lstCstManagerId) {
+        this.lstCstManagerId = lstCstManagerId == null ? null : lstCstManagerId.trim();
     }
 
-    public String getLst_cst_manager_name() {
-        return lst_cst_manager_name;
+    public String getLstCstManagerName() {
+        return lstCstManagerName;
     }
 
-    public void setLst_cst_manager_name(String lst_cst_manager_name) {
-        this.lst_cst_manager_name = lst_cst_manager_name == null ? null : lst_cst_manager_name.trim();
+    public void setLstCstManagerName(String lstCstManagerName) {
+        this.lstCstManagerName = lstCstManagerName == null ? null : lstCstManagerName.trim();
     }
 
-    public String getLst_cst_name() {
-        return lst_cst_name;
+    public String getLstCstName() {
+        return lstCstName;
     }
 
-    public void setLst_cst_name(String lst_cst_name) {
-        this.lst_cst_name = lst_cst_name == null ? null : lst_cst_name.trim();
+    public void setLstCstName(String lstCstName) {
+        this.lstCstName = lstCstName == null ? null : lstCstName.trim();
     }
 
-    public String getLst_delay() {
-        return lst_delay;
+    public String getLstDelay() {
+        return lstDelay;
     }
 
-    public void setLst_delay(String lst_delay) {
-        this.lst_delay = lst_delay == null ? null : lst_delay.trim();
+    public void setLstDelay(String lstDelay) {
+        this.lstDelay = lstDelay == null ? null : lstDelay.trim();
     }
 
-    public String getLst_last_order_date() {
-        return lst_last_order_date;
+    public String getLstLastOrderDate() {
+        return lstLastOrderDate;
     }
 
-    public void setLst_last_order_date(String lst_last_order_date) {
-        this.lst_last_order_date = lst_last_order_date == null ? null : lst_last_order_date.trim();
+    public void setLstLastOrderDate(String lstLastOrderDate) {
+        this.lstLastOrderDate = lstLastOrderDate == null ? null : lstLastOrderDate.trim();
     }
 
-    public String getLst_reason() {
-        return lst_reason;
+    public String getLstReason() {
+        return lstReason;
     }
 
-    public void setLst_reason(String lst_reason) {
-        this.lst_reason = lst_reason == null ? null : lst_reason.trim();
+    public void setLstReason(String lstReason) {
+        this.lstReason = lstReason == null ? null : lstReason.trim();
     }
 
-    public String getLst_status() {
-        return lst_status;
+    public String getLstStatus() {
+        return lstStatus;
     }
 
-    public void setLst_status(String lst_status) {
-        this.lst_status = lst_status == null ? null : lst_status.trim();
+    public void setLstStatus(String lstStatus) {
+        this.lstStatus = lstStatus == null ? null : lstStatus.trim();
     }
 
     public Date getSureLstDate() {

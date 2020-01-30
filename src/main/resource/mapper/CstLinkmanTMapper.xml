@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.crm.dao.CstLinkmanTMapper" >
   <resultMap id="BaseResultMap" type="com.cn.crm.bean.CstLinkmanT" >
-    <id column="link_id" property="link_id" jdbcType="INTEGER" />
-    <result column="link_cst_id" property="link_cst_id" jdbcType="INTEGER" />
-    <result column="link_cst_name" property="link_cst_name" jdbcType="VARCHAR" />
-    <result column="link_memo" property="link_memo" jdbcType="VARCHAR" />
-    <result column="link_mobile" property="link_mobile" jdbcType="VARCHAR" />
-    <result column="link_name" property="link_name" jdbcType="VARCHAR" />
-    <result column="link_postion" property="link_postion" jdbcType="VARCHAR" />
-    <result column="link_sex" property="link_sex" jdbcType="VARCHAR" />
-    <result column="link_tel" property="link_tel" jdbcType="VARCHAR" />
-    <result column="cst_customer_t_cst_id" property="cst_customer_t_cst_id" jdbcType="INTEGER" />
+    <id column="link_id" property="linkId" jdbcType="INTEGER" />
+    <result column="link_cst_id" property="linkCstId" jdbcType="INTEGER" />
+    <result column="link_cst_name" property="linkCstName" jdbcType="VARCHAR" />
+    <result column="link_memo" property="linkMemo" jdbcType="VARCHAR" />
+    <result column="link_mobile" property="linkMobile" jdbcType="VARCHAR" />
+    <result column="link_name" property="linkName" jdbcType="VARCHAR" />
+    <result column="link_postion" property="linkPostion" jdbcType="VARCHAR" />
+    <result column="link_sex" property="linkSex" jdbcType="VARCHAR" />
+    <result column="link_tel" property="linkTel" jdbcType="VARCHAR" />
+    <result column="cst_customer_t_cst_id" property="cstCustomerTCstId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     link_id, link_cst_id, link_cst_name, link_memo, link_mobile, link_name, link_postion, 
@@ -21,133 +21,133 @@
     select 
     <include refid="Base_Column_List" />
     from cst_linkman_t
-    where link_id = #{link_id,jdbcType=INTEGER}
+    where link_id = #{linkId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from cst_linkman_t
-    where link_id = #{link_id,jdbcType=INTEGER}
+    where link_id = #{linkId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cn.crm.bean.CstLinkmanT" >
     insert into cst_linkman_t (link_id, link_cst_id, link_cst_name, 
       link_memo, link_mobile, link_name, 
       link_postion, link_sex, link_tel, 
       cst_customer_t_cst_id)
-    values (#{link_id,jdbcType=INTEGER}, #{link_cst_id,jdbcType=INTEGER}, #{link_cst_name,jdbcType=VARCHAR}, 
-      #{link_memo,jdbcType=VARCHAR}, #{link_mobile,jdbcType=VARCHAR}, #{link_name,jdbcType=VARCHAR}, 
-      #{link_postion,jdbcType=VARCHAR}, #{link_sex,jdbcType=VARCHAR}, #{link_tel,jdbcType=VARCHAR}, 
-      #{cst_customer_t_cst_id,jdbcType=INTEGER})
+    values (#{linkId,jdbcType=INTEGER}, #{linkCstId,jdbcType=INTEGER}, #{linkCstName,jdbcType=VARCHAR},
+      #{linkMemo,jdbcType=VARCHAR}, #{linkMobile,jdbcType=VARCHAR}, #{linkName,jdbcType=VARCHAR},
+      #{linkPostion,jdbcType=VARCHAR}, #{linkSex,jdbcType=VARCHAR}, #{linkTel,jdbcType=VARCHAR},
+      #{cstCustomerTCstId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.cn.crm.bean.CstLinkmanT" >
     insert into cst_linkman_t
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="link_id != null" >
+      <if test="linkId != null" >
         link_id,
       </if>
-      <if test="link_cst_id != null" >
+      <if test="linkCstId != null" >
         link_cst_id,
       </if>
-      <if test="link_cst_name != null" >
+      <if test="linkCstName != null" >
         link_cst_name,
       </if>
-      <if test="link_memo != null" >
+      <if test="linkMemo != null" >
         link_memo,
       </if>
-      <if test="link_mobile != null" >
+      <if test="linkMobile != null" >
         link_mobile,
       </if>
-      <if test="link_name != null" >
+      <if test="linkName != null" >
         link_name,
       </if>
-      <if test="link_postion != null" >
+      <if test="linkPostion != null" >
         link_postion,
       </if>
-      <if test="link_sex != null" >
+      <if test="linkSex != null" >
         link_sex,
       </if>
-      <if test="link_tel != null" >
+      <if test="linkTel != null" >
         link_tel,
       </if>
-      <if test="cst_customer_t_cst_id != null" >
+      <if test="cstCustomerTCstId != null" >
         cst_customer_t_cst_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="link_id != null" >
-        #{link_id,jdbcType=INTEGER},
+      <if test="linkId != null" >
+        #{linkId,jdbcType=INTEGER},
       </if>
-      <if test="link_cst_id != null" >
-        #{link_cst_id,jdbcType=INTEGER},
+      <if test="linkCstId != null" >
+        #{linkCstId,jdbcType=INTEGER},
       </if>
-      <if test="link_cst_name != null" >
-        #{link_cst_name,jdbcType=VARCHAR},
+      <if test="linkCstName != null" >
+        #{linkCstName,jdbcType=VARCHAR},
       </if>
-      <if test="link_memo != null" >
-        #{link_memo,jdbcType=VARCHAR},
+      <if test="linkMemo != null" >
+        #{linkMemo,jdbcType=VARCHAR},
       </if>
-      <if test="link_mobile != null" >
-        #{link_mobile,jdbcType=VARCHAR},
+      <if test="linkMobile != null" >
+        #{linkMobile,jdbcType=VARCHAR},
       </if>
-      <if test="link_name != null" >
-        #{link_name,jdbcType=VARCHAR},
+      <if test="linkName != null" >
+        #{linkName,jdbcType=VARCHAR},
       </if>
-      <if test="link_postion != null" >
-        #{link_postion,jdbcType=VARCHAR},
+      <if test="linkPostion != null" >
+        #{linkPostion,jdbcType=VARCHAR},
       </if>
-      <if test="link_sex != null" >
-        #{link_sex,jdbcType=VARCHAR},
+      <if test="linkSex != null" >
+        #{linkSex,jdbcType=VARCHAR},
       </if>
-      <if test="link_tel != null" >
-        #{link_tel,jdbcType=VARCHAR},
+      <if test="linkTel != null" >
+        #{linkTel,jdbcType=VARCHAR},
       </if>
-      <if test="cst_customer_t_cst_id != null" >
-        #{cst_customer_t_cst_id,jdbcType=INTEGER},
+      <if test="cstCustomerTCstId != null" >
+        #{cstCustomerTCstId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.CstLinkmanT" >
     update cst_linkman_t
     <set >
-      <if test="link_cst_id != null" >
-        link_cst_id = #{link_cst_id,jdbcType=INTEGER},
+      <if test="linkCstId != null" >
+        link_cst_id = #{linkCstId,jdbcType=INTEGER},
       </if>
-      <if test="link_cst_name != null" >
-        link_cst_name = #{link_cst_name,jdbcType=VARCHAR},
+      <if test="linkCstName != null" >
+        link_cst_name = #{linkCstName,jdbcType=VARCHAR},
       </if>
-      <if test="link_memo != null" >
-        link_memo = #{link_memo,jdbcType=VARCHAR},
+      <if test="linkMemo != null" >
+        link_memo = #{linkMemo,jdbcType=VARCHAR},
       </if>
-      <if test="link_mobile != null" >
-        link_mobile = #{link_mobile,jdbcType=VARCHAR},
+      <if test="linkMobile != null" >
+        link_mobile = #{linkMobile,jdbcType=VARCHAR},
       </if>
-      <if test="link_name != null" >
-        link_name = #{link_name,jdbcType=VARCHAR},
+      <if test="linkName != null" >
+        link_name = #{linkName,jdbcType=VARCHAR},
       </if>
-      <if test="link_postion != null" >
-        link_postion = #{link_postion,jdbcType=VARCHAR},
+      <if test="linkPostion != null" >
+        link_postion = #{linkPostion,jdbcType=VARCHAR},
       </if>
-      <if test="link_sex != null" >
-        link_sex = #{link_sex,jdbcType=VARCHAR},
+      <if test="linkSex != null" >
+        link_sex = #{linkSex,jdbcType=VARCHAR},
       </if>
-      <if test="link_tel != null" >
-        link_tel = #{link_tel,jdbcType=VARCHAR},
+      <if test="linkTel != null" >
+        link_tel = #{linkTel,jdbcType=VARCHAR},
       </if>
-      <if test="cst_customer_t_cst_id != null" >
-        cst_customer_t_cst_id = #{cst_customer_t_cst_id,jdbcType=INTEGER},
+      <if test="cstCustomerTCstId != null" >
+        cst_customer_t_cst_id = #{cstCustomerTCstId,jdbcType=INTEGER},
       </if>
     </set>
-    where link_id = #{link_id,jdbcType=INTEGER}
+    where link_id = #{linkId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.CstLinkmanT" >
     update cst_linkman_t
-    set link_cst_id = #{link_cst_id,jdbcType=INTEGER},
-      link_cst_name = #{link_cst_name,jdbcType=VARCHAR},
-      link_memo = #{link_memo,jdbcType=VARCHAR},
-      link_mobile = #{link_mobile,jdbcType=VARCHAR},
-      link_name = #{link_name,jdbcType=VARCHAR},
-      link_postion = #{link_postion,jdbcType=VARCHAR},
-      link_sex = #{link_sex,jdbcType=VARCHAR},
-      link_tel = #{link_tel,jdbcType=VARCHAR},
-      cst_customer_t_cst_id = #{cst_customer_t_cst_id,jdbcType=INTEGER}
-    where link_id = #{link_id,jdbcType=INTEGER}
+    set link_cst_id = #{linkCstId,jdbcType=INTEGER},
+      link_cst_name = #{linkCstName,jdbcType=VARCHAR},
+      link_memo = #{linkMemo,jdbcType=VARCHAR},
+      link_mobile = #{linkMobile,jdbcType=VARCHAR},
+      link_name = #{linkName,jdbcType=VARCHAR},
+      link_postion = #{linkPostion,jdbcType=VARCHAR},
+      link_sex = #{linkSex,jdbcType=VARCHAR},
+      link_tel = #{linkTel,jdbcType=VARCHAR},
+      cst_customer_t_cst_id = #{cstCustomerTCstId,jdbcType=INTEGER}
+    where link_id = #{linkId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -3,183 +3,183 @@ package com.cn.crm.bean;
 import java.util.Date;
 
 public class CstServiceT {
-    private Integer svc_id;
+    private Integer svcId;
 
-    private String svc_create_by;
+    private String svcCreateBy;
 
-    private Integer svc_create_id;
+    private Integer svcCreateId;
 
-    private String svc_cst_name;
+    private String svcCstName;
 
-    private String svc_deal;
+    private String svcDeal;
 
-    private String svc_deal_by;
+    private String svcDealBy;
 
-    private String svc_deal_date;
+    private String svcDealDate;
 
-    private Integer svc_deal_id;
+    private Integer svcDealId;
 
-    private Date svc_due_date;
+    private Date svcDueDate;
 
-    private Integer svc_due_id;
+    private Integer svcDueId;
 
-    private String svc_due_to;
+    private String svcDueTo;
 
-    private String svc_request;
+    private String svcRequest;
 
-    private String svc_result;
+    private String svcResult;
 
-    private String svc_satisfy;
+    private String svcSatisfy;
 
-    private String svc_status;
+    private String svcStatus;
 
-    private String svc_type;
+    private String svcType;
 
-    private Date svc_create_date;
+    private Date svcCreateDate;
 
-    private String svc_title;
+    private String svcTitle;
 
-    public Integer getSvc_id() {
-        return svc_id;
+    public Integer getSvcId() {
+        return svcId;
     }
 
-    public void setSvc_id(Integer svc_id) {
-        this.svc_id = svc_id;
+    public void setSvcId(Integer svcId) {
+        this.svcId = svcId;
     }
 
-    public String getSvc_create_by() {
-        return svc_create_by;
+    public String getSvcCreateBy() {
+        return svcCreateBy;
     }
 
-    public void setSvc_create_by(String svc_create_by) {
-        this.svc_create_by = svc_create_by == null ? null : svc_create_by.trim();
+    public void setSvcCreateBy(String svcCreateBy) {
+        this.svcCreateBy = svcCreateBy == null ? null : svcCreateBy.trim();
     }
 
-    public Integer getSvc_create_id() {
-        return svc_create_id;
+    public Integer getSvcCreateId() {
+        return svcCreateId;
     }
 
-    public void setSvc_create_id(Integer svc_create_id) {
-        this.svc_create_id = svc_create_id;
+    public void setSvcCreateId(Integer svcCreateId) {
+        this.svcCreateId = svcCreateId;
     }
 
-    public String getSvc_cst_name() {
-        return svc_cst_name;
+    public String getSvcCstName() {
+        return svcCstName;
     }
 
-    public void setSvc_cst_name(String svc_cst_name) {
-        this.svc_cst_name = svc_cst_name == null ? null : svc_cst_name.trim();
+    public void setSvcCstName(String svcCstName) {
+        this.svcCstName = svcCstName == null ? null : svcCstName.trim();
     }
 
-    public String getSvc_deal() {
-        return svc_deal;
+    public String getSvcDeal() {
+        return svcDeal;
     }
 
-    public void setSvc_deal(String svc_deal) {
-        this.svc_deal = svc_deal == null ? null : svc_deal.trim();
+    public void setSvcDeal(String svcDeal) {
+        this.svcDeal = svcDeal == null ? null : svcDeal.trim();
     }
 
-    public String getSvc_deal_by() {
-        return svc_deal_by;
+    public String getSvcDealBy() {
+        return svcDealBy;
     }
 
-    public void setSvc_deal_by(String svc_deal_by) {
-        this.svc_deal_by = svc_deal_by == null ? null : svc_deal_by.trim();
+    public void setSvcDealBy(String svcDealBy) {
+        this.svcDealBy = svcDealBy == null ? null : svcDealBy.trim();
     }
 
-    public String getSvc_deal_date() {
-        return svc_deal_date;
+    public String getSvcDealDate() {
+        return svcDealDate;
     }
 
-    public void setSvc_deal_date(String svc_deal_date) {
-        this.svc_deal_date = svc_deal_date == null ? null : svc_deal_date.trim();
+    public void setSvcDealDate(String svcDealDate) {
+        this.svcDealDate = svcDealDate == null ? null : svcDealDate.trim();
     }
 
-    public Integer getSvc_deal_id() {
-        return svc_deal_id;
+    public Integer getSvcDealId() {
+        return svcDealId;
     }
 
-    public void setSvc_deal_id(Integer svc_deal_id) {
-        this.svc_deal_id = svc_deal_id;
+    public void setSvcDealId(Integer svcDealId) {
+        this.svcDealId = svcDealId;
     }
 
-    public Date getSvc_due_date() {
-        return svc_due_date;
+    public Date getSvcDueDate() {
+        return svcDueDate;
     }
 
-    public void setSvc_due_date(Date svc_due_date) {
-        this.svc_due_date = svc_due_date;
+    public void setSvcDueDate(Date svcDueDate) {
+        this.svcDueDate = svcDueDate;
     }
 
-    public Integer getSvc_due_id() {
-        return svc_due_id;
+    public Integer getSvcDueId() {
+        return svcDueId;
     }
 
-    public void setSvc_due_id(Integer svc_due_id) {
-        this.svc_due_id = svc_due_id;
+    public void setSvcDueId(Integer svcDueId) {
+        this.svcDueId = svcDueId;
     }
 
-    public String getSvc_due_to() {
-        return svc_due_to;
+    public String getSvcDueTo() {
+        return svcDueTo;
     }
 
-    public void setSvc_due_to(String svc_due_to) {
-        this.svc_due_to = svc_due_to == null ? null : svc_due_to.trim();
+    public void setSvcDueTo(String svcDueTo) {
+        this.svcDueTo = svcDueTo == null ? null : svcDueTo.trim();
     }
 
-    public String getSvc_request() {
-        return svc_request;
+    public String getSvcRequest() {
+        return svcRequest;
     }
 
-    public void setSvc_request(String svc_request) {
-        this.svc_request = svc_request == null ? null : svc_request.trim();
+    public void setSvcRequest(String svcRequest) {
+        this.svcRequest = svcRequest == null ? null : svcRequest.trim();
     }
 
-    public String getSvc_result() {
-        return svc_result;
+    public String getSvcResult() {
+        return svcResult;
     }
 
-    public void setSvc_result(String svc_result) {
-        this.svc_result = svc_result == null ? null : svc_result.trim();
+    public void setSvcResult(String svcResult) {
+        this.svcResult = svcResult == null ? null : svcResult.trim();
     }
 
-    public String getSvc_satisfy() {
-        return svc_satisfy;
+    public String getSvcSatisfy() {
+        return svcSatisfy;
     }
 
-    public void setSvc_satisfy(String svc_satisfy) {
-        this.svc_satisfy = svc_satisfy == null ? null : svc_satisfy.trim();
+    public void setSvcSatisfy(String svcSatisfy) {
+        this.svcSatisfy = svcSatisfy == null ? null : svcSatisfy.trim();
     }
 
-    public String getSvc_status() {
-        return svc_status;
+    public String getSvcStatus() {
+        return svcStatus;
     }
 
-    public void setSvc_status(String svc_status) {
-        this.svc_status = svc_status == null ? null : svc_status.trim();
+    public void setSvcStatus(String svcStatus) {
+        this.svcStatus = svcStatus == null ? null : svcStatus.trim();
     }
 
-    public String getSvc_type() {
-        return svc_type;
+    public String getSvcType() {
+        return svcType;
     }
 
-    public void setSvc_type(String svc_type) {
-        this.svc_type = svc_type == null ? null : svc_type.trim();
+    public void setSvcType(String svcType) {
+        this.svcType = svcType == null ? null : svcType.trim();
     }
 
-    public Date getSvc_create_date() {
-        return svc_create_date;
+    public Date getSvcCreateDate() {
+        return svcCreateDate;
     }
 
-    public void setSvc_create_date(Date svc_create_date) {
-        this.svc_create_date = svc_create_date;
+    public void setSvcCreateDate(Date svcCreateDate) {
+        this.svcCreateDate = svcCreateDate;
     }
 
-    public String getSvc_title() {
-        return svc_title;
+    public String getSvcTitle() {
+        return svcTitle;
     }
 
-    public void setSvc_title(String svc_title) {
-        this.svc_title = svc_title == null ? null : svc_title.trim();
+    public void setSvcTitle(String svcTitle) {
+        this.svcTitle = svcTitle == null ? null : svcTitle.trim();
     }
 }

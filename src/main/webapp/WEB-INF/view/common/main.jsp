@@ -79,7 +79,7 @@
                 [安全退出]
         	</a>
         </span>
-    <span style="padding-left:10px; font-size: 20px; color:darkgrey;font-weight: bold">学生管理系统 — SSM</span>
+    <span style="padding-left:10px; font-size: 20px; color:darkgrey;font-weight: bold">CRM客户管理系统 — SSM</span>
 </div>
 
 <!-- 页面底部-->

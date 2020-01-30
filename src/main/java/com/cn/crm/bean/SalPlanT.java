@@ -1,55 +1,59 @@
 package com.cn.crm.bean;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+
 import java.util.Date;
 
 public class SalPlanT {
-    private Integer plan_id;
+    private Integer planId;
 
-    private Integer plan_chc_id;
+    private Integer planChcId;
 
-    private Date plan_date;
+    private Date planDate;
 
-    private String plan_result;
+    private String planResult;
 
-    private String plan_todo;
+    private String planTodo;
 
-    public Integer getPlan_id() {
-        return plan_id;
+    public Integer getPlanId() {
+        return planId;
     }
 
-    public void setPlan_id(Integer plan_id) {
-        this.plan_id = plan_id;
+    public void setPlanId(Integer planId) {
+        this.planId = planId;
     }
 
-    public Integer getPlan_chc_id() {
-        return plan_chc_id;
+    public Integer getPlanChcId() {
+        return planChcId;
     }
 
-    public void setPlan_chc_id(Integer plan_chc_id) {
-        this.plan_chc_id = plan_chc_id;
+    public void setPlanChcId(Integer planChcId) {
+        this.planChcId = planChcId;
     }
 
-    public Date getPlan_date() {
-        return plan_date;
+    @JSONField(format="yyyy-MM-dd HH:mm:ss",serialzeFeatures= SerializerFeature.WriteMapNullValue)
+    public Date getPlanDate() {
+        return planDate;
     }
 
-    public void setPlan_date(Date plan_date) {
-        this.plan_date = plan_date;
+    public void setPlanDate(Date planDate) {
+        this.planDate = planDate;
     }
 
-    public String getPlan_result() {
-        return plan_result;
+    public String getPlanResult() {
+        return planResult;
     }
 
-    public void setPlan_result(String plan_result) {
-        this.plan_result = plan_result == null ? null : plan_result.trim();
+    public void setPlanResult(String planResult) {
+        this.planResult = planResult == null ? null : planResult.trim();
     }
 
-    public String getPlan_todo() {
-        return plan_todo;
+    public String getPlanTodo() {
+        return planTodo;
     }
 
-    public void setPlan_todo(String plan_todo) {
-        this.plan_todo = plan_todo == null ? null : plan_todo.trim();
+    public void setPlanTodo(String planTodo) {
+        this.planTodo = planTodo == null ? null : planTodo.trim();
     }
 }

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.crm.dao.SalPlanTMapper" >
   <resultMap id="BaseResultMap" type="com.cn.crm.bean.SalPlanT" >
-    <id column="plan_id" property="plan_id" jdbcType="INTEGER" />
-    <result column="plan_chc_id" property="plan_chc_id" jdbcType="INTEGER" />
-    <result column="plan_date" property="plan_date" jdbcType="TIMESTAMP" />
-    <result column="plan_result" property="plan_result" jdbcType="VARCHAR" />
-    <result column="plan_todo" property="plan_todo" jdbcType="VARCHAR" />
+    <id column="plan_id" property="planId" jdbcType="INTEGER" />
+    <result column="plan_chc_id" property="planChcId" jdbcType="INTEGER" />
+    <result column="plan_date" property="planDate" jdbcType="TIMESTAMP" />
+    <result column="plan_result" property="planResult" jdbcType="VARCHAR" />
+    <result column="plan_todo" property="planTodo" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     plan_id, plan_chc_id, plan_date, plan_result, plan_todo
@@ -15,79 +15,85 @@
     select 
     <include refid="Base_Column_List" />
     from sal_plan_t
-    where plan_id = #{plan_id,jdbcType=INTEGER}
+    where plan_id = #{planId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sal_plan_t
-    where plan_id = #{plan_id,jdbcType=INTEGER}
+    where plan_id = #{planId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cn.crm.bean.SalPlanT" >
     insert into sal_plan_t (plan_id, plan_chc_id, plan_date, 
       plan_result, plan_todo)
-    values (#{plan_id,jdbcType=INTEGER}, #{plan_chc_id,jdbcType=INTEGER}, #{plan_date,jdbcType=TIMESTAMP}, 
-      #{plan_result,jdbcType=VARCHAR}, #{plan_todo,jdbcType=VARCHAR})
+    values (#{planId,jdbcType=INTEGER}, #{planChcId,jdbcType=INTEGER}, #{planDate,jdbcType=TIMESTAMP},
+      #{planResult,jdbcType=VARCHAR}, #{planTodo,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cn.crm.bean.SalPlanT" >
     insert into sal_plan_t
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="plan_id != null" >
+      <if test="planId != null" >
         plan_id,
       </if>
-      <if test="plan_chc_id != null" >
+      <if test="planChcId != null" >
         plan_chc_id,
       </if>
-      <if test="plan_date != null" >
+      <if test="planDate != null" >
         plan_date,
       </if>
-      <if test="plan_result != null" >
+      <if test="planResult != null" >
         plan_result,
       </if>
-      <if test="plan_todo != null" >
+      <if test="planTodo != null" >
         plan_todo,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="plan_id != null" >
-        #{plan_id,jdbcType=INTEGER},
+      <if test="planId != null" >
+        #{planId,jdbcType=INTEGER},
       </if>
-      <if test="plan_chc_id != null" >
-        #{plan_chc_id,jdbcType=INTEGER},
+      <if test="planChcId != null" >
+        #{planChcId,jdbcType=INTEGER},
       </if>
-      <if test="plan_date != null" >
-        #{plan_date,jdbcType=TIMESTAMP},
+      <if test="planDate != null" >
+        #{planDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="plan_result != null" >
-        #{plan_result,jdbcType=VARCHAR},
+      <if test="planResult != null" >
+        #{planResult,jdbcType=VARCHAR},
       </if>
-      <if test="plan_todo != null" >
-        #{plan_todo,jdbcType=VARCHAR},
+      <if test="planTodo != null" >
+        #{planTodo,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.SalPlanT" >
     update sal_plan_t
     <set >
-      <if test="plan_chc_id != null" >
-        plan_chc_id = #{plan_chc_id,jdbcType=INTEGER},
+      <if test="planChcId != null" >
+        plan_chc_id = #{planChcId,jdbcType=INTEGER},
       </if>
-      <if test="plan_date != null" >
-        plan_date = #{plan_date,jdbcType=TIMESTAMP},
+      <if test="planDate != null" >
+        plan_date = #{planDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="plan_result != null" >
-        plan_result = #{plan_result,jdbcType=VARCHAR},
+      <if test="planResult != null" >
+        plan_result = #{planResult,jdbcType=VARCHAR},
       </if>
-      <if test="plan_todo != null" >
-        plan_todo = #{plan_todo,jdbcType=VARCHAR},
+      <if test="planTodo != null" >
+        plan_todo = #{planTodo,jdbcType=VARCHAR},
       </if>
     </set>
-    where plan_id = #{plan_id,jdbcType=INTEGER}
+    where plan_id = #{planId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.SalPlanT" >
     update sal_plan_t
-    set plan_chc_id = #{plan_chc_id,jdbcType=INTEGER},
-      plan_date = #{plan_date,jdbcType=TIMESTAMP},
-      plan_result = #{plan_result,jdbcType=VARCHAR},
-      plan_todo = #{plan_todo,jdbcType=VARCHAR}
-    where plan_id = #{plan_id,jdbcType=INTEGER}
+    set plan_chc_id = #{planChcId,jdbcType=INTEGER},
+      plan_date = #{planDate,jdbcType=TIMESTAMP},
+      plan_result = #{planResult,jdbcType=VARCHAR},
+      plan_todo = #{planTodo,jdbcType=VARCHAR}
+    where plan_id = #{planId,jdbcType=INTEGER}
   </update>
+  <select id="selectByChcId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from sal_plan_t
+    where plan_chc_id = #{chcId,jdbcType=INTEGER}
+  </select>
 </mapper>

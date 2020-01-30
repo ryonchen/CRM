@@ -1,233 +1,233 @@
 package com.cn.crm.bean;
 
 public class CstCustomerT {
-    private Integer cst_id;
+    private Integer cstId;
 
-    private String cst_addr;
+    private String cstAddr;
 
-    private String cst_bank;
+    private String cstBank;
 
-    private String cst_bank_account;
+    private String cstBankAccount;
 
-    private Integer cst_bankroll;
+    private Integer cstBankroll;
 
-    private String cst_chieftain;
+    private String cstChieftain;
 
-    private Integer cst_credit;
+    private Integer cstCredit;
 
-    private String cst_fax;
+    private String cstFax;
 
-    private Integer cst_level;
+    private Integer cstLevel;
 
-    private String cst_level_label;
+    private String cstLevelLabel;
 
-    private String cst_licence_no;
+    private String cstLicenceNo;
 
-    private String cst_local_tax_no;
+    private String cstLocalTaxNo;
 
-    private Integer cst_manager_id;
+    private Integer cstManagerId;
 
-    private String cst_name;
+    private String cstName;
 
-    private String cst_national_tax_no;
+    private String cstNationalTaxNo;
 
-    private String cst_region;
+    private String cstRegion;
 
-    private Integer cst_satisfy;
+    private Integer cstSatisfy;
 
-    private String cst_tel;
+    private String cstTel;
 
-    private Integer cst_turnover;
+    private Integer cstTurnover;
 
-    private String cst_website;
+    private String cstWebsite;
 
-    private String cst_zip;
+    private String cstZip;
 
-    private String cust_manager_name;
+    private String custManagerName;
 
-    private Integer cst_status;
+    private Integer cstStatus;
 
-    public Integer getCst_id() {
-        return cst_id;
+    public Integer getCstId() {
+        return cstId;
     }
 
-    public void setCst_id(Integer cst_id) {
-        this.cst_id = cst_id;
+    public void setCstId(Integer cstId) {
+        this.cstId = cstId;
     }
 
-    public String getCst_addr() {
-        return cst_addr;
+    public String getCstAddr() {
+        return cstAddr;
     }
 
-    public void setCst_addr(String cst_addr) {
-        this.cst_addr = cst_addr == null ? null : cst_addr.trim();
+    public void setCstAddr(String cstAddr) {
+        this.cstAddr = cstAddr == null ? null : cstAddr.trim();
     }
 
-    public String getCst_bank() {
-        return cst_bank;
+    public String getCstBank() {
+        return cstBank;
     }
 
-    public void setCst_bank(String cst_bank) {
-        this.cst_bank = cst_bank == null ? null : cst_bank.trim();
+    public void setCstBank(String cstBank) {
+        this.cstBank = cstBank == null ? null : cstBank.trim();
     }
 
-    public String getCst_bank_account() {
-        return cst_bank_account;
+    public String getCstBankAccount() {
+        return cstBankAccount;
     }
 
-    public void setCst_bank_account(String cst_bank_account) {
-        this.cst_bank_account = cst_bank_account == null ? null : cst_bank_account.trim();
+    public void setCstBankAccount(String cstBankAccount) {
+        this.cstBankAccount = cstBankAccount == null ? null : cstBankAccount.trim();
     }
 
-    public Integer getCst_bankroll() {
-        return cst_bankroll;
+    public Integer getCstBankroll() {
+        return cstBankroll;
     }
 
-    public void setCst_bankroll(Integer cst_bankroll) {
-        this.cst_bankroll = cst_bankroll;
+    public void setCstBankroll(Integer cstBankroll) {
+        this.cstBankroll = cstBankroll;
     }
 
-    public String getCst_chieftain() {
-        return cst_chieftain;
+    public String getCstChieftain() {
+        return cstChieftain;
     }
 
-    public void setCst_chieftain(String cst_chieftain) {
-        this.cst_chieftain = cst_chieftain == null ? null : cst_chieftain.trim();
+    public void setCstChieftain(String cstChieftain) {
+        this.cstChieftain = cstChieftain == null ? null : cstChieftain.trim();
     }
 
-    public Integer getCst_credit() {
-        return cst_credit;
+    public Integer getCstCredit() {
+        return cstCredit;
     }
 
-    public void setCst_credit(Integer cst_credit) {
-        this.cst_credit = cst_credit;
+    public void setCstCredit(Integer cstCredit) {
+        this.cstCredit = cstCredit;
     }
 
-    public String getCst_fax() {
-        return cst_fax;
+    public String getCstFax() {
+        return cstFax;
     }
 
-    public void setCst_fax(String cst_fax) {
-        this.cst_fax = cst_fax == null ? null : cst_fax.trim();
+    public void setCstFax(String cstFax) {
+        this.cstFax = cstFax == null ? null : cstFax.trim();
     }
 
-    public Integer getCst_level() {
-        return cst_level;
+    public Integer getCstLevel() {
+        return cstLevel;
     }
 
-    public void setCst_level(Integer cst_level) {
-        this.cst_level = cst_level;
+    public void setCstLevel(Integer cstLevel) {
+        this.cstLevel = cstLevel;
     }
 
-    public String getCst_level_label() {
-        return cst_level_label;
+    public String getCstLevelLabel() {
+        return cstLevelLabel;
     }
 
-    public void setCst_level_label(String cst_level_label) {
-        this.cst_level_label = cst_level_label == null ? null : cst_level_label.trim();
+    public void setCstLevelLabel(String cstLevelLabel) {
+        this.cstLevelLabel = cstLevelLabel == null ? null : cstLevelLabel.trim();
     }
 
-    public String getCst_licence_no() {
-        return cst_licence_no;
+    public String getCstLicenceNo() {
+        return cstLicenceNo;
     }
 
-    public void setCst_licence_no(String cst_licence_no) {
-        this.cst_licence_no = cst_licence_no == null ? null : cst_licence_no.trim();
+    public void setCstLicenceNo(String cstLicenceNo) {
+        this.cstLicenceNo = cstLicenceNo == null ? null : cstLicenceNo.trim();
     }
 
-    public String getCst_local_tax_no() {
-        return cst_local_tax_no;
+    public String getCstLocalTaxNo() {
+        return cstLocalTaxNo;
     }
 
-    public void setCst_local_tax_no(String cst_local_tax_no) {
-        this.cst_local_tax_no = cst_local_tax_no == null ? null : cst_local_tax_no.trim();
+    public void setCstLocalTaxNo(String cstLocalTaxNo) {
+        this.cstLocalTaxNo = cstLocalTaxNo == null ? null : cstLocalTaxNo.trim();
     }
 
-    public Integer getCst_manager_id() {
-        return cst_manager_id;
+    public Integer getCstManagerId() {
+        return cstManagerId;
     }
 
-    public void setCst_manager_id(Integer cst_manager_id) {
-        this.cst_manager_id = cst_manager_id;
+    public void setCstManagerId(Integer cstManagerId) {
+        this.cstManagerId = cstManagerId;
     }
 
-    public String getCst_name() {
-        return cst_name;
+    public String getCstName() {
+        return cstName;
     }
 
-    public void setCst_name(String cst_name) {
-        this.cst_name = cst_name == null ? null : cst_name.trim();
+    public void setCstName(String cstName) {
+        this.cstName = cstName == null ? null : cstName.trim();
     }
 
-    public String getCst_national_tax_no() {
-        return cst_national_tax_no;
+    public String getCstNationalTaxNo() {
+        return cstNationalTaxNo;
     }
 
-    public void setCst_national_tax_no(String cst_national_tax_no) {
-        this.cst_national_tax_no = cst_national_tax_no == null ? null : cst_national_tax_no.trim();
+    public void setCstNationalTaxNo(String cstNationalTaxNo) {
+        this.cstNationalTaxNo = cstNationalTaxNo == null ? null : cstNationalTaxNo.trim();
     }
 
-    public String getCst_region() {
-        return cst_region;
+    public String getCstRegion() {
+        return cstRegion;
     }
 
-    public void setCst_region(String cst_region) {
-        this.cst_region = cst_region == null ? null : cst_region.trim();
+    public void setCstRegion(String cstRegion) {
+        this.cstRegion = cstRegion == null ? null : cstRegion.trim();
     }
 
-    public Integer getCst_satisfy() {
-        return cst_satisfy;
+    public Integer getCstSatisfy() {
+        return cstSatisfy;
     }
 
-    public void setCst_satisfy(Integer cst_satisfy) {
-        this.cst_satisfy = cst_satisfy;
+    public void setCstSatisfy(Integer cstSatisfy) {
+        this.cstSatisfy = cstSatisfy;
     }
 
-    public String getCst_tel() {
-        return cst_tel;
+    public String getCstTel() {
+        return cstTel;
     }
 
-    public void setCst_tel(String cst_tel) {
-        this.cst_tel = cst_tel == null ? null : cst_tel.trim();
+    public void setCstTel(String cstTel) {
+        this.cstTel = cstTel == null ? null : cstTel.trim();
     }
 
-    public Integer getCst_turnover() {
-        return cst_turnover;
+    public Integer getCstTurnover() {
+        return cstTurnover;
     }
 
-    public void setCst_turnover(Integer cst_turnover) {
-        this.cst_turnover = cst_turnover;
+    public void setCstTurnover(Integer cstTurnover) {
+        this.cstTurnover = cstTurnover;
     }
 
-    public String getCst_website() {
-        return cst_website;
+    public String getCstWebsite() {
+        return cstWebsite;
     }
 
-    public void setCst_website(String cst_website) {
-        this.cst_website = cst_website == null ? null : cst_website.trim();
+    public void setCstWebsite(String cstWebsite) {
+        this.cstWebsite = cstWebsite == null ? null : cstWebsite.trim();
     }
 
-    public String getCst_zip() {
-        return cst_zip;
+    public String getCstZip() {
+        return cstZip;
     }
 
-    public void setCst_zip(String cst_zip) {
-        this.cst_zip = cst_zip == null ? null : cst_zip.trim();
+    public void setCstZip(String cstZip) {
+        this.cstZip = cstZip == null ? null : cstZip.trim();
     }
 
-    public String getCust_manager_name() {
-        return cust_manager_name;
+    public String getcustManagerName() {
+        return custManagerName;
     }
 
-    public void setCust_manager_name(String cust_manager_name) {
-        this.cust_manager_name = cust_manager_name == null ? null : cust_manager_name.trim();
+    public void setcustManagerName(String custManagerName) {
+        this.custManagerName = custManagerName == null ? null : custManagerName.trim();
     }
 
-    public Integer getCst_status() {
-        return cst_status;
+    public Integer getCstStatus() {
+        return cstStatus;
     }
 
-    public void setCst_status(Integer cst_status) {
-        this.cst_status = cst_status;
+    public void setCstStatus(Integer cstStatus) {
+        this.cstStatus = cstStatus;
     }
 }
