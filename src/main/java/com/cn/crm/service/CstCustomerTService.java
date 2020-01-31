@@ -12,7 +12,7 @@ import java.util.List;
  * @create: 2019-12-08 00:33
  */
 public interface CstCustomerTService {
-//    List<SalPlanT> selectByChcId(Integer chcId, Integer page, Integer rows, String sort, String order);
+    List<CstCustomerT> selectByUser(String userCode);
 
     int insertSelective(CstCustomerT cstCustomerT);
 

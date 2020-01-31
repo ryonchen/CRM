@@ -10,7 +10,7 @@
     <result column="cst_customer_t_cst_id" property="cstCustomerTCstId" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.cn.crm.bean.CstActivityT" extends="BaseResultMap" >
-    <result column="atv_detail" property="atv_detail" jdbcType="LONGVARCHAR" />
+    <result column="atv_detail" property="atvDetail" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     atv_id, atv_date, atv_desc, atv_place, atv_title, cst_customer_t_cst_id
@@ -130,4 +130,12 @@
       cst_customer_t_cst_id = #{cstCustomerTCstId,jdbcType=INTEGER}
     where atv_id = #{atvId,jdbcType=INTEGER}
   </update>
+  <select id="selectByCstId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cst_activity_t
+    where cst_customer_t_cst_id = #{cstId,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -20,10 +20,10 @@ public class CstIntendTServiceImpl implements CstIntendTService {
     @Autowired(required = false)
     private CstIndentTMapper cstIndentTMapper;
 
-//    @Override
-//    public List<SalPlanT> selectByChcId(Integer chcId, Integer page, Integer rows, String sort, String order){
-//        return salPlanTMapper.selectByChcId(chcId, page, rows, sort, order);
-//    }
+    @Override
+    public List<CstIndentT> selectByCstId(Integer cstId){
+        return cstIndentTMapper.selectByCstId(cstId);
+    }
 
     @Override
     public int insertSelective(CstIndentT cstIndentT){

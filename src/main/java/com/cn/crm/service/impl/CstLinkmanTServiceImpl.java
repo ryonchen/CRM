@@ -20,10 +20,10 @@ public class CstLinkmanTServiceImpl implements CstLinkmanTService {
     @Autowired(required = false)
     private CstLinkmanTMapper cstLinkmanTMapper;
 
-//    @Override
-//    public List<SalPlanT> selectByChcId(Integer chcId, Integer page, Integer rows, String sort, String order){
-//        return salPlanTMapper.selectByChcId(chcId, page, rows, sort, order);
-//    }
+    @Override
+    public List<CstLinkmanT> selectByCstId(Integer cstId){
+        return cstLinkmanTMapper.selectByCstId(cstId);
+    }
 
     @Override
     public int insertSelective(CstLinkmanT cstLinkmanT){

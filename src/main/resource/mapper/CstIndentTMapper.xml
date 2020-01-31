@@ -126,4 +126,10 @@
       indent_create_by = #{indentCreateBy,jdbcType=VARCHAR}
     where indent_id = #{indentId,jdbcType=INTEGER}
   </update>
+  <select id="selectByCstId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from cst_indent_t
+    where cst_customer_t_cst_id = #{cstId,jdbcType=INTEGER}
+  </select>
 </mapper>

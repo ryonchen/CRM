@@ -20,10 +20,10 @@ public class CstActivityTServiceImpl implements CstActivityTService {
     @Autowired(required = false)
     private CstActivityTMapper cstActivityTMapper;
 
-//    @Override
-//    public List<SalPlanT> selectByChcId(Integer chcId, Integer page, Integer rows, String sort, String order){
-//        return salPlanTMapper.selectByChcId(chcId, page, rows, sort, order);
-//    }
+    @Override
+    public List<CstActivityT> selectByCstId(Integer cstId){
+        return cstActivityTMapper.selectByCstId(cstId);
+    }
 
     @Override
     public int insertSelective(CstActivityT cstActivityT){

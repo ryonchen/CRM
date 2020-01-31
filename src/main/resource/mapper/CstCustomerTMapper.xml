@@ -303,4 +303,10 @@
       cst_status = #{cstStatus,jdbcType=INTEGER}
     where cst_id = #{cstId,jdbcType=INTEGER}
   </update>
+  <select id="selectByUser" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from cst_customer_t
+    where cst_manager_name = #{userCode,jdbcType=VARCHAR}
+  </select>
 </mapper>

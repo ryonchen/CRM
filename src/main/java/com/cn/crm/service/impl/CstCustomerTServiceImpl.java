@@ -20,10 +20,10 @@ public class CstCustomerTServiceImpl implements CstCustomerTService {
     @Autowired(required = false)
     private CstCustomerTMapper cstCustomerTMapper;
 
-//    @Override
-//    public List<SalPlanT> selectByChcId(Integer chcId, Integer page, Integer rows, String sort, String order){
-//        return salPlanTMapper.selectByChcId(chcId, page, rows, sort, order);
-//    }
+    @Override
+    public List<CstCustomerT> selectByUser(String userCode){
+        return cstCustomerTMapper.selectByUser(userCode);
+    }
 
     @Override
     public int insertSelective(CstCustomerT cstCustomerT){

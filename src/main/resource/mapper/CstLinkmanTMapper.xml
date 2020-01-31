@@ -150,4 +150,10 @@
       cst_customer_t_cst_id = #{cstCustomerTCstId,jdbcType=INTEGER}
     where link_id = #{linkId,jdbcType=INTEGER}
   </update>
+  <select id="selectByCstId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from cst_linkman_t
+    where link_cst_id = #{cstId,jdbcType=INTEGER}
+  </select>
 </mapper>

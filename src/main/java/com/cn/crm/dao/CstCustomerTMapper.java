@@ -2,6 +2,8 @@ package com.cn.crm.dao;
 
 import com.cn.crm.bean.CstCustomerT;
 
+import java.util.List;
+
 public interface CstCustomerTMapper {
     int deleteByPrimaryKey(Integer cst_id);
 
@@ -9,9 +11,11 @@ public interface CstCustomerTMapper {
 
     int insertSelective(CstCustomerT record);
 
-    CstCustomerT selectByPrimaryKey(Integer cst_id);
+    CstCustomerT selectByPrimaryKey(Integer cstId);
 
     int updateByPrimaryKeySelective(CstCustomerT record);
 
     int updateByPrimaryKey(CstCustomerT record);
+
+    List<CstCustomerT> selectByUser(String userCode);
 }
