@@ -529,6 +529,7 @@
 
             //搜索按钮的监听事件(将其值返回给Controller)
             $("#search-btn").click(function () {
+                $("#dataList").datagrid("uncheckAll");
                 $('#dataList').datagrid('load', {
                     beginDate: $('#search-begindate').datebox('getValue'),//开始时间
                     endDate: $('#search-enddate').datebox('getValue'),//结束时间

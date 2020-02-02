@@ -1,6 +1,7 @@
 package com.cn.crm.dao;
 
 import com.cn.crm.bean.CstIndentT;
+import com.cn.crm.vo.IndentVo;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ public interface CstIndentTMapper {
 
     int updateByPrimaryKey(CstIndentT record);
 
-    List<CstIndentT> selectByCstId(Integer cstId);
+    List<IndentVo> selectByCstId(Integer cstId);
 }

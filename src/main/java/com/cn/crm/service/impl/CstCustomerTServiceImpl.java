@@ -3,6 +3,8 @@ package com.cn.crm.service.impl;
 import com.cn.crm.bean.CstCustomerT;
 import com.cn.crm.dao.CstCustomerTMapper;
 import com.cn.crm.service.CstCustomerTService;
+import com.cn.crm.vo.CustomerReqVo;
+import com.cn.crm.vo.CustomerVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +23,8 @@ public class CstCustomerTServiceImpl implements CstCustomerTService {
     private CstCustomerTMapper cstCustomerTMapper;
 
     @Override
-    public List<CstCustomerT> selectByUser(String userCode){
-        return cstCustomerTMapper.selectByUser(userCode);
+    public List<CustomerVo> selectByUser(CustomerReqVo customerReqVo){
+        return cstCustomerTMapper.selectByUser(customerReqVo);
     }
 
     @Override
@@ -38,6 +40,11 @@ public class CstCustomerTServiceImpl implements CstCustomerTService {
     @Override
     public int deleteByPrimaryKey(Integer cstId){
         return cstCustomerTMapper.deleteByPrimaryKey(cstId);
+    }
+
+    @Override
+    public int countByUser(CustomerReqVo customerReqVo){
+        return cstCustomerTMapper.countByUser(customerReqVo);
     }
 
 }

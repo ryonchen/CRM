@@ -29,18 +29,33 @@
             src="${pageContext.request.contextPath}/static/easyui/js/validateExtends.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/utils/moment.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/easyui/jquery.edatagrid.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/easyui/datagrid-detailview.js"></script>
     <script type="text/javascript" charset="utf-8">
         // var beginDate = new Date(new Date().toLocaleDateString()).getTime()/1000;
         // var endDate = (new Date(new Date().toLocaleDateString()).getTime()+24*60*60*1000)/1000-1;
         var beginDate = null;
         var endDate = null;
         var today =  moment().format('YYYY-MM-DD');
+        var satisfyData = [{id:1,name:"❤"},{id:2,name:"❤❤"},{id:3,name:"❤❤❤"},{id:4,name:"❤❤❤❤"},{id:5,name:"❤❤❤❤❤"}]
+        var creditData = [{id:1,name:"❤"},{id:2,name:"❤❤"},{id:3,name:"❤❤❤"},{id:4,name:"❤❤❤❤"},{id:5,name:"❤❤❤❤❤"}]
+        var levelData = []
         //DOM加载完成后执行的回调函数
         $(function () {
-            console.log('today',today);
-            $('#search-begindate').datebox('setValue', today);
-            $('#search-enddate').datebox('setValue', today);
             var table;
+            $.ajax({
+                type: "post",
+                url: "/crm/dict/getCstLevel?t=" + new Date().getTime(),
+                data: {dictType: '企业客户等级'},
+                dataType: 'json',
+                success: function (data) {
+                    if (data.success) {
+                        levelData = data.data
+                        $('#edit_level').combobox('loadData',data.data)
+                    } else {
+                        $.messager.alert("消息提醒", "服务器端发生异常! 获取用户等级失败!", "warning");
+                    }
+                }
+            });
             //初始化datagrid
             $('#dataList').datagrid({
                 iconCls: 'icon-more',//图标
@@ -48,66 +63,60 @@
                 collapsible: false,//是否可折叠
                 fit: true,//自动大小
                 method: "post",
-                url: "getChanceList?t=" + new Date().getTime(),
+                url: "getClientList?t=" + new Date().getTime(),
                 // data: {"beginDate":beginDate,"endDate":endDate},
-                queryParams: {"beginDate":$('#search-begindate').datebox('getValue'),"endDate":$('#search-enddate').datebox('getValue')},
-                idField: 'chcId',
+                queryParams: {"userId": ${userInfo.userId}},
+                idField: 'cstId',
                 singleSelect: false,//是否单选
                 rownumbers: true,//行号
                 pagination: true,//分页控件
-                sortName: 'chcId',
+                sortName: 'cstId',
                 sortOrder: 'desc',
                 // remoteSort: false,
-                // CREATE TABLE `cst_customer_t` (
-                //     `cst_id` int(11) NOT NULL AUTO_INCREMENT,
-                // `cst_addr` varchar(255) DEFAULT NULL,
-                // `cst_bank` varchar(255) DEFAULT NULL,
-                // `cst_bank_account` varchar(255) DEFAULT NULL,
-                // `cst_bankroll` int(11) NOT NULL,
-                // `cst_chieftain` varchar(255) DEFAULT NULL,
-                // `cst_credit` int(11) NOT NULL,
-                // `cst_fax` varchar(255) DEFAULT NULL,
-                // `cst_level` int(11) NOT NULL,
-                // `cst_level_label` varchar(255) DEFAULT NULL,
-                // `cst_licence_no` varchar(255) DEFAULT NULL,
-                // `cst_local_tax_no` varchar(255) DEFAULT NULL,
-                // `cst_manager_id` int(11) NOT NULL,
-                // `cst_name` varchar(255) DEFAULT NULL,
-                // `cst_national_tax_no` varchar(255) DEFAULT NULL,
-                // `cst_region` varchar(255) DEFAULT NULL,
-                // `cst_satisfy` int(11) NOT NULL,
-                // `cst_tel` varchar(255) DEFAULT NULL,
-                // `cst_turnover` int(11) NOT NULL,
-                // `cst_website` varchar(255) DEFAULT NULL,
-                // `cst_zip` varchar(255) DEFAULT NULL,
-                // `cust_manager_name` varchar(255) DEFAULT NULL,
-                // `cst_status` int(11) NOT NULL,
-
-
             columns: [[
                     {field: 'chk', checkbox: true, width: 50},
                     {field: 'cstId', title: '编号', width: 50, sortable: true},
                     {field: 'cstAddr', title: '地址', width: 100},
-                    {field: 'cstBank', title: '开户银行', width: 150},
-                    {field: 'cstBankAccount', title: '银行账号', width: 60},
-                    {field: 'cstBankroll', title: '注册资金', width: 150},
+                    {field: 'cstBank', title: '开户银行', width: 100},
+                    {field: 'cstBankAccount', title: '银行账号', width: 100},
+                    {field: 'cstBankroll', title: '注册资金', width: 50},
                     {field: 'cstChieftain', title: '法人', width: 50},
-                    {field: 'cstCredit', title: '客户信用度', width: 100},
-                    {field: 'cstFax', title: '传真', width: 150},
-                    {field: 'cstLevel', title: '客户等级', width: 50},
-                    {field: 'cstLevelLabel', title: '客户等级文本', width: 100},
-                    {field: 'cstLicenceNo', title: '营业执照', width: 50},
-                    {field: 'cstLocalTaxNo', title: '', width: 100},
-                    {field: 'cstManagerId', title: '客户经理ID', width: 50},
-                {field: 'cstName', title: '客户名称', width: 50},
-                {field: 'cstNationalTaxNo', title: '', width: 100},
-                {field: 'cstRegion', title: '地区', width: 150},
-                {field: 'cstSatisfy', title: '满意度', width: 50},
+                    {field: 'cstCredit', title: '客户信用度', width: 80,
+                        formatter:function(value){
+                            var result="";
+                            for(var i=1;i<=value;i++){
+                                result = result + "❤"
+                            }
+                            return result;
+                        }},
+                    {field: 'cstFax', title: '传真', width: 100},
+                    {field: 'cstLevel', title: '客户等级', width: 100,
+                        formatter:function(value){
+                            for(var i=0; i<levelData.length; i++){
+                                if (levelData[i].dictValue == value) return levelData[i].dictItem;
+                            }
+                            return value;
+                        }},
+                    // {field: 'cstLevelLabel2', title: '客户等级', width: 100},
+                    {field: 'cstLicenceNo', title: '营业执照', width: 100},
+                    {field: 'cstLocalTaxNo', title: '地税登记号', width: 100},
+                    {field: 'cstManagerId', title: '客户经理ID', width: 50, hidden:true},
+                {field: 'cstName', title: '客户名称', width: 100},
+                {field: 'cstNationalTaxNo', title: '国税等级好', width: 100},
+                {field: 'cstRegion', title: '地区', width: 60},
+                {field: 'cstSatisfy', title: '满意度', width: 80,
+                    formatter:function(value){
+                        var result="";
+                        for(var i=1;i<=value;i++){
+                            result = result + "❤"
+                        }
+                        return result;
+                    }},
                 {field: 'cstTel', title: '电话', width: 100},
-                {field: 'cstTurnover', title: '营业额', width: 50},
+                {field: 'cstTurnover', title: '营业额', width: 100},
                 {field: 'cstWebsite', title: '官网', width: 100},
                 {field: 'cstZip', title: '邮编', width: 50},
-                {field: 'custManagerName', title: '客户经理名称', width: 100},
+                {field: 'custManagerName2', title: '客户经理名称', width: 100},
                 {field: 'cstStatus', title: '状态', width: 50},
                 ]],
                 loadFilter: function(data){
@@ -117,6 +126,8 @@
                         total = data.total
                         for(var i=0; i<data.data.length; i++){
                             rows.push(data.data[i]);
+                            rows[i].cstLevelLabel2 = data.data[i].cstLevelInfo.dictItem
+                            rows[i].custManagerName2 = data.data[i].managerInfo.userName
                         }
                     } else {
                         $.messager.alert("消息提醒", data.message, "warning");
@@ -199,14 +210,36 @@
                 }
             });
 
-            //信息修改按钮事件
-            $("#plan").click(function () {
+            //打开联系人窗口
+            $("#linkman").click(function () {
                 // table = $("#editTable");
                 var selectRows = $("#dataList").datagrid("getSelections");
                 if (selectRows.length !== 1) {
                     $.messager.alert("消息提醒", "请单条选择数据!", "warning");
                 } else {
-                    $("#planDialog").dialog("open");
+                    $("#linkmanDialog").dialog("open");
+                }
+            });
+
+            //打开交往记录窗口
+            $("#activity").click(function () {
+                // table = $("#editTable");
+                var selectRows = $("#dataList").datagrid("getSelections");
+                if (selectRows.length !== 1) {
+                    $.messager.alert("消息提醒", "请单条选择数据!", "warning");
+                } else {
+                    $("#activityDialog").dialog("open");
+                }
+            });
+
+            //打开历史订单窗口
+            $("#order").click(function () {
+                // table = $("#editTable");
+                var selectRows = $("#dataList").datagrid("getSelections");
+                if (selectRows.length !== 1) {
+                    $.messager.alert("消息提醒", "请单条选择数据!", "warning");
+                } else {
+                    $("#orderDialog").dialog("open");
                 }
             });
 
@@ -280,7 +313,7 @@
 
             //设置编辑销售机会信息窗口
             $("#editDialog").dialog({
-                title: "修改销售机会窗口",
+                title: "修改客户信息窗口",
                 width: 660,
                 height: 430,
                 iconCls: "icon-house",
@@ -308,7 +341,7 @@
                                 });
                                 $.ajax({
                                     type: "post",
-                                    url: "editChance?t=" + new Date().getTime(),
+                                    url: "editClient?t=" + new Date().getTime(),
                                     data: data,
                                     dataType: 'json',
                                     success: function (data) {
@@ -333,42 +366,44 @@
                         plain: true,
                         iconCls: 'icon-reload',
                         handler: function () {
-                            $("#edit_source").textbox('setValue', "");
-                            $("#edit_cust_name").textbox('setValue', "");
-                            $("#edit_desc").textbox('setValue', "");
-                            $("#edit_title").textbox('setValue', "");
-                            $("#edit_linkman").textbox('setValue', "");
-                            $("#edit_rate").textbox('setValue', "");
-                            $("#edit_tel").textbox('setValue', "");
+                            // $("#edit_source").textbox('setValue', "");
+                            // $("#edit_cust_name").textbox('setValue', "");
+                            // $("#edit_desc").textbox('setValue', "");
+                            // $("#edit_title").textbox('setValue', "");
+                            // $("#edit_linkman").textbox('setValue', "");
+                            // $("#edit_rate").textbox('setValue', "");
+                            // $("#edit_tel").textbox('setValue', "");
                         }
                     }
                 ],
                 //打开窗口前先初始化表单数据(表单回显)
                 onBeforeOpen: function () {
                     var selectRow = $("#dataList").datagrid("getSelected");
-                    $("#edit_id").val(selectRow.chcId);//初始化id值,需根据id更新教师信息
-                    $("#edit_source").textbox('setValue', selectRow.chcSource);
-                    $("#edit_cust_name").textbox('setValue', selectRow.chcCustName);
-                    $("#edit_create_by").textbox('setValue', selectRow.chcCreateBy);
-                    $("#edit_create_date").textbox('setValue', selectRow.chcCreateDate);
-                    // $("#edit_create_id").textbox('setValue', selectRow.chcCreateId);
-                    $("#edit_desc").textbox('setValue', selectRow.chcDesc);
-                    $("#edit_due_date").textbox('setValue', selectRow.chcDueDate);
-                    $("#edit_due_id").textbox('setValue', selectRow.chcDueId);
-                    $("#edit_due_to").textbox('setValue', selectRow.chcDueTo);
-                    $("#edit_linkman").textbox('setValue', selectRow.chcLinkman);
-                    $("#edit_rate").textbox('setValue', selectRow.chcRate);
-                    $("#edit_status").textbox('setValue', selectRow.chcStatus);
-                    $("#edit_tel").textbox('setValue', selectRow.chcTel);
-                    $("#edit_title").textbox('setValue', selectRow.chcTitle);
+                    $("#edit_id").val(selectRow.cstId);//初始化id值
+                    $("#edit_address").textbox('setValue', selectRow.cstAddr);
+                    $("#edit_bank").textbox('setValue', selectRow.cstBank);
+                    $("#edit_bank_account").textbox('setValue', selectRow.cstBankAccount);
+                    $("#edit_bankroll").textbox('setValue', selectRow.cstBankroll);
+                    $("#edit_chieftain").textbox('setValue', selectRow.cstChieftain);
+                    $("#edit_credit").combobox('setValue', selectRow.cstCredit);
+                    $("#edit_fax").textbox('setValue', selectRow.cstFax);
+                    $("#edit_level").combobox('setValue', selectRow.cstLevel);
+                    $("#edit_licence_no").textbox('setValue', selectRow.cstLicenceNo);
+                    $("#edit_local_tax_no").textbox('setValue', selectRow.cstLocalTaxNo);
+                    $("#edit_name").textbox('setValue', selectRow.cstName);
+                    $("#edit_national_tax_no").textbox('setValue', selectRow.cstNationalTaxNo);
+                    $("#edit_region").textbox('setValue', selectRow.cstRegion);
+                    $("#edit_satisfy").combobox('setValue', selectRow.cstSatisfy);
+                    $("#edit_tel").textbox('setValue', selectRow.cstTel);
+                    $("#edit_turnover").textbox('setValue', selectRow.cstTurnover);
+                    $("#edit_website").textbox('setValue', selectRow.cstWebsite);
+                    $("#edit_zip").textbox('setValue', selectRow.cstZip);
                 }
             });
 
-
-
-            //开发计划窗口
-            $("#planDialog").dialog({
-                title: "开发计划窗口",
+            //联系人窗口
+            $("#linkmanDialog").dialog({
+                title: "联系人窗口",
                 width: 660,
                 height: 430,
                 iconCls: "icon-house",
@@ -384,8 +419,8 @@
                         plain: true,
                         iconCls: 'icon-add',
                         handler: function () {
-                            $('#planList').edatagrid('addRow',{	row:{
-                                    planChcId: $("#dataList").datagrid("getSelected").chcId,
+                            $('#linkmanList').edatagrid('addRow',{	row:{
+                                    cstCustomerTCstId: $("#dataList").datagrid("getSelected").cstId,
                                 }});
 
                         }
@@ -395,7 +430,7 @@
                         plain: true,
                         iconCls: 'icon-some-delete',
                         handler: function () {
-                            $('#planList').edatagrid('destroyRow');
+                            $('#linkmanList').edatagrid('destroyRow');
                         }
                     },
                     {
@@ -403,49 +438,7 @@
                         plain: true,
                         iconCls: 'icon-cancel',
                         handler: function () {
-                            $('#planList').edatagrid('cancelRow');
-                        }
-                    },
-                    {
-                        text: '开发成功',
-                        plain: true,
-                        iconCls: 'icon-ok',
-                        handler: function () {
-                            $.ajax({
-                                type: "post",
-                                url: "editChance?t=" + new Date().getTime(),
-                                data: {chcId: $("#dataList").datagrid("getSelected").chcId, chcStatus:"开发成功"},
-                                dataType: 'json',
-                                success: function (data) {
-                                    if (data.success) {
-                                        $.messager.alert("消息提醒", "开发成功!", "info");
-                                        $("#dataList").datagrid("reload");//刷新表格
-                                    } else {
-                                        $.messager.alert("消息提醒", "服务器端发生异常! 更新失败!", "warning");
-                                    }
-                                }
-                            });
-                        }
-                    },
-                    {
-                        text: '终止开发',
-                        plain: true,
-                        iconCls: 'icon-no',
-                        handler: function () {
-                            $.ajax({
-                                type: "post",
-                                url: "editChance?t=" + new Date().getTime(),
-                                data: {chcId: $("#dataList").datagrid("getSelected").chcId, chcStatus:"终止开发"},
-                                dataType: 'json',
-                                success: function (data) {
-                                    if (data.success) {
-                                        $.messager.alert("消息提醒", "终止开发成功!", "info");
-                                        $("#dataList").datagrid("reload");//刷新表格
-                                    } else {
-                                        $.messager.alert("消息提醒", "服务器端发生异常! 更新失败!", "warning");
-                                    }
-                                }
-                            });
+                            $('#linkmanList').edatagrid('cancelRow');
                         }
                     },
                 ],
@@ -453,31 +446,50 @@
                 onBeforeOpen: function () {
                     var selectRow = $("#dataList").datagrid("getSelected");
                     // $("#edit_id").val(selectRow.chcId);//初始化id值,需根据id更新教师信息
-                    $('#planList').edatagrid({
+                    $('#linkmanList').edatagrid({
                         iconCls: 'icon-more',//图标
                         border: true,
                         collapsible: false,//是否可折叠
                         fit: true,//自动大小
                         method: "post",
-                        url: "getPlanList?t=" + new Date().getTime(),
-                        destroyUrl:"deletePlan",
-                        saveUrl: "addPlan",
-                        updateUrl:"editPlan",
+                        url: "/crm/linkman/getLinkmanList?t=" + new Date().getTime(),
+                        destroyUrl:"/crm/linkman/deleteLinkman",
+                        saveUrl: "/crm/linkman/addLinkman",
+                        updateUrl:"/crm/linkman/editLinkman",
                         // data: {"beginDate":beginDate,"endDate":endDate},
-                        queryParams: {"chcId":selectRow.chcId},
-                        idField: 'planId',
+                        queryParams: {"cstId":selectRow.cstId},
+                        idField: 'linkId',
                         singleSelect: true,//是否单选
                         rownumbers: true,//行号
                         pagination: false,//分页控件
-                        sortName: 'planId',
+                        sortName: 'linkId',
                         sortOrder: 'asc',
                         autoSave: true,
                         // remoteSort: false,
                         columns: [[
-                            {field: 'planChcId', title: '机会ID', width: 120, editor:{options:{readonly:true}}},
-                            {field: 'planDate', title: '日期', width: 120, editor:{type:'datetimebox',options:{required:true}}},
-                            {field: 'planTodo', title: '计划', width: 150, editor:"text"},
-                            {field: 'planResult', title: '执行结果', width: 150,editor:"{type:'textarea'}" },
+                            {field: 'cstCustomerTCstId', title: '客户ID', width: 120, editor:{options:{readonly:true}}},
+                            {field: 'linkName', title: '联系人', width: 120, editor:{type:'text',options:{required:true}}},
+                            {field: 'linkSex', title: '性别', width: 150, editor:{
+                                    type:'combobox',
+                                    options:{
+                                        valueField:'id',
+                                        textField:'name',
+                                        data:[{id:'1',name:'男'},{id:'2',name:'女'}]
+                                    },
+                                },
+                                formatter: function(value,row,index){
+                                    if (value == '1'){
+                                        return '男';
+                                    } else if (value == '2'){
+                                        return '女';
+                                    } else {
+                                        return value;
+                                    }
+                                }},
+                            {field: 'linkPosition', title: '职位', width: 150,editor:{type:'text',options:{required:true}} },
+                            {field: 'linkTel', title: '办公电话', width: 150, editor:{type:'text',options:{required:true}}},
+                            {field: 'linkMobile', title: '手机', width: 150, editor:"text"},
+                            {field: 'linkMemo', title: '备注', width: 150, editor:"text"},
                         ]],
                         loadFilter: function(data){
                             var rows=[];
@@ -493,57 +505,27 @@
                             var result = {rows:rows, total: total}
                             return result;
                         },
-                        onBeforeSave:function(index,row){
-                            console.log("onBeforeSave index",index)
-                            console.log("onBeforeSave row",row)
-                            // $.messager.alert("系统消息","保存成功"+row.name);
-                        },
                         onSave:function(index,row){
                             console.log("onSave index",index)
                             console.log("onSave row",row)
                             if(row.success){
-                                $.messager.alert("系统消息","编辑成功"+row.planId);
+                                $.messager.alert("系统消息","编辑成功"+row.linkId);
                             }else{
                                 $.messager.alert("系统消息","编辑失败");
-                                $("#planList").datagrid("reload");//刷新表格
-                                $("#planList").datagrid("uncheckAll");//取消勾选当前页所有的行
+                                $("#linkmanList").datagrid("reload");//刷新表格
+                                $("#linkmanList").datagrid("uncheckAll");//取消勾选当前页所有的行
                             }
-                        },
-                        onAdd:function(index,row){
-                            console.log("onAdd index",index)
-                            console.log("onAdd row",row)
-
-                        },
-                        onEdit:function(index,row){
-                            console.log("onEdit index",index)
-                            console.log("onEdit row",row)
                         },
                         onDestroy:function(index,row){
                             console.log("onDestroy index",index)
                             console.log("onDestroy row",row)
                             if(row.success){
-                                $.messager.alert("系统消息","删除成功"+row.planId);
+                                $.messager.alert("系统消息","删除成功"+row.linkId);
                             }else{
                                 $.messager.alert("系统消息","删除失败");
-                                $("#planList").datagrid("reload");//刷新表格
-                                $("#planList").datagrid("uncheckAll");//取消勾选当前页所有的行
+                                $("#linkmanList").datagrid("reload");//刷新表格
+                                $("#linkmanList").datagrid("uncheckAll");//取消勾选当前页所有的行
                             }
-                        },
-                        onEndEdit:function(index,row){
-                            console.log("onEndEdit index",index)
-                            console.log("onEndEdit row",row)
-                        },
-                        onBeforeEdit:function(index,row){
-                            console.log("onBeforeEdit index",index)
-                            console.log("onBeforeEdit row",row)
-                        },
-                        onAfterEdit:function(index,row){
-                            console.log("onAfterEdit index",index)
-                            console.log("onAfterEdit row",row)
-                        },
-                        onCancelEdit:function(index,row){
-                            console.log("onCancelEdit index",index)
-                            console.log("onCancelEdit row",row)
                         },
                         //销毁行的时候显示的确认对话框消息
                         destroyMsg:{
@@ -561,40 +543,217 @@
                 },
             });
 
+            //交往记录窗口
+            $("#activityDialog").dialog({
+                title: "交往记录窗口",
+                width: 660,
+                height: 430,
+                iconCls: "icon-house",
+                modal: true,
+                collapsible: false,
+                minimizable: false,
+                maximizable: false,
+                draggable: true,
+                closed: true,
+                buttons: [
+                    {
+                        text: '添加',
+                        plain: true,
+                        iconCls: 'icon-add',
+                        handler: function () {
+                            $('#activityList').edatagrid('addRow',{	row:{
+                                    cstCustomerTCstId: $("#dataList").datagrid("getSelected").cstId,
+                                }});
 
+                        }
+                    },
+                    {
+                        text: '删除',
+                        plain: true,
+                        iconCls: 'icon-some-delete',
+                        handler: function () {
+                            $('#activityList').edatagrid('destroyRow');
+                        }
+                    },
+                    {
+                        text: '取消',
+                        plain: true,
+                        iconCls: 'icon-cancel',
+                        handler: function () {
+                            $('#activityList').edatagrid('cancelRow');
+                        }
+                    },
+                ],
+                //打开窗口前先初始化表单数据(表单回显)
+                onBeforeOpen: function () {
+                    var selectRow = $("#dataList").datagrid("getSelected");
+                    // $("#edit_id").val(selectRow.chcId);//初始化id值,需根据id更新教师信息
+                    $('#activityList').edatagrid({
+                        iconCls: 'icon-more',//图标
+                        border: true,
+                        collapsible: false,//是否可折叠
+                        fit: true,//自动大小
+                        method: "post",
+                        url: "/crm/activity/getActivityList?t=" + new Date().getTime(),
+                        destroyUrl:"/crm/activity/deleteActivity",
+                        saveUrl: "/crm/activity/addActivity",
+                        updateUrl:"/crm/activity/editActivity",
+                        // data: {"beginDate":beginDate,"endDate":endDate},
+                        queryParams: {"cstId":selectRow.cstId},
+                        idField: 'atvId',
+                        singleSelect: true,//是否单选
+                        rownumbers: true,//行号
+                        pagination: false,//分页控件
+                        sortName: 'atvId',
+                        sortOrder: 'asc',
+                        autoSave: true,
+                        // remoteSort: false,
+                        columns: [[
+                            {field: 'cstCustomerTCstId', title: '客户ID', width: 120, editor:{options:{readonly:true}}},
+                            {field: 'atvDate', title: '日期', width: 120, editor:{type:'datetimebox',options:{required:true}}},
+                            {field: 'atvPlace', title: '地点', width: 120, editor:{type:'text',options:{required:true}}},
+                            {field: 'atvTitle', title: '概要', width: 150,editor:{type:'text',options:{required:true}} },
+                            {field: 'atvDesc', title: '备注', width: 150, editor:{type:'text',options:{required:true}}},
+                            {field: 'atvDetail', title: '详细信息', width: 150, editor:"textarea"},
+                        ]],
+                        loadFilter: function(data){
+                            var rows=[];
+                            var total=0;
+                            if (data.success){
+                                total = data.data.length
+                                for(var i=0; i<data.data.length; i++){
+                                    rows.push(data.data[i]);
+                                }
+                            } else {
+                                $.messager.alert("消息提醒", data.message, "warning");
+                            }
+                            var result = {rows:rows, total: total}
+                            return result;
+                        },
+                        onSave:function(index,row){
+                            console.log("onSave index",index)
+                            console.log("onSave row",row)
+                            if(row.success){
+                                $.messager.alert("系统消息","编辑成功"+row.atvId);
+                            }else{
+                                $.messager.alert("系统消息","编辑失败");
+                                $("#activityList").datagrid("reload");//刷新表格
+                                $("#activityList").datagrid("uncheckAll");//取消勾选当前页所有的行
+                            }
+                        },
+                        onDestroy:function(index,row){
+                            console.log("onDestroy index",index)
+                            console.log("onDestroy row",row)
+                            if(row.success){
+                                $.messager.alert("系统消息","删除成功"+row.atvId);
+                            }else{
+                                $.messager.alert("系统消息","删除失败");
+                                $("#activityList").datagrid("reload");//刷新表格
+                                $("#activityList").datagrid("uncheckAll");//取消勾选当前页所有的行
+                            }
+                        },
+                        //销毁行的时候显示的确认对话框消息
+                        destroyMsg:{
+                            norecord:{    // 在没有记录选择的时候执行
+                                title:'警告',
+                                msg:'没有选中行'
+                            },
+                            confirm:{       // 在选择一行的时候执行
+                                title:'确认',
+                                msg:'确定要删除吗?'
+                                //$.messager.alert("系统消息","删除"+row.name);
+                            }
+                        },
+                    });
+                },
+            });
+
+            //历史订单窗口 只有查询
+            $("#orderDialog").dialog({
+                title: "历史订单",
+                width: 660,
+                height: 430,
+                iconCls: "icon-house",
+                modal: true,
+                collapsible: false,
+                minimizable: false,
+                maximizable: false,
+                draggable: true,
+                closed: true,
+                buttons: [
+                ],
+                //打开窗口前先初始化表单数据(表单回显)
+                onBeforeOpen: function () {
+                    var selectRow = $("#dataList").datagrid("getSelected");
+                    // $("#edit_id").val(selectRow.chcId);//初始化id值,需根据id更新教师信息
+                    $('#orderList').datagrid({
+                        iconCls: 'icon-more',//图标
+                        border: true,
+                        collapsible: false,//是否可折叠
+                        fit: true,//自动大小
+                        method: "post",
+                        url: "/crm/indent/getIndentList?t=" + new Date().getTime(),
+                        // data: {"beginDate":beginDate,"endDate":endDate},
+                        queryParams: {"cstId":selectRow.cstId},
+                        idField: 'indentId',
+                        singleSelect: true,//是否单选
+                        rownumbers: true,//行号
+                        pagination: false,//分页控件
+                        sortName: 'indentId',
+                        sortOrder: 'asc',
+                        autoSave: true,
+                        view: detailview,
+                        // remoteSort: false,
+                        columns: [[
+                            {field: 'cstCustomerTCstId', title: '客户ID', width: 120, editor:{options:{readonly:true}}},
+                            {field: 'indentId', title: '订单编号', width: 150, editor:{type:'text',options:{required:true}}},
+                            {field: 'indendDate', title: '日期', width: 120, editor:{type:'datetimebox',options:{required:true}}},
+                            {field: 'indentDestination', title: '送货地址', width: 120, editor:{type:'text',options:{required:true}}},
+                            {field: 'indentState', title: '状态', width: 150,editor:{type:'text',options:{required:true}} },
+                            {field: 'total', title: '总金额', width: 150, editor:{type:'text',options:{required:true}}},
+                        ]],
+                        detailFormatter: function(rowIndex, rowData) {
+                            var result = '<table border="1" cellspacing="2" cellpadding="0" width="100%"><thead><tr><th>商品</th><th>数量</th><th>单价</th><th>金额</th></tr></thead><tbody>'
+                            var data = rowData.detail
+                            for(var i=0;i<data.length;i++){
+                                var item = '<tr><td>'+data[i].proName+'</td>'+
+                                    '<td>'+data[i].amount+'</td>'+
+                                    '<td>'+data[i].price+'</td>'+
+                                    '<td>'+data[i].total+'</td></tr>'
+                                result = result + item
+                            }
+                            result = result + '</tbody></table>'
+                            return result;
+                        },
+                        loadFilter: function(data){
+                            var rows=[];
+                            var total=0;
+                            if (data.success){
+                                total = data.data.length
+                                for(var i=0; i<data.data.length; i++){
+                                    rows.push(data.data[i]);
+                                }
+                            } else {
+                                $.messager.alert("消息提醒", data.message, "warning");
+                            }
+                            var result = {rows:rows, total: total}
+                            return result;
+                        },
+                    });
+                },
+            });
 
             //搜索按钮的监听事件(将其值返回给Controller)
             $("#search-btn").click(function () {
+                $("#dataList").datagrid("uncheckAll");
                 $('#dataList').datagrid('load', {
-                    beginDate: $('#search-begindate').datebox('getValue'),//开始时间
-                    endDate: $('#search-enddate').datebox('getValue'),//结束时间
-                    custName:$('#search-custname').textbox('getValue'),
-                    title:$('#search-title').textbox('getValue'),
-                    linkman:$('#search-linkman').textbox('getValue')
+                    userId: ${userInfo.userId},//开始时间
+                    cstName: $('#search-name').textbox('getValue')
                 });
             });
 
 
         });
-
-        $('#search-begindate').datebox({
-            onSelect: function(date){
-                beginDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-                alert(date.getFullYear()+":"+(date.getMonth()+1)+":"+date.getDate());
-
-            }
-        });
-
-        $('#search-enddate').datebox({
-            onSelect: function(date){
-                endDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-                alert(date.getFullYear()+":"+(date.getMonth()+1)+":"+date.getDate());
-            }
-        });
-
-
-
-
     </script>
 </head>
 <body>
@@ -604,8 +763,9 @@
 
 <!-- 工具栏 -->
 <div id="toolbar">
-    <div style="float: left;"><a id="add" href="javascript:" class="easyui-linkbutton"
-                                 data-options="iconCls:'icon-add',plain:true">添加</a></div>
+    <%-- 客户由销售机会同步过来 不需要新增--%>
+    <%--<div style="float: left;"><a id="add" href="javascript:" class="easyui-linkbutton"--%>
+                                 <%--data-options="iconCls:'icon-add',plain:true">添加</a></div>--%>
     <div style="float: left;" class="datagrid-btn-separator"></div>
     <%-- 通过JSTL设置用户操作权限: 将修改和删除按钮设置为仅管理员可见 --%>
     <%--<c:if test="${userType==1}">--%>
@@ -616,27 +776,19 @@
                                  data-options="iconCls:'icon-some-delete',plain:true">删除</a></div>
     <%--</c:if>--%>
     <div style="float: left;" class="datagrid-btn-separator"></div>
-    <div style="float: left;"><a id="plan" href="javascript:" class="easyui-linkbutton"
-                                 data-options="plain:true">开发计划</a></div>
+    <div style="float: left;"><a id="linkman" href="javascript:" class="easyui-linkbutton"
+                                 data-options="plain:true">联系人</a></div>
+    <div style="float: left;"><a id="activity" href="javascript:" class="easyui-linkbutton"
+                                 data-options="plain:true">交往记录</a></div>
+    <div style="float: left;"><a id="order" href="javascript:" class="easyui-linkbutton"
+                                 data-options="plain:true">历史订单</a></div>
     <!-- 销售机会搜索域 -->
     <div style="margin-left: 10px;">
         <div style="float: left;" class="datagrid-btn-separator"></div>
         <!-- 销售机会搜索框 -->
         <a href="javascript:" class="easyui-linkbutton"
            data-options="plain:true">客户名称</a>
-        <input id="search-custname" class="easyui-textbox" style="width:100px"/>
-        <a href="javascript:" class="easyui-linkbutton"
-           data-options="plain:true">概要</a>
-        <input id="search-title" class="easyui-textbox" style="width:100px"/>
-        <a href="javascript:" class="easyui-linkbutton"
-           data-options="plain:true">联系人</a>
-        <input id="search-linkman" class="easyui-textbox" style="width:100px"/>
-        <a href="javascript:" class="easyui-linkbutton"
-           data-options="plain:true">创建日期</a>
-        <input id="search-begindate" type="text" class="easyui-datebox" required="required" style="width:100px">
-        <a href="javascript:" class="easyui-linkbutton"
-           data-options="plain:true">到</a>
-        <input id="search-enddate" type="text" class="easyui-datebox" required="required" style="width:100px">
+        <input id="search-name" class="easyui-textbox" style="width:100px"/>
         <!-- 搜索按钮 -->
         <a id="search-btn" href="javascript:" class="easyui-linkbutton"
            data-options="iconCls:'icon-search',plain:true">搜索</a>
@@ -650,85 +802,150 @@
     <form id="addForm" method="post" action="#">
         <table id="addTable" style="border-collapse:separate; border-spacing:0 3px;" cellpadding="6">
             <tr>
-                <td>机会来源</td>
-                <td colspan="1">
-                    <select id="add_source" style="width: 200px; height: 30px;" class="easyui-combobox"
-                            name="chcSource" data-options="required:true, missingMessage:'请选择机会来源'">
-                        <option value=客户介绍>客户介绍</option>
-                        <option value="网上">网上</option>
-                        <option value="报纸">报纸</option>
-                        <option value="其他">其他</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
                 <td>客户名称</td>
                 <td colspan="1">
-                    <input id="add_cust_name" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcCustName" data-options="required:true, missingMessage:'请填写客户名称'"/>
+                    <input id="add_name" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstName" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>成功机率</td>
+                <td>客户地址</td>
                 <td colspan="1">
-                    <input id="add_rate" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcRate" data-options="required:true, missingMessage:'请填写成功机率'"/>
+                    <input id="add_address" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstAddress" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>概要</td>
-                <td>
-                    <input id="add_title" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcTitle" data-options="required:true, missingMessage:'请填写概要'"/>
+                <td>邮政编码</td>
+                <td colspan="1">
+                    <input id="add_zip" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstZip" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>联系人</td>
-                <td>
-                    <input id="add_linkman" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcLinkman" />
-                </td>
-            </tr>
-            <tr>
-                <td>联系人电话</td>
-                <td>
+                <td>电话</td>
+                <td colspan="1">
                     <input id="add_tel" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcTel" validType="mobile"/>
+                           type="text" name="cstTel" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>机会描述</td>
-                <td>
-                    <input id="add_desc" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcDesc" data-options="required:true, missingMessage:'请填写机会描述'"/>
-                </td>
-            </tr>
-            <tr>
-                <td>创建人</td>
-                <td>
-                    <input id="add_create_id" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcCreateId" data-options="readonly:true" readonly="true"/>
-                </td>
-            </tr>
-            <%--            <tr>--%>
-            <%--                <td>创建时间</td>--%>
-            <%--                <td>--%>
-            <%--                    <input id="add_create_date" style="width: 200px; height: 30px;" class="easyui-textbox"--%>
-            <%--                           type="text" name="chcCreateDate" />--%>
-            <%--                </td>--%>
-            <%--            </tr>--%>
-            <tr>
-                <td>指派给</td>
+                <td>传真</td>
                 <td colspan="1">
-                    <input id="add_due_to" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           name="chcDueTo" />
+                    <input id="add_fax" style="width: 150px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstFax" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>指派时间<td>
+                <td>官网</td>
                 <td colspan="1">
-                    <%--<input id="add_due_date" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="chcDueDate" />--%>
-                    <input id="add_due_date" type="text" class="easyui-datetimebox" name="chcDueDate">
+                    <input id="add_website" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstWebsite" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>营业执照注册号</td>
+                <td colspan="1">
+                    <input id="add_licence_no" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstLicenceNo" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>法人</td>
+                <td colspan="1">
+                    <input id="add_chieftain" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstChieftain" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>注册资金（万元）</td>
+                <td colspan="1">
+                    <input id="add_bankroll" style="width: 50px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstBankroll" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>年营业额</td>
+                <td colspan="1">
+                    <input id="add_turnover" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstTurnover" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>开户银行</td>
+                <td colspan="1">
+                    <input id="add_bank" style="width: 100px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstBank" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>银行账号</td>
+                <td colspan="1">
+                    <input id="add_bank_account" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstBankAccount" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>地税登记号</td>
+                <td colspan="1">
+                    <input id="add_local_tax_no" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstLocalTaxNo" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>国税登记号</td>
+                <td colspan="1">
+                    <input id="add_national_tax_no" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstNationalTaxNo" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="1">
+                    <!-- 设置为只读 -->
+                    <input id="add_region" data-options="readonly: true" style="width: 200px; height: 30px;"
+                           class="easyui-textbox" type="text" name="cstRegion" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>客户经理</td>
+                <td colspan="1"><input id="add_manager_id" style="width: 200px; height: 30px;" class="easyui-textbox"
+                                       type="text" name="cstManagerId" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>客户等级</td>
+                <td colspan="1">
+                    <input id="add_level" class="easyui-combobox" name="cstLevel"
+                           style="width: 100px; height: 30px;"
+                           data-options="valueField: 'dictValue',textField: 'dictItem'"
+                    >
+                </td>
+            </tr>
+            <tr>
+                <td>客户满意度</td>
+                <td colspan="1">
+                    <input id="add_satisfy"
+                           style="width: 200px; height: 30px;"
+                           class="easyui-combobox" name="cstSatisfy"
+                           data-options=" valueField:'id',
+                                        textField:'name',
+                                        data:[{id:1,name:'❤'},{id:2,name:'❤❤'},{id:3,name:'❤❤❤'},{id:4,name:'❤❤❤❤'},{id:5,name:'❤❤❤❤❤'}],
+                                        required:true,
+                                        missingMessage:'必填'">
+                </td>
+            </tr>
+            <tr>
+                <td>客户信用度</td>
+                <td colspan="1">
+                    <input id="add_credit"
+                           style="width: 200px; height: 30px;"
+                           class="easyui-combobox" name="cstCredit"
+                           data-options=" valueField:'id',
+                                        textField:'name',
+                                        data:[{id:1,name:'❤'},{id:2,name:'❤❤'},{id:3,name:'❤❤❤'},{id:4,name:'❤❤❤❤'},{id:5,name:'❤❤❤❤❤'}],
+                                        required:true,
+                                        missingMessage:'必填'">
                 </td>
             </tr>
         </table>
@@ -744,83 +961,157 @@
         <input type="hidden" id="edit_id" name="chcId"/>
         <table id="editTable" style="border-collapse:separate; border-spacing:0 3px;" cellpadding="6">
             <tr>
-                <td>机会来源</td>
-                <td colspan="1">
-                    <select id="edit_source" style="width: 200px; height: 30px;" class="easyui-combobox"
-                            name="chcSource">
-                        <option value=客户介绍>客户介绍</option>
-                        <option value="网上">网上</option>
-                        <option value="报纸">报纸</option>
-                        <option value="其他">其他</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
                 <td>客户名称</td>
                 <td colspan="1">
-                    <input id="edit_cust_name" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcCustName" data-options="required:true, missingMessage:'请填写客户名称'"/>
+                    <input id="edit_name" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstName" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>成功机率</td>
+                <td>客户地址</td>
                 <td colspan="1">
-                    <input id="edit_rate" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcRate" data-options="required:true, missingMessage:'请填写成功机率'"/>
+                    <input id="edit_address" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstAddress" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>概要</td>
+                <td>邮政编码</td>
+                <td colspan="1">
+                    <input id="edit_zip" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstZip" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>电话</td>
+                <td colspan="1">
+                    <input id="edit_tel" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstTel" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>传真</td>
+                <td colspan="1">
+                    <input id="edit_fax" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstFax" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>官网</td>
+                <td colspan="1">
+                    <input id="edit_website" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstWebsite" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>营业执照注册号</td>
+                <td colspan="1">
+                    <input id="edit_licence_no" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstLicenceNo" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>法人</td>
+                <td colspan="1">
+                    <input id="edit_chieftain" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstChieftain" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>注册资金（万元）</td>
+                <td colspan="1">
+                    <input id="edit_bankroll" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstBankroll" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>年营业额</td>
+                <td colspan="1">
+                    <input id="edit_turnover" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstTurnover" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>开户银行</td>
+                <td colspan="1">
+                    <input id="edit_bank" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstBank" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>银行账号</td>
+                <td colspan="1">
+                    <input id="edit_bank_account" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstBankAccount" data-options="required:true, missingMessage:'必填'"/>
+                </td>
+            </tr>
+            <tr>
+                <td>地税登记号</td>
+                <td colspan="1">
+                    <input id="edit_local_tax_no" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstLocalTaxNo" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>国税登记号</td>
+                <td colspan="1">
+                    <input id="edit_national_tax_no" style="width: 200px; height: 30px;" class="easyui-textbox"
+                           type="text" name="cstNationalTaxNo" data-options=""/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
                 <td colspan="1">
                     <!-- 设置为只读 -->
-                    <input id="edit_title" data-options="readonly: true" style="width: 200px; height: 30px;"
-                           class="easyui-textbox" type="text" name="chcTitle" data-options="required:true, missingMessage:'请填写概要'"/>
+                    <input id="edit_region" data-options="readonly: true" style="width: 200px; height: 30px;"
+                           class="easyui-textbox" type="text" name="cstRegion" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>联系人</td>
-                <td colspan="1"><input id="edit_linkman" style="width: 200px; height: 30px;" class="easyui-textbox"
-                                       type="text" name="chcLinkman" data-options=""/>
+                <td>客户经理</td>
+                <td colspan="1"><input id="edit_manager_id" style="width: 200px; height: 30px;" class="easyui-textbox"
+                                       type="text" name="cstManagerId" data-options="required:true, missingMessage:'必填'"/>
                 </td>
             </tr>
             <tr>
-                <td>联系人电话</td>
-                <td colspan="4"><input id="edit_tel" style="width: 200px; height: 30px;" class="easyui-textbox"
-                                       type="text" name="chcTel" validType="mobile"
-                                       data-options="required:true, missingMessage:'请填写联系方式'"/>
-                </td>
-            </tr>
-            <tr>
-                <td>机会描述</td>
-                <td colspan="1"><input id="edit_desc" style="width: 200px; height: 30px;" class="easyui-textbox"
-                                       type="text" name="chcDesc"
-                                       data-options="required:true, missingMessage:'请填写机会描述'"/>
-                </td>
-            </tr>
-            <tr>
-                <td>创建人</td>
-                <td>
-                    <input id="edit_create_id" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="chcCreateId" />
-                </td>
-            </tr>
-            <%--            <tr>--%>
-            <%--                <td>创建时间</td>--%>
-            <%--                <td>--%>
-            <%--                    <input id="edit_create_date" style="width: 200px; height: 30px;" class="easyui-textbox"--%>
-            <%--                           type="text" name="chcCreateDate" />--%>
-            <%--                </td>--%>
-            <%--            </tr>--%>
-            <tr>
-                <td>指派给</td>
+                <td>客户等级</td>
                 <td colspan="1">
-                    <input id="edit_due_to" style="width: 200px; height: 30px;" class="easyui-textbox" name="chcDueTo" />
+                    <input id="edit_level" class="easyui-combobox" name="cstLevel"
+                           style="width: 200px; height: 30px;"
+                           data-options="valueField: 'dictValue',textField: 'dictItem'">
+                    <%--<select id="edit_level" style="width: 200px; height: 30px;" class="easyui-combobox"--%>
+                            <%--name="cstLevel" data-options="required:true, missingMessage:'必填'">--%>
+                        <%--<option value="1">❤</option>--%>
+                        <%--<option value="2">❤❤</option>--%>
+                        <%--<option value="3">❤❤❤</option>--%>
+                        <%--<option value="4">❤❤❤❤</option>--%>
+                        <%--<option value="5">❤❤❤❤❤</option>--%>
+                    <%--</select>--%>
                 </td>
             </tr>
             <tr>
-                <td>指派时间<td>
-                <td colspan="1"><input id="edit_due_date" style="width: 200px; height: 30px;" class="easyui-textbox"
-                                       type="text" name="chcDueDate" />
+                <td>客户满意度</td>
+                <td colspan="1">
+                    <input id="edit_satisfy"
+                           style="width: 200px; height: 30px;"
+                           class="easyui-combobox" name="cstSatisfy"
+                           data-options=" valueField:'id',
+                                        textField:'name',
+                                        data:[{id:1,name:'❤'},{id:2,name:'❤❤'},{id:3,name:'❤❤❤'},{id:4,name:'❤❤❤❤'},{id:5,name:'❤❤❤❤❤'}],
+                                        required:true,
+                                        missingMessage:'必填'">
+                </td>
+            </tr>
+            <tr>
+                <td>客户信用度</td>
+                <td colspan="1">
+                    <input id="edit_credit"
+                           style="width: 200px; height: 30px;"
+                           class="easyui-combobox" name="cstCredit"
+                            data-options=" valueField:'id',
+                                        textField:'name',
+                                        data:[{id:1,name:'❤'},{id:2,name:'❤❤'},{id:3,name:'❤❤❤'},{id:4,name:'❤❤❤❤'},{id:5,name:'❤❤❤❤❤'}],
+                                        required:true,
+                                        missingMessage:'必填'">
                 </td>
             </tr>
         </table>
@@ -828,19 +1119,19 @@
 </div>
 
 
-<!-- 开发计划窗口 -->
-<div id="planDialog" style="">
-    <table id="planList" cellspacing="0" cellpadding="0" >
-        <%--<thead>--%>
-        <%--<tr>--%>
-        <%--<th field="planDate" width="100" editor="{type:'datetimebox',options:{required:true}}">日期</th>--%>
-        <%--<th field="planTodo" width="100" editor="text">计划</th>--%>
-        <%--<th field="planResult" width="100" align="right" editor="{type:'textarea'}">执行结果</th>--%>
-        <%--</tr>--%>
-        <%--</thead>--%>
+<!-- 联系人窗口 -->
+<div id="linkmanDialog" style="">
+    <table id="linkmanList" cellspacing="0" cellpadding="0" ></table>
+</div>
 
-    </table>
+<!-- 交往记录窗口 -->
+<div id="activityDialog" style="">
+    <table id="activityList" cellspacing="0" cellpadding="0" ></table>
+</div>
 
+<!-- 交往记录窗口 -->
+<div id="orderDialog" style="">
+    <table id="orderList" cellspacing="0" cellpadding="0" ></table>
 </div>
 
 <!-- 表单处理 -->

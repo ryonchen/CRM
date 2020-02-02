@@ -11,6 +11,10 @@
     <result column="indent_name" property="indentName" jdbcType="VARCHAR" />
     <result column="indent_create_by" property="indentCreateBy" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="BaseResultMap2" type="com.cn.crm.vo.IndentVo" extends="BaseResultMap">
+    <collection property="detail" javaType="java.util.ArrayList" ofType="com.cn.crm.vo.IndentDetailVo"
+                select="com.cn.crm.dao.CstIndentDetailMapper.selectByIndentId" column="indent_id" />
+  </resultMap>
   <sql id="Base_Column_List" >
     indent_id, indent_date, indent_destination, indent_state, indent_sum, cst_customer_t_cst_id, 
     indent_name, indent_create_by
@@ -126,7 +130,7 @@
       indent_create_by = #{indentCreateBy,jdbcType=VARCHAR}
     where indent_id = #{indentId,jdbcType=INTEGER}
   </update>
-  <select id="selectByCstId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByCstId" resultMap="BaseResultMap2" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
     from cst_indent_t

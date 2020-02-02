@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.crm.dao.CstIndentDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.crm.bean.CstIndentDetail" >
+    <id column="detail_id" property="detailId" jdbcType="INTEGER" />
+    <result column="indent_id" property="indentId" jdbcType="INTEGER" />
+    <result column="pro_id" property="proId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="BaseResultMap2" type="com.cn.crm.vo.IndentDetailVo" extends="BaseResultMap">
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="pro_name" property="proName" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    detail_id, indent_id, pro_id, price, amount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cst_indent_detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cst_indent_detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.crm.bean.CstIndentDetail" >
+    insert into cst_indent_detail (detail_id, indent_id, pro_id, 
+      price, amount)
+    values (#{detailId,jdbcType=INTEGER}, #{indentId,jdbcType=INTEGER}, #{proId,jdbcType=INTEGER},
+      #{price,jdbcType=DECIMAL}, #{amount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.crm.bean.CstIndentDetail" >
+    insert into cst_indent_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        detail_id,
+      </if>
+      <if test="indentId != null" >
+        indent_id,
+      </if>
+      <if test="proId != null" >
+        pro_id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        #{detail_id,jdbcType=INTEGER},
+      </if>
+      <if test="indentId != null" >
+        #{indent_id,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null" >
+        #{pro_id,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.CstIndentDetail" >
+    update cst_indent_detail
+    <set >
+      <if test="indentId != null" >
+        indent_id = #{indentId,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null" >
+        pro_id = #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.CstIndentDetail" >
+    update cst_indent_detail
+    set indent_id = #{indentId,jdbcType=INTEGER},
+      pro_id = #{proId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=INTEGER}
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByIndentId" resultMap="BaseResultMap2" parameterType="java.lang.Integer" >
+    select
+    a.detail_id, a.indent_id, a.pro_id, a.price, a.amount
+    , a.price*a.amount total,
+    b.pro_name
+    from cst_indent_detail a
+    left join bas_product_t b on a.pro_id = b.pro_id
+    where indent_id = #{indentId,jdbcType=INTEGER}
+  </select>
+</mapper>

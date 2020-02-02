@@ -2,7 +2,8 @@ package com.cn.crm.service.impl;
 
 import com.cn.crm.bean.CstIndentT;
 import com.cn.crm.dao.CstIndentTMapper;
-import com.cn.crm.service.CstIntendTService;
+import com.cn.crm.service.CstIndendTService;
+import com.cn.crm.vo.IndentVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +16,13 @@ import java.util.List;
  * @create: 2019-12-08 00:29
  */
 @Service("cstIntendTService")
-public class CstIntendTServiceImpl implements CstIntendTService {
+public class CstIndendTServiceImpl implements CstIndendTService {
 
     @Autowired(required = false)
     private CstIndentTMapper cstIndentTMapper;
 
     @Override
-    public List<CstIndentT> selectByCstId(Integer cstId){
+    public List<IndentVo> selectByCstId(Integer cstId){
         return cstIndentTMapper.selectByCstId(cstId);
     }
 

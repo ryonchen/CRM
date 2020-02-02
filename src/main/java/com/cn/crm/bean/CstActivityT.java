@@ -1,5 +1,8 @@
 package com.cn.crm.bean;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+
 import java.util.Date;
 
 public class CstActivityT {
@@ -25,6 +28,7 @@ public class CstActivityT {
         this.atvId = atvId;
     }
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss",serialzeFeatures= SerializerFeature.WriteMapNullValue)
     public Date getAtvDate() {
         return atvDate;
     }

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cn.crm.dao.BasDictTMapper">
   <resultMap id="BaseResultMap" type="com.cn.crm.bean.BasDictT">
-    <id column="dict_id" jdbcType="INTEGER" property="dict_id" />
-    <result column="dict_is_editable" jdbcType="VARCHAR" property="dict_is_editable" />
-    <result column="dict_item" jdbcType="VARCHAR" property="dict_item" />
-    <result column="dict_type" jdbcType="VARCHAR" property="dict_type" />
-    <result column="dict_value" jdbcType="VARCHAR" property="dict_value" />
+    <id column="dict_id" jdbcType="INTEGER" property="dictId" />
+    <result column="dict_is_editable" jdbcType="VARCHAR" property="dictIsEditable" />
+    <result column="dict_item" jdbcType="VARCHAR" property="dictItem" />
+    <result column="dict_type" jdbcType="VARCHAR" property="dictType" />
+    <result column="dict_value" jdbcType="VARCHAR" property="dictValue" />
   </resultMap>
   <sql id="Base_Column_List">
     dict_id, dict_is_editable, dict_item, dict_type, dict_value
@@ -15,79 +15,92 @@
     select 
     <include refid="Base_Column_List" />
     from bas_dict_t
-    where dict_id = #{dict_id,jdbcType=INTEGER}
+    where dict_id = #{dictId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from bas_dict_t
-    where dict_id = #{dict_id,jdbcType=INTEGER}
+    where dict_id = #{dictId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cn.crm.bean.BasDictT">
     insert into bas_dict_t (dict_id, dict_is_editable, dict_item, 
       dict_type, dict_value)
-    values (#{dict_id,jdbcType=INTEGER}, #{dict_is_editable,jdbcType=VARCHAR}, #{dict_item,jdbcType=VARCHAR}, 
-      #{dict_type,jdbcType=VARCHAR}, #{dict_value,jdbcType=VARCHAR})
+    values (#{dictId,jdbcType=INTEGER}, #{dictIsEditable,jdbcType=VARCHAR}, #{dictItem,jdbcType=VARCHAR},
+      #{dictType,jdbcType=VARCHAR}, #{dictValue,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cn.crm.bean.BasDictT">
     insert into bas_dict_t
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="dict_id != null">
+      <if test="dictId != null">
         dict_id,
       </if>
-      <if test="dict_is_editable != null">
+      <if test="dictIsEditable != null">
         dict_is_editable,
       </if>
-      <if test="dict_item != null">
+      <if test="dictItem != null">
         dict_item,
       </if>
-      <if test="dict_type != null">
+      <if test="dictType != null">
         dict_type,
       </if>
-      <if test="dict_value != null">
+      <if test="dictValue != null">
         dict_value,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="dict_id != null">
-        #{dict_id,jdbcType=INTEGER},
+      <if test="dictId != null">
+        #{dictId,jdbcType=INTEGER},
       </if>
-      <if test="dict_is_editable != null">
-        #{dict_is_editable,jdbcType=VARCHAR},
+      <if test="dictIsEditable != null">
+        #{dictIsEditable,jdbcType=VARCHAR},
       </if>
-      <if test="dict_item != null">
-        #{dict_item,jdbcType=VARCHAR},
+      <if test="dictItem != null">
+        #{dictItem,jdbcType=VARCHAR},
       </if>
-      <if test="dict_type != null">
-        #{dict_type,jdbcType=VARCHAR},
+      <if test="dictType != null">
+        #{dictType,jdbcType=VARCHAR},
       </if>
-      <if test="dict_value != null">
-        #{dict_value,jdbcType=VARCHAR},
+      <if test="dictValue != null">
+        #{dictValue,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.cn.crm.bean.BasDictT">
     update bas_dict_t
     <set>
-      <if test="dict_is_editable != null">
-        dict_is_editable = #{dict_is_editable,jdbcType=VARCHAR},
+      <if test="dictIsEditable != null">
+        dict_is_editable = #{dictIsEditable,jdbcType=VARCHAR},
       </if>
-      <if test="dict_item != null">
-        dict_item = #{dict_item,jdbcType=VARCHAR},
+      <if test="dictItem != null">
+        dict_item = #{dictItem,jdbcType=VARCHAR},
       </if>
-      <if test="dict_type != null">
-        dict_type = #{dict_type,jdbcType=VARCHAR},
+      <if test="dictType != null">
+        dict_type = #{dictType,jdbcType=VARCHAR},
       </if>
-      <if test="dict_value != null">
-        dict_value = #{dict_value,jdbcType=VARCHAR},
+      <if test="dictValue != null">
+        dict_value = #{dictValue,jdbcType=VARCHAR},
       </if>
     </set>
-    where dict_id = #{dict_id,jdbcType=INTEGER}
+    where dict_id = #{dictId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cn.crm.bean.BasDictT">
     update bas_dict_t
-    set dict_is_editable = #{dict_is_editable,jdbcType=VARCHAR},
-      dict_item = #{dict_item,jdbcType=VARCHAR},
-      dict_type = #{dict_type,jdbcType=VARCHAR},
-      dict_value = #{dict_value,jdbcType=VARCHAR}
-    where dict_id = #{dict_id,jdbcType=INTEGER}
+    set dict_is_editable = #{dictIsEditable,jdbcType=VARCHAR},
+      dict_item = #{dictItem,jdbcType=VARCHAR},
+      dict_type = #{dictType,jdbcType=VARCHAR},
+      dict_value = #{dictValue,jdbcType=VARCHAR}
+    where dict_id = #{dictId,jdbcType=INTEGER}
   </update>
+  <select id="selectByDictType" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bas_dict_t
+    where dict_type = #{dictType,jdbcType=VARCHAR}
+  </select>
+  <select id="selectCstLevel" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bas_dict_t
+    where dict_type = '企业客户等级'
+    and dict_value = #{dictValue,jdbcType=VARCHAR}
+  </select>
 </mapper>

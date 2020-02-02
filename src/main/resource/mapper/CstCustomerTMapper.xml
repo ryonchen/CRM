@@ -26,6 +26,16 @@
     <result column="cust_manager_name" property="custManagerName" jdbcType="VARCHAR" />
     <result column="cst_status" property="cstStatus" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="BaseResultMap2" type="com.cn.crm.vo.CustomerVo" extends="BaseResultMap">
+    <!--通过外键user_id再次发起查询，调用selectUserById获得User对象-->
+    <association property="managerInfo" column="cst_manager_id" javaType="com.cn.crm.bean.SysUser" >
+      <!--<id column="user_id" property="userId" jdbcType="INTEGER" />-->
+      <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    </association>
+    <association property="cstLevelInfo" column="cst_level" javaType="com.cn.crm.bean.BasDictT">
+      <result column="dict_item" property="dictItem" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
   <sql id="Base_Column_List" >
     cst_id, cst_addr, cst_bank, cst_bank_account, cst_bankroll, cst_chieftain, cst_credit, 
     cst_fax, cst_level, cst_level_label, cst_licence_no, cst_local_tax_no, cst_manager_id, 
@@ -303,10 +313,42 @@
       cst_status = #{cstStatus,jdbcType=INTEGER}
     where cst_id = #{cstId,jdbcType=INTEGER}
   </update>
-  <select id="selectByUser" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectUserById" resultMap="BaseResultMap" parameterType="com.cn.crm.vo.CustomerReqVo" >
     select
     <include refid="Base_Column_List" />
     from cst_customer_t
-    where cst_manager_name = #{userCode,jdbcType=VARCHAR}
+    where cst_manager_id = #{userId,jdbcType=INTEGER}
   </select>
+  <select id="countByUser" resultType="int" parameterType="com.cn.crm.vo.CustomerReqVo" >
+    select count(*)
+    from cst_customer_t
+    where cst_manager_id = #{userId,jdbcType=INTEGER}
+    <if test="cstName != null and cstName != ''">
+      and cst_name like concat('%',#{cstName},'%')
+    </if>
+  </select>
+  <!--根据用户编号获得用户对象-->
+  <select id="selectByUser" resultMap="BaseResultMap2" parameterType="com.cn.crm.vo.CustomerReqVo">
+     select a.cst_id, a.cst_addr, a.cst_bank, a.cst_bank_account, a.cst_bankroll, a.cst_chieftain, a.cst_credit,
+    a.cst_fax, a.cst_level, a.cst_level_label, a.cst_licence_no, a.cst_local_tax_no, a.cst_manager_id,
+    a.cst_name, a.cst_national_tax_no, a.cst_region, a.cst_satisfy, a.cst_tel, a.cst_turnover, a.cst_website,
+    a.cst_zip, a.cust_manager_name, a.cst_status
+    ,b.user_name,c.dict_item
+     from cst_customer_t a
+     left join sys_user b on a.cst_manager_id = b.user_id
+     left join bas_dict_t c on a.cst_level = c.dict_value and c.dict_type = '企业客户等级'
+     where a.cst_manager_id = #{userId,jdbcType=INTEGER}
+    <if test="cstName != null and cstName != ''">
+     and a.cst_name like concat('%',#{cstName},'%')
+    </if>
+    <if test="sort == 'cst_id'">
+      <if test="order == 'desc'">
+        order by cst_id desc
+      </if>
+      <if test="order == 'asc'">
+        order by cst_id asc
+      </if>
+    </if>
+     limit ${(page-1)*rows},${rows}
+   </select>
 </mapper>

@@ -47,6 +47,13 @@ public class CstCustomerT {
 
     private Integer cstStatus;
 
+
+
+    public void setCustManagerName(String custManagerName) {
+        this.custManagerName = custManagerName;
+    }
+
+
     public Integer getCstId() {
         return cstId;
     }

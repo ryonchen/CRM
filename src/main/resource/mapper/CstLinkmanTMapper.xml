@@ -154,6 +154,6 @@
     select
     <include refid="Base_Column_List" />
     from cst_linkman_t
-    where link_cst_id = #{cstId,jdbcType=INTEGER}
+    where cst_customer_t_cst_id = #{cstId,jdbcType=INTEGER}
   </select>
 </mapper>

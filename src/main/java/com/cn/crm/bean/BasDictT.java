@@ -1,53 +1,53 @@
 package com.cn.crm.bean;
 
 public class BasDictT {
-    private Integer dict_id;
+    private Integer dictId;
 
-    private String dict_is_editable;
+    private String dictIsEditable;
 
-    private String dict_item;
+    private String dictItem;
 
-    private String dict_type;
+    private String dictType;
 
-    private String dict_value;
+    private String dictValue;
 
-    public Integer getDict_id() {
-        return dict_id;
+    public Integer getDictId() {
+        return dictId;
     }
 
-    public void setDict_id(Integer dict_id) {
-        this.dict_id = dict_id;
+    public void setDictId(Integer dictId) {
+        this.dictId = dictId;
     }
 
-    public String getDict_is_editable() {
-        return dict_is_editable;
+    public String getDictIsEditable() {
+        return dictIsEditable;
     }
 
-    public void setDict_is_editable(String dict_is_editable) {
-        this.dict_is_editable = dict_is_editable == null ? null : dict_is_editable.trim();
+    public void setDictIsEditable(String dictIsEditable) {
+        this.dictIsEditable = dictIsEditable == null ? null : dictIsEditable.trim();
     }
 
-    public String getDict_item() {
-        return dict_item;
+    public String getDictItem() {
+        return dictItem;
     }
 
-    public void setDict_item(String dict_item) {
-        this.dict_item = dict_item == null ? null : dict_item.trim();
+    public void setDictItem(String dictItem) {
+        this.dictItem = dictItem == null ? null : dictItem.trim();
     }
 
-    public String getDict_type() {
-        return dict_type;
+    public String getDictType() {
+        return dictType;
     }
 
-    public void setDict_type(String dict_type) {
-        this.dict_type = dict_type == null ? null : dict_type.trim();
+    public void setDictType(String dictType) {
+        this.dictType = dictType == null ? null : dictType.trim();
     }
 
-    public String getDict_value() {
-        return dict_value;
+    public String getDictValue() {
+        return dictValue;
     }
 
-    public void setDict_value(String dict_value) {
-        this.dict_value = dict_value == null ? null : dict_value.trim();
+    public void setDictValue(String dictValue) {
+        this.dictValue = dictValue == null ? null : dictValue.trim();
     }
 }
